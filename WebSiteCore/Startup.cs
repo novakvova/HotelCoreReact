@@ -18,6 +18,7 @@ namespace WebSiteCore
     {
         public Startup(IConfiguration configuration)
         {
+            //Nick comment
             Configuration = configuration;
         }
 

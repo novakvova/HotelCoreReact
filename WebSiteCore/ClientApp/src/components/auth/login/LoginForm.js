@@ -41,8 +41,8 @@ class LoginForm extends Component {
     onSubmitForm = (e) => {
         e.preventDefault();
         let errors = {};
-        if (this.state.email === '') errors.email = "Cant't be empty!"
-        if (this.state.password === '') errors.password = "Cant't be empty!"
+        if (this.state.email === '') errors.email = "Поле є обов'язковим!"
+        if (this.state.password === '') errors.password = "Поле є обов'язковим!"
 
         const isValid = Object.keys(errors).length === 0
         if (isValid) {

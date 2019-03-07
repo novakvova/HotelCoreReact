@@ -5,46 +5,36 @@ import { LinkContainer } from 'react-router-bootstrap';
 import './NavMenu.css';
 
 export default props => (
-  <Navbar inverse fixedTop fluid collapseOnSelect>
-    <Navbar.Header>
-      <Navbar.Brand>
-        <Link to={'/'}>WebSiteCore</Link>
-      </Navbar.Brand>
-      <Navbar.Toggle />
-    </Navbar.Header>
-    <Navbar.Collapse>
-      <Nav>
-        <LinkContainer to={'/'} exact>
-          <NavItem>
-            <Glyphicon glyph='home' /> Home
+    <Navbar inverse fixedTop fluid collapseOnSelect>
+        <Navbar.Header>
+            <Navbar.Brand>
+                <Link to={'/'}>WebSiteCore</Link>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+        </Navbar.Header>
+        <Navbar.Collapse>
+            <Nav>
+                <LinkContainer to={'/'} exact>
+                    <NavItem>
+                        <Glyphicon glyph='home' /> Home
           </NavItem>
-        </LinkContainer>
-        <LinkContainer to={'/counter'}>
-          <NavItem>
-            <Glyphicon glyph='education' /> Counter
+                </LinkContainer>
+                <LinkContainer to={'/roomsInfo'}>
+                    <NavItem>
+                        <Glyphicon glyph='th-list' /> Rooms
           </NavItem>
-        </LinkContainer>
-        <LinkContainer to={'/fetchdata'}>
-          <NavItem>
-            <Glyphicon glyph='th-list' /> Fetch data
+                </LinkContainer>
+                <LinkContainer to={'/chambermaid'}>
+                    <NavItem>
+                        <Glyphicon glyph='glyphicon glyphicon-trash' /> Chambermaid Page
           </NavItem>
-        </LinkContainer>
-        <LinkContainer to={'/roomsInfo'}>
-          <NavItem>
-            <Glyphicon glyph='th-list' /> Rooms
+                </LinkContainer>
+                <LinkContainer to={'/login'}>
+                    <NavItem>
+                        <Glyphicon glyph='th-list' /> Login page
           </NavItem>
-        </LinkContainer>
-        <LinkContainer to={'/login'}>
-          <NavItem>
-            <Glyphicon glyph='th-list' /> Login page
-          </NavItem>
-        </LinkContainer>
-        <LinkContainer to={'/chambermaid'}>
-          <NavItem>
-            <Glyphicon glyph='glyphicon glyphicon-trash' /> Chambermaid Page
-          </NavItem>
-        </LinkContainer>
-      </Nav>
-    </Navbar.Collapse>
-  </Navbar>
+                </LinkContainer>
+            </Nav>
+        </Navbar.Collapse>
+    </Navbar>
 );

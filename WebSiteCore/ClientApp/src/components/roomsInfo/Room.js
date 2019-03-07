@@ -5,6 +5,9 @@ class Room extends Component {
     constructor() {
         super()
         this.state = {
+            Class: 'Lux',
+            Price: '1000',
+            Floor: '5',
             Number: '1',
             ImageSrc: 'http://www.chantosweb.com/img/rooms/city%20view.jpg',
             Bed: 'King size',
@@ -26,7 +29,25 @@ class Room extends Component {
                     <h1>{this.state.Number}</h1>
                 </Col>
                 <Col md="3">
-                    <img src={this.state.ImageSrc} width="200" height="200" onClick={this.imageClick} />
+                    <img     src={this.state.ImageSrc} width="200" height="200" onClick={this.imageClick} />
+                </Col>
+                <Col md="1">
+                    <h4>Class:</h4>
+                    <br />
+                    <h4>Price:</h4>
+                    <br />
+                    <h4>Floor:</h4>
+                    <br />
+                    <h4>Status:</h4>
+                </Col>
+                <Col md="2">
+                    <h4>{this.state.Class}</h4>
+                    <br />
+                    <h4>{this.state.Price}</h4>
+                    <br />
+                    <h4>{this.state.Floor}</h4>
+                    <br />
+                    <h4>{this.state.Status}</h4>
                 </Col>
                 <Col md="1">
                     <h4>Bed:</h4>
@@ -34,8 +55,6 @@ class Room extends Component {
                     <h4>TV:</h4>
                     <br />
                     <h4>Sqr.m.:</h4>
-                    <br />
-                    <h4>Status:</h4>
                 </Col>
                 <Col md="2">
                     <h4>{this.state.Bed}</h4>
@@ -43,10 +62,8 @@ class Room extends Component {
                     <h4>{this.state.TV}</h4>
                     <br />
                     <h4>{this.state.Squere}</h4>
-                    <br />
-                    <h4>{this.state.Status}</h4>
                 </Col>
-                <Col>
+                <Col style={{ alignItemsCenter: 'true' }}>
                     <input type="button" class="btn btn-success" value="Button"></input>
                 </Col>
             </Row >

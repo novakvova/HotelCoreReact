@@ -39,6 +39,11 @@ export default props => (
             <Glyphicon glyph='th-list' /> Login page
           </NavItem>
         </LinkContainer>
+        <LinkContainer to={'/chambermaid'}>
+          <NavItem>
+            <Glyphicon glyph='glyphicon glyphicon-trash' /> Chambermaid Page
+          </NavItem>
+        </LinkContainer>
       </Nav>
     </Navbar.Collapse>
   </Navbar>

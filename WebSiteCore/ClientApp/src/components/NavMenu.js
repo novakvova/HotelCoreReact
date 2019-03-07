@@ -29,6 +29,11 @@ export default props => (
             <Glyphicon glyph='th-list' /> Fetch data
           </NavItem>
         </LinkContainer>
+        <LinkContainer to={'/roomsInfo'}>
+          <NavItem>
+            <Glyphicon glyph='th-list' /> Rooms
+          </NavItem>
+        </LinkContainer>
         <LinkContainer to={'/login'}>
           <NavItem>
             <Glyphicon glyph='th-list' /> Login page

@@ -7,6 +7,7 @@ import FetchData from './components/FetchData';
 import LoginPage from './components/auth/login/LoginPage';
 import RoomsInfo from './components/roomsInfo/RoomsInfo';
 import ChambermaidPage from './components/chambermaid/ChambermaidPage'
+import UsersList from './components/UsersList/UsersList'
 
 export default () => (
     <Layout>
@@ -16,5 +17,6 @@ export default () => (
         <Route path='/login' component={LoginPage} />
         <Route path='/chambermaid' component={ChambermaidPage} />
         <Route path='/roomsInfo' component={RoomsInfo} />
+        <Route path='/userslist' component={UsersList} />
     </Layout>
 );

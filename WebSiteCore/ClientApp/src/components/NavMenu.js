@@ -53,7 +53,7 @@ class NavMenu extends Component {
               </NavItem>
             </LinkContainer>
             {isAuthenticated ? userLinks : guestLinks}
-            <LinkContainer to={"/users"}>
+            <LinkContainer to={"/userslist"}>
               <NavItem>
                 <Glyphicon glyph="th-list" /> Users
               </NavItem>

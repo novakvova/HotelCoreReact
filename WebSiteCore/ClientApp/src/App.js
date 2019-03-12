@@ -7,6 +7,10 @@ import FetchData from './components/FetchData';
 import LoginPage from './components/auth/login/LoginPage';
 import RoomsInfo from './components/roomsInfo/RoomsInfo';
 import ChambermaidPage from './components/chambermaid/ChambermaidPage'
+import SignUpPage from './components/auth/signUp/SignUpPage';
+import ReserveForm from './components/roomsInfo/ReserveForm';
+
+
 
 export default () => (
     <Layout>
@@ -16,5 +20,9 @@ export default () => (
         <Route path='/login' component={LoginPage} />
         <Route path='/chambermaid' component={ChambermaidPage} />
         <Route path='/roomsInfo' component={RoomsInfo} />
+        <Route path='/SignUp' component={SignUpPage} />
+        <Route path='/ReserveForm/:id' component={ReserveForm} />
+
     </Layout>
 );
+

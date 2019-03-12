@@ -4,7 +4,8 @@ import Room from './Room'
 class RoomsInfo extends Component {
     render() {
         return (
-            <div>
+            <div style={{ textAlign: 'center' }}>
+                <h1>Rooms</h1>
                 <Room />
                 <Room />
                 <Room />

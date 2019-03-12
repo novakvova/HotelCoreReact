@@ -58,6 +58,12 @@ class NavMenu extends Component {
               </NavItem>
                         </LinkContainer>
 
+                          <LinkContainer to={'/profile'}>
+          <NavItem>
+            <Glyphicon glyph='th-list' /> User Profile
+          </NavItem>
+        </LinkContainer>
+
                         <LinkContainer to={"/users"}>
                             <NavItem>
                                 <Glyphicon glyph="th-list" /> Users

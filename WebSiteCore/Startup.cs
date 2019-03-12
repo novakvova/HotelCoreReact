@@ -27,6 +27,15 @@ namespace WebSiteCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddCors(options => options
+            //.AddPolicy("Cors", builder =>
+            //{
+            //    builder
+            //    .AllowAnyOrigin()
+            //    .AllowAnyMethod()
+            //    .AllowAnyHeader();
+            //}));
+
             services.AddDbContext<EFDbContext>(opt =>
                 opt.UseSqlServer(Configuration
                     .GetConnectionString("DefaultConnection")));
@@ -66,6 +75,7 @@ namespace WebSiteCore
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseAuthentication();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -79,6 +89,8 @@ namespace WebSiteCore
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+
+            //app.UseCors("Cors");
 
             app.UseMvc(routes =>
             {

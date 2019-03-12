@@ -1,4 +1,4 @@
-﻿import React, {Component} from "react";
+﻿import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Glyphicon, Nav, Navbar, NavItem } from "react-bootstrap";
@@ -14,20 +14,20 @@ class NavMenu extends Component {
         e.preventDefault();
         this.props.logout();
     }
-  render() { 
-    const props=this.props;
-    const {isAuthenticated, user} = this.props.auth;
+    render() {
+        const props = this.props;
+        const { isAuthenticated, user } = this.props.auth;
         console.log(isAuthenticated);
 
-      const userLinks = (
-          <Navbar.Collapse className="justify-content-end">
-              <Navbar.Text>
+        const userLinks = (
+            <Navbar.Collapse className="justify-content-end">
+                <Navbar.Text>
 
-                  {user.name} &nbsp;
+                    {user.name} &nbsp;
                   <a href="#" onClick={this.logout.bind(this)}><Glyphicon glyph="log-out" /> Logout</a>
-              </Navbar.Text>
-          </Navbar.Collapse>
-         
+                </Navbar.Text>
+            </Navbar.Collapse>
+
         );
 
         const guestLinks = (
@@ -35,53 +35,48 @@ class NavMenu extends Component {
             <NavItem>
                     <Glyphicon glyph="log-in" /> Login
             </NavItem>
-          </LinkContainer>
+            </LinkContainer>
         );
-    return (
-      <Navbar inverse fixedTop fluid collapseOnSelect>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <Link to={"/"}>WebSiteCore</Link>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <Nav>
-            <LinkContainer to={"/"} exact>
-              <NavItem>
-                <Glyphicon glyph="home" /> Home
+        return (
+            <Navbar inverse fixedTop fluid collapseOnSelect>
+                <Navbar.Header>
+                    <Navbar.Brand>
+                        <Link to={"/"}>WebSiteCore</Link>
+                    </Navbar.Brand>
+                    <Navbar.Toggle />
+                </Navbar.Header>
+                <Navbar.Collapse>
+                    <Nav>
+                        <LinkContainer to={"/"} exact>
+                            <NavItem>
+                                <Glyphicon glyph="home" /> Home
               </NavItem>
-            </LinkContainer>
-            <LinkContainer to={"/counter"}>
-              <NavItem>
-                <Glyphicon glyph="education" /> Counter
+                        </LinkContainer>
+                        <LinkContainer to={"/roomsInfo"}>
+                            <NavItem>
+                                <Glyphicon glyph="th-list" /> Rooms
               </NavItem>
-            </LinkContainer>
-            <LinkContainer to={"/fetchdata"}>
-              <NavItem>
-                <Glyphicon glyph="th-list" /> Fetch data
-              </NavItem>
-            </LinkContainer>
+                        </LinkContainer>
 
-            <LinkContainer to={"/users"}>
-               <NavItem>
-                  <Glyphicon glyph="th-list" /> Users
+                        <LinkContainer to={"/users"}>
+                            <NavItem>
+                                <Glyphicon glyph="th-list" /> Users
               </NavItem>
-            </LinkContainer>
+                        </LinkContainer>
 
-            {isAuthenticated ? userLinks : guestLinks}
-            
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-    );
-  }
+                        {isAuthenticated ? userLinks : guestLinks}
+
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+        );
+    }
 }
 
-const mapStateToProps=(state)=>{
-  return {
-      auth: state.auth
-  };
+const mapStateToProps = (state) => {
+    return {
+        auth: state.auth
+    };
 }
- 
+
 export default connect(mapStateToProps, { logout })(NavMenu);

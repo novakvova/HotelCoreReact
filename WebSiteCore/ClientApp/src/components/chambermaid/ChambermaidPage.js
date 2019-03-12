@@ -1,11 +1,12 @@
 ﻿import React, { Component } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row, Navbar } from 'react-bootstrap';
 import './ChambermaidPage.css'
+import { Link } from 'react-router-dom';
 
 function Chambermaid(props) {
     return (
         <Row style={{ marginBottom: '50px' }}>
-        <hr/>
+            <hr />
             <Col md='3'>
                 <img src={props.img} width='250px' />
             </Col>
@@ -37,18 +38,22 @@ function Chambermaid(props) {
 class ChambermaidPage extends Component {
     render() {
         return (
-            <div className='container'style={{marginTop:'25px'}}>
-                <Chambermaid img='https://cdn3.iconfinder.com/data/icons/users-6/100/654854-user-women-512.png'
-                    fullName='Korniychuk Olya' roomsToClean='10,20,30' readyRooms='1,4,9'
-                    cleaningType='Full' />
-                <Chambermaid img='https://cdn3.iconfinder.com/data/icons/users-6/100/654854-user-women-512.png'
-                    fullName='Ivanova Tanya' roomsToClean='5,6,36' readyRooms='3,45,29'
-                    cleaningType='Easy' />
-                <Chambermaid img='https://cdn3.iconfinder.com/data/icons/users-6/100/654854-user-women-512.png'
-                    fullName='Ivanova Tanya' roomsToClean='5,6,36' readyRooms='3,45,29'
-                    cleaningType='Easy' />
+            <div className='container' style={{margin:'auto'}} >
+                <nav className='nav'>
+                    <Link to='/chambermaidform' class="btn btn-primary">Hire new Chambermaid</Link>
+                </nav>
+                <div style={{ marginTop: '25px' }}>
+                    <Chambermaid img='https://cdn3.iconfinder.com/data/icons/users-6/100/654854-user-women-512.png'
+                        fullName='Korniychuk Olya' roomsToClean='10,20,30' readyRooms='1,4,9'
+                        cleaningType='Full' />
+                    <Chambermaid img='https://cdn3.iconfinder.com/data/icons/users-6/100/654854-user-women-512.png'
+                        fullName='Ivanova Tanya' roomsToClean='5,6,36' readyRooms='3,45,29'
+                        cleaningType='Easy' />
+                    <Chambermaid img='https://cdn3.iconfinder.com/data/icons/users-6/100/654854-user-women-512.png'
+                        fullName='Ivanova Tanya' roomsToClean='5,6,36' readyRooms='3,45,29'
+                        cleaningType='Easy' />
+                </div>
             </div>
-
         );
     }
 }

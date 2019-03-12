@@ -3,21 +3,31 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Glyphicon, Nav, Navbar, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { logout } from '../actions/authActions';
 import "./NavMenu.css";
 
+
 class NavMenu extends Component {
-  state = {  }
+    state = {}
+
+    logout(e) {
+        e.preventDefault();
+        this.props.logout();
+    }
   render() { 
     const props=this.props;
     const {isAuthenticated, user} = this.props.auth;
         console.log(isAuthenticated);
 
-        const userLinks = (
-          <LinkContainer to={"/login"}>
-            <NavItem>
-             <Glyphicon glyph="th-list" /> {user.name} Logout
-            </NavItem>
-          </LinkContainer>
+      const userLinks = (
+          <Navbar.Collapse className="justify-content-end">
+              <Navbar.Text>
+
+                  {user.name} &nbsp;
+                  <a href="#" onClick={this.logout.bind(this)}><Glyphicon glyph="log-out" /> Logout</a>
+              </Navbar.Text>
+          </Navbar.Collapse>
+         
         );
 
         const guestLinks = (
@@ -52,12 +62,15 @@ class NavMenu extends Component {
                 <Glyphicon glyph="th-list" /> Fetch data
               </NavItem>
             </LinkContainer>
-            {isAuthenticated ? userLinks : guestLinks}
+
             <LinkContainer to={"/users"}>
-              <NavItem>
-                <Glyphicon glyph="th-list" /> Users
+               <NavItem>
+                  <Glyphicon glyph="th-list" /> Users
               </NavItem>
             </LinkContainer>
+
+            {isAuthenticated ? userLinks : guestLinks}
+            
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -71,4 +84,4 @@ const mapStateToProps=(state)=>{
   };
 }
  
-export default connect(mapStateToProps, null)(NavMenu);
+export default connect(mapStateToProps, { logout })(NavMenu);

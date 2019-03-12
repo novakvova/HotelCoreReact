@@ -1,41 +1,54 @@
 ﻿import React, { Component } from 'react';
 import { Col, Row } from 'react-bootstrap';
+import './ChambermaidPage.css'
 
+function Chambermaid(props) {
+    return (
+        <Row style={{ marginBottom: '50px' }}>
+        <hr/>
+            <Col md='3'>
+                <img src={props.img} width='250px' />
+            </Col>
+            <div className='info'>
+                <Col md="2">
+                    <h4>Full Name: </h4>
+                    <br />
+                    <h4>Rooms to clean: </h4>
+                    <br />
+                    <h4>Ready rooms: </h4>
+                    <br />
+                    <h4>Cleanning type: </h4>
+                </Col>
+                <Col md='2'>
+                    <div>
+                        <h4>{props.fullName}</h4>
+                        <br />
+                        <h4>{props.roomsToClean}</h4>
+                        <br />
+                        <h4>{props.readyRooms}</h4>
+                        <br />
+                        <h4>{props.cleaningType}</h4>
+                    </div>
+                </Col>
+            </div>
+        </Row>
+    )
+}
 class ChambermaidPage extends Component {
     render() {
         return (
-            <div>
-                <table className='table'>
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Full Name</th>
-                            <th>To clean the rooms</th>
-                            <th>Ready rooms</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>0</td>
-                            <td>Chambermaid num 1</td>
-                            <td>34,45,11</td>
-                            <td>13,10,22</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Chambermaid num 2</td>
-                            <td>14,19,15</td>
-                            <td>53,2,12</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Chambermaid num 3</td>
-                            <td>35,25,31</td>
-                            <td>16,9,2</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div className='container'style={{marginTop:'25px'}}>
+                <Chambermaid img='https://cdn3.iconfinder.com/data/icons/users-6/100/654854-user-women-512.png'
+                    fullName='Korniychuk Olya' roomsToClean='10,20,30' readyRooms='1,4,9'
+                    cleaningType='Full' />
+                <Chambermaid img='https://cdn3.iconfinder.com/data/icons/users-6/100/654854-user-women-512.png'
+                    fullName='Ivanova Tanya' roomsToClean='5,6,36' readyRooms='3,45,29'
+                    cleaningType='Easy' />
+                <Chambermaid img='https://cdn3.iconfinder.com/data/icons/users-6/100/654854-user-women-512.png'
+                    fullName='Ivanova Tanya' roomsToClean='5,6,36' readyRooms='3,45,29'
+                    cleaningType='Easy' />
             </div>
+
         );
     }
 }

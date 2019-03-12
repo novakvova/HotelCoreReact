@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { Redirect } from "react-router";
+import { Link } from 'react-router-dom'
 
 class Room extends Component {
     constructor() {
         super()
         this.state = {
+            id: 1,
             Class: 'Lux',
             Price: '1000',
             Floor: '5',
@@ -15,9 +18,9 @@ class Room extends Component {
             Squere: '1000',
             Status: 'Available'
         }
-
     }
     imageClick = () => {
+
         alert("click");
     }
 
@@ -25,11 +28,11 @@ class Room extends Component {
         return (
             <Row>
                 <hr />
-                <Col md="1" align-items-center>
+                <Col md="1" >
                     <h1>{this.state.Number}</h1>
                 </Col>
                 <Col md="3">
-                    <img     src={this.state.ImageSrc} width="200" height="200" onClick={this.imageClick} />
+                    <img src={this.state.ImageSrc} width="200" height="200" alt="img" onClick={this.imageClick} />
                 </Col>
                 <Col md="1">
                     <h4>Class:</h4>
@@ -63,8 +66,8 @@ class Room extends Component {
                     <br />
                     <h4>{this.state.Squere}</h4>
                 </Col>
-                <Col style={{ alignItemsCenter: 'true' }}>
-                    <input type="button" class="btn btn-success" value="Button"></input>
+                <Col>
+                    <Link className="btn btn-primary" style={{ marginTop: '7%' }} to={`/ReserveForm/${this.state.id}`}>RESERVE</Link>
                 </Col>
             </Row >
         )

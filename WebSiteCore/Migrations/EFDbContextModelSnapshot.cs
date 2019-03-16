@@ -129,222 +129,12 @@ namespace WebSiteCore.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Apartment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<double>("Area");
-
-                    b.Property<int>("ConvenienceTypeId");
-
-                    b.Property<string>("Description");
-
-                    b.Property<int>("FloorId");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255);
-
-                    b.Property<double>("Price");
-
-                    b.Property<int>("RoomTypeId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ConvenienceTypeId");
-
-                    b.HasIndex("FloorId");
-
-                    b.HasIndex("RoomTypeId");
-
-                    b.ToTable("tblApartments");
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.ApartmentImage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AppartmentId");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AppartmentId");
-
-                    b.ToTable("ApartmentImage");
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.BoardType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("tblBoardTypes");
-
-                    b.HasData(
-                        new { Id = 1, Name = "Bed and breakfast" },
-                        new { Id = 2, Name = "Half board" },
-                        new { Id = 3, Name = "Full board" },
-                        new { Id = 4, Name = "All inclusive" }
-                    );
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Client", b =>
-                {
-                    b.Property<string>("Id");
-
-                    b.Property<double>("Rating");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("tblClients");
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.ConvenienceType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("tblConvenienceTypes");
-
-                    b.HasData(
-                        new { Id = 1, Name = "Standart" },
-                        new { Id = 2, Name = "Superior" },
-                        new { Id = 3, Name = "Junior suite" },
-                        new { Id = 4, Name = "Suite" }
-                    );
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Employee", b =>
-                {
-                    b.Property<string>("Id");
-
-                    b.Property<DateTime?>("HiringDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("tblEmployees");
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Floor", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("tblFloors");
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Offer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description");
-
-                    b.Property<DateTime?>("From");
-
-                    b.Property<string>("ImagePath");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255);
-
-                    b.Property<DateTime?>("To");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("tblOffers");
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Order", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ApartmentId");
-
-                    b.Property<int>("BoardTypeId");
-
-                    b.Property<string>("ClientId");
-
-                    b.Property<DateTime?>("From");
-
-                    b.Property<double>("Price");
-
-                    b.Property<DateTime?>("To");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApartmentId");
-
-                    b.HasIndex("BoardTypeId");
-
-                    b.HasIndex("ClientId");
-
-                    b.ToTable("tblOrders");
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.RoomType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("tblRoomTypes");
-
-                    b.HasData(
-                        new { Id = 1, Name = "Single" },
-                        new { Id = 2, Name = "Twin" },
-                        new { Id = 3, Name = "Double room" }
-                    );
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.User", b =>
+            modelBuilder.Entity("WebSiteCore.DAL.Entities.DbUser", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("AccessFailedCount");
-
-                    b.Property<int>("Age");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
@@ -354,21 +144,15 @@ namespace WebSiteCore.Migrations
 
                     b.Property<bool>("EmailConfirmed");
 
-                    b.Property<bool>("Gender");
-
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
-
-                    b.Property<string>("Name");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
 
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256);
-
-                    b.Property<string>("PassportSerialNumber");
 
                     b.Property<string>("PasswordHash");
 
@@ -377,8 +161,6 @@ namespace WebSiteCore.Migrations
                     b.Property<bool>("PhoneNumberConfirmed");
 
                     b.Property<string>("SecurityStamp");
-
-                    b.Property<string>("Surname");
 
                     b.Property<bool>("TwoFactorEnabled");
 
@@ -408,7 +190,7 @@ namespace WebSiteCore.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("WebSiteCore.DAL.Entities.User")
+                    b.HasOne("WebSiteCore.DAL.Entities.DbUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -416,7 +198,7 @@ namespace WebSiteCore.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("WebSiteCore.DAL.Entities.User")
+                    b.HasOne("WebSiteCore.DAL.Entities.DbUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -429,7 +211,7 @@ namespace WebSiteCore.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("WebSiteCore.DAL.Entities.User")
+                    b.HasOne("WebSiteCore.DAL.Entities.DbUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -437,69 +219,10 @@ namespace WebSiteCore.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("WebSiteCore.DAL.Entities.User")
+                    b.HasOne("WebSiteCore.DAL.Entities.DbUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Apartment", b =>
-                {
-                    b.HasOne("WebSiteCore.DAL.Entities.ConvenienceType", "ConvenienceType")
-                        .WithMany("Apartments")
-                        .HasForeignKey("ConvenienceTypeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("WebSiteCore.DAL.Entities.Floor", "Floor")
-                        .WithMany("Apartments")
-                        .HasForeignKey("FloorId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("WebSiteCore.DAL.Entities.RoomType", "RoomType")
-                        .WithMany("Apartments")
-                        .HasForeignKey("RoomTypeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.ApartmentImage", b =>
-                {
-                    b.HasOne("WebSiteCore.DAL.Entities.Apartment", "Apartment")
-                        .WithMany("Images")
-                        .HasForeignKey("AppartmentId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Client", b =>
-                {
-                    b.HasOne("WebSiteCore.DAL.Entities.User", "User")
-                        .WithOne("Client")
-                        .HasForeignKey("WebSiteCore.DAL.Entities.Client", "Id")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Employee", b =>
-                {
-                    b.HasOne("WebSiteCore.DAL.Entities.User", "User")
-                        .WithOne("Employee")
-                        .HasForeignKey("WebSiteCore.DAL.Entities.Employee", "Id")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Order", b =>
-                {
-                    b.HasOne("WebSiteCore.DAL.Entities.Apartment", "Apartment")
-                        .WithMany()
-                        .HasForeignKey("ApartmentId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("WebSiteCore.DAL.Entities.BoardType", "BoardType")
-                        .WithMany("Orders")
-                        .HasForeignKey("BoardTypeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("WebSiteCore.DAL.Entities.Client", "Client")
-                        .WithMany()
-                        .HasForeignKey("ClientId");
                 });
 #pragma warning restore 612, 618
         }

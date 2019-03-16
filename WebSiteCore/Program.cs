@@ -14,6 +14,7 @@ namespace WebSiteCore
     {
         public static void Main(string[] args)
         {
+            //Nick comment
             CreateWebHostBuilder(args).Build().Run();
         }
 

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebSiteCore.DAL.Entities;
 
 namespace WebSiteCore.Migrations
 {
     [DbContext(typeof(EFDbContext))]
-    partial class EFDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190313195525_add entities to db")]
+    partial class addentitiestodb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -137,11 +139,11 @@ namespace WebSiteCore.Migrations
 
                     b.Property<double>("Area");
 
-                    b.Property<int>("ConvenienceTypeId");
+                    b.Property<int?>("ConvenienceTypeId");
 
                     b.Property<string>("Description");
 
-                    b.Property<int>("FloorId");
+                    b.Property<int?>("FloorId");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -149,7 +151,7 @@ namespace WebSiteCore.Migrations
 
                     b.Property<double>("Price");
 
-                    b.Property<int>("RoomTypeId");
+                    b.Property<int?>("RoomTypeId");
 
                     b.HasKey("Id");
 
@@ -194,13 +196,6 @@ namespace WebSiteCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("tblBoardTypes");
-
-                    b.HasData(
-                        new { Id = 1, Name = "Bed and breakfast" },
-                        new { Id = 2, Name = "Half board" },
-                        new { Id = 3, Name = "Full board" },
-                        new { Id = 4, Name = "All inclusive" }
-                    );
                 });
 
             modelBuilder.Entity("WebSiteCore.DAL.Entities.Client", b =>
@@ -227,13 +222,6 @@ namespace WebSiteCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("tblConvenienceTypes");
-
-                    b.HasData(
-                        new { Id = 1, Name = "Standart" },
-                        new { Id = 2, Name = "Superior" },
-                        new { Id = 3, Name = "Junior suite" },
-                        new { Id = 4, Name = "Suite" }
-                    );
                 });
 
             modelBuilder.Entity("WebSiteCore.DAL.Entities.Employee", b =>
@@ -293,9 +281,9 @@ namespace WebSiteCore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ApartmentId");
+                    b.Property<int?>("ApartmentId");
 
-                    b.Property<int>("BoardTypeId");
+                    b.Property<int?>("BoardTypeId");
 
                     b.Property<string>("ClientId");
 
@@ -329,12 +317,6 @@ namespace WebSiteCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("tblRoomTypes");
-
-                    b.HasData(
-                        new { Id = 1, Name = "Single" },
-                        new { Id = 2, Name = "Twin" },
-                        new { Id = 3, Name = "Double room" }
-                    );
                 });
 
             modelBuilder.Entity("WebSiteCore.DAL.Entities.User", b =>
@@ -446,19 +428,16 @@ namespace WebSiteCore.Migrations
             modelBuilder.Entity("WebSiteCore.DAL.Entities.Apartment", b =>
                 {
                     b.HasOne("WebSiteCore.DAL.Entities.ConvenienceType", "ConvenienceType")
-                        .WithMany("Apartments")
-                        .HasForeignKey("ConvenienceTypeId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany()
+                        .HasForeignKey("ConvenienceTypeId");
 
                     b.HasOne("WebSiteCore.DAL.Entities.Floor", "Floor")
-                        .WithMany("Apartments")
-                        .HasForeignKey("FloorId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany()
+                        .HasForeignKey("FloorId");
 
                     b.HasOne("WebSiteCore.DAL.Entities.RoomType", "RoomType")
-                        .WithMany("Apartments")
-                        .HasForeignKey("RoomTypeId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany()
+                        .HasForeignKey("RoomTypeId");
                 });
 
             modelBuilder.Entity("WebSiteCore.DAL.Entities.ApartmentImage", b =>
@@ -472,16 +451,16 @@ namespace WebSiteCore.Migrations
             modelBuilder.Entity("WebSiteCore.DAL.Entities.Client", b =>
                 {
                     b.HasOne("WebSiteCore.DAL.Entities.User", "User")
-                        .WithOne("Client")
-                        .HasForeignKey("WebSiteCore.DAL.Entities.Client", "Id")
+                        .WithMany()
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("WebSiteCore.DAL.Entities.Employee", b =>
                 {
                     b.HasOne("WebSiteCore.DAL.Entities.User", "User")
-                        .WithOne("Employee")
-                        .HasForeignKey("WebSiteCore.DAL.Entities.Employee", "Id")
+                        .WithMany()
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -489,13 +468,11 @@ namespace WebSiteCore.Migrations
                 {
                     b.HasOne("WebSiteCore.DAL.Entities.Apartment", "Apartment")
                         .WithMany()
-                        .HasForeignKey("ApartmentId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ApartmentId");
 
                     b.HasOne("WebSiteCore.DAL.Entities.BoardType", "BoardType")
-                        .WithMany("Orders")
-                        .HasForeignKey("BoardTypeId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany()
+                        .HasForeignKey("BoardTypeId");
 
                     b.HasOne("WebSiteCore.DAL.Entities.Client", "Client")
                         .WithMany()

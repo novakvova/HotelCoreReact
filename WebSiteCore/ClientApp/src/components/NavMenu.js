@@ -31,9 +31,9 @@ class NavMenu extends Component {
         );
 
         const guestLinks = (
-            <LinkContainer to={"/login"}>
-                <NavItem>
-                    <Glyphicon glyph="th-list" /> Login Form
+          <LinkContainer to={"/login"}>
+            <NavItem>
+                    <Glyphicon glyph="log-in" /> Login
             </NavItem>
             </LinkContainer>
         );
@@ -57,6 +57,12 @@ class NavMenu extends Component {
                                 <Glyphicon glyph="th-list" /> Rooms
               </NavItem>
                         </LinkContainer>
+
+                          <LinkContainer to={'/profile'}>
+          <NavItem>
+            <Glyphicon glyph='th-list' /> User Profile
+          </NavItem>
+        </LinkContainer>
 
                         <LinkContainer to={"/users"}>
                             <NavItem>

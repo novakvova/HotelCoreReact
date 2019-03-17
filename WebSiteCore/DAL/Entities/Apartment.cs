@@ -10,16 +10,18 @@ namespace WebSiteCore.DAL.Entities
     public class Apartment : BaseModel<int> // готельний номер
     {
         public string Description { get; set; } // опис
+        public string Equipment { get; set; } // оснащення
         public double Area { get; set; } // площа
         public double Price { get; set; } // ціна
+        public int RoomQuantity { get; set; } // к-сть кімнат
         [ForeignKey("ConvenienceType")]
         public int ConvenienceTypeId { get; set; }
-        public virtual ConvenienceType ConvenienceType { get; set; } // тип номеру за зручностями(стандарт, люкс, ...)
         [ForeignKey("RoomType")]
         public int RoomTypeId { get; set; }
-        public virtual RoomType RoomType { get; set; } // тип номеру за к-стю ліжок(одномісний, двомісний, двоспальне ліжко)
         [ForeignKey("Floor")]
         public int FloorId { get; set; }
+        public virtual ConvenienceType ConvenienceType { get; set; } // тип номеру за зручностями(стандарт, люкс, ...)
+        public virtual RoomType RoomType { get; set; } // тип номеру за к-стю ліжок(одномісний, двомісний, двоспальне ліжко)
         public virtual Floor Floor { get; set; } // поверх
         public virtual ICollection<ApartmentImage> Images { get; set; }
     }

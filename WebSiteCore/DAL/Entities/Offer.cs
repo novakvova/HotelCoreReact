@@ -12,6 +12,6 @@ namespace WebSiteCore.DAL.Entities
         public DateTime? From { get; set; } // дата початку дії
         public DateTime? To { get; set; } // дата кінця дії
         public string Description { get; set; } // опис
-        public string ImagePath { get; set; } // шлях до зображення
+        public string ImageName { get; set; } // зображення
     }
 }

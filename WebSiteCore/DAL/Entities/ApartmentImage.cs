@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebSiteCore.DAL.Entities
 {
+    [Table("tblApartmentImages")]
     public class ApartmentImage : BaseModel<int>
     {
         [ForeignKey("Apartment")]

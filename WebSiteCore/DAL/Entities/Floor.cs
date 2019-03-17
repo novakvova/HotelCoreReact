@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 namespace WebSiteCore.DAL.Entities
 {
     [Table("tblFloors")]
-    public class Floor : BaseModel<int> // поверх
+    public class Floor // поверх
     {
+        public int Id { get; set; }
+        public int Number { get; set; }
         public string Description { get; set; } // опис
         public virtual ICollection<Apartment> Apartments { get; set; }
     }

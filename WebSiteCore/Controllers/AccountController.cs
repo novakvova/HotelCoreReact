@@ -27,10 +27,10 @@ namespace WebSiteCore.Controllers
     [Route("api/Account")]
     public class AccountController : ControllerBase
     {
-        readonly UserManager<User> _userManager;
-        readonly SignInManager<User> _signInManager;
-        public AccountController(UserManager<User> userManager,
-            SignInManager<User> signInManager)
+        readonly UserManager<DbUser> _userManager;
+        readonly SignInManager<DbUser> _signInManager;
+        public AccountController(UserManager<DbUser> userManager,
+            SignInManager<DbUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -38,7 +38,7 @@ namespace WebSiteCore.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody]Credentials credentials)
         {
-            var user = new User
+            var user = new DbUser
             {
                 UserName = credentials.Email,
                 Email = credentials.Email
@@ -68,7 +68,7 @@ namespace WebSiteCore.Controllers
             await _signInManager.SignInAsync(user, isPersistent: false);
             return Ok(CreateToken(user));
         }
-        string CreateToken(User user)
+        string CreateToken(DbUser user)
         {
             var claims = new Claim[]
             {

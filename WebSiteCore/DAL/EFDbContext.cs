@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WebSiteCore.DAL.Entities
 {
-    public class EFDbContext : IdentityDbContext<User>
+    public class EFDbContext : IdentityDbContext<DbUser>
     {
         public EFDbContext(DbContextOptions<EFDbContext> options)
             : base(options)

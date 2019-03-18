@@ -39,7 +39,7 @@ namespace WebSiteCore
                 opt.UseSqlServer(Configuration
                     .GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<User, IdentityRole>()
+            services.AddIdentity<DbUser, IdentityRole>()
                 .AddEntityFrameworkStores<EFDbContext>();
 
             var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this is the secret phrase"));

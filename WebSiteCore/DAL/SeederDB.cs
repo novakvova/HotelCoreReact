@@ -9,7 +9,7 @@ namespace WebSiteCore.DAL.Entities
 {
     public class SeederDB
     {
-        public static void SeedUsers(UserManager<User> userManager,
+        public static void SeedUsers(UserManager<DbUser> userManager,
             RoleManager<IdentityRole> roleManager)
         {
             var email = "admin@gmail.com";
@@ -17,7 +17,7 @@ namespace WebSiteCore.DAL.Entities
             var count = userManager.Users.Count();
             if (count == 0)
             {
-                var user = new User
+                var user = new DbUser
                 {
                     Email = email,
                     UserName = email
@@ -36,7 +36,7 @@ namespace WebSiteCore.DAL.Entities
         {
             using (var scope = services.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
-                var manager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+                var manager = scope.ServiceProvider.GetRequiredService<UserManager<DbUser>>();
                 var managerRole = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
                 SeederDB.SeedUsers(manager, managerRole);
             }

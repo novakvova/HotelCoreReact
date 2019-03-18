@@ -13,6 +13,6 @@ namespace WebSiteCore.DAL.Entities
         [ForeignKey("User")]
         public string Id { get; set; }
         public double Rating { get; set; } // оцінка
-        public virtual User User { get; set; }
+        public virtual DbUser User { get; set; }
     }
 }

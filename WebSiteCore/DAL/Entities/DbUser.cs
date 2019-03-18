@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace WebSiteCore.DAL.Entities
 {
     [Table("tblUsers")]
-    public class User : IdentityUser
+    public class DbUser : IdentityUser
     {
         public string Name { get; set; }
         public string Surname { get; set; }

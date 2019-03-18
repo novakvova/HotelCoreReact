@@ -13,6 +13,6 @@ namespace WebSiteCore.DAL.Entities
         [ForeignKey("User")]
         public string Id { get; set; }
         public DateTime? HiringDate { get; set; } // дата найняття на роботу
-        public virtual User User { get; set; }
+        public virtual DbUser User { get; set; }
     }
 }

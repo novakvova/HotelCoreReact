@@ -18,7 +18,6 @@ namespace WebSiteCore
     {
         public Startup(IConfiguration configuration)
         {
-            //Nick comment
             Configuration = configuration;
         }
 
@@ -109,7 +108,7 @@ namespace WebSiteCore
                 }
             });
 
-            SeederDB.SeedDataByAS(app.ApplicationServices);
+            //SeederDB.SeedData(app.ApplicationServices);
         }
     }
 }

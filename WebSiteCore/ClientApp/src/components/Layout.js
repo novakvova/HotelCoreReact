@@ -1,6 +1,7 @@
 import React from 'react';
-import { Col, Grid, Row } from 'react-bootstrap';
+import {Grid, Row } from 'react-bootstrap';
 import NavMenu from './navmenu/NavMenu';
+import Footer from './footer/Footer';
 
 export default props => (
   <Grid fluid>
@@ -9,6 +10,9 @@ export default props => (
     </Row>
     <Row>
       {props.children}
+    </Row>
+    <Row>
+       <Footer/>
     </Row>
   </Grid>
 );

@@ -52,7 +52,7 @@ class NavMenu extends Component {
                                 <Glyphicon glyph="home" /> Home
               </NavItem>
                         </LinkContainer>
-                        <LinkContainer to={"/roomsInfo"}>
+                        <LinkContainer to={"/room"}>
                             <NavItem>
                                 <Glyphicon glyph="th-list" /> Rooms
               </NavItem>

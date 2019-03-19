@@ -31,10 +31,10 @@ class NavMenu extends Component {
         );
 
         const guestLinks = (
-          <LinkContainer to={"/login"}>
-            <NavItem>
+            <LinkContainer to={"/login"}>
+                <NavItem>
                     <Glyphicon glyph="log-in" /> Login
-            </NavItem>
+                </NavItem>
             </LinkContainer>
         );
         return (
@@ -58,17 +58,23 @@ class NavMenu extends Component {
               </NavItem>
                         </LinkContainer>
 
-                          <LinkContainer to={'/profile'}>
-          <NavItem>
-            <Glyphicon glyph='th-list' /> User Profile
+                        <LinkContainer to={'/profile'}>
+                            <NavItem>
+                                <Glyphicon glyph='th-list' /> User Profile
           </NavItem>
-        </LinkContainer>
+                        </LinkContainer>
 
                         <LinkContainer to={"/users"}>
                             <NavItem>
                                 <Glyphicon glyph="th-list" /> Users
               </NavItem>
                         </LinkContainer>
+
+           <LinkContainer to={"/signUp"}>
+                <NavItem>
+                    <Glyphicon glyph="log-in" /> SignUp
+                </NavItem>
+            </LinkContainer>
 
                         {isAuthenticated ? userLinks : guestLinks}
 

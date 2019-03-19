@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using WebSiteCore.DAL.Entities;
 using WebSiteCore.Helpers;
+using WebSiteCore.ViewModels;
 
 namespace WebSiteCore.Controllers
 {
@@ -24,8 +25,13 @@ namespace WebSiteCore.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody]Credentials credentials)
+        public async Task<IActionResult> Register([FromBody]RegisterViewModel credentials)
         {
+            if (!ModelState.IsValid)
+            {
+                var errrors = CustomValidator.GetErrorsByModel(ModelState);
+                return BadRequest(errrors);
+            }
             var user = new DbUser
             {
                 UserName = credentials.Email,

@@ -10,7 +10,7 @@ import ChambermaidPage from './components/chambermaid/ChambermaidPage'
 import ChambermaidForm from './components/chambermaid/ChambermaidForm'
 import SignUpPage from './components/auth/signUp/SignUpPage';
 import ReserveForm from './components/roomsInfo/ReserveForm';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 export default () => (
     <Layout>
         <Route exact path='/' component={Home} />

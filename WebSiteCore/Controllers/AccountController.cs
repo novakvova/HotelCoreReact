@@ -72,7 +72,6 @@ namespace WebSiteCore.Controllers
         {
             var claims = new Claim[]
             {
-                //new Claim(JwtRegisteredClaimNames.Sub, user.Id)
                 new Claim("id", user.Id),
                 new Claim("name", user.UserName)
             };

@@ -9,7 +9,7 @@ namespace WebSiteCore.ViewModels
 {
     public class RegisterViewModel
     {
-        [CustomEmail(ErrorMessage = "Already exist")]
+        [ExistentClientEmail(ErrorMessage = "Already exist")]
         [Required(ErrorMessage = "Поле є обов'язковим")]
         [EmailAddress(ErrorMessage = "Не валідна пошта")]
         public string Email { get; set; }
@@ -17,6 +17,5 @@ namespace WebSiteCore.ViewModels
         public string Password { get; set; }
         [Required(ErrorMessage = "Поле є обов'язковим")]
         public string Image { get; set; }
-
     }
 }

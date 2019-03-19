@@ -12,7 +12,6 @@ namespace WebSiteCore.Helpers
            ModelStateDictionary modelErrors)
         {
             var errors = new Dictionary<string, string>();
-
             var errorList = modelErrors
                 .Where(x => x.Value.Errors.Count > 0)
                 .ToDictionary(
@@ -22,7 +21,6 @@ namespace WebSiteCore.Helpers
             foreach (var item in errorList)
             {
                 string key = item.Key;
-                //key=key.Replace(key[0], char.ToLower(key[0]));
                 key = char.ToLower(key[0]).ToString() + key.Substring(1);
                 errors.Add(key, item.Value);
             }

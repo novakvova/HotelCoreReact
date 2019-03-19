@@ -37,7 +37,7 @@ class NavMenu extends Component {
       </LinkContainer>
     );
     return (
-      <Navbar inverse fluid collapseOnSelect style={{ borderRadius: '0px' }}>
+      <Navbar inverse fluid collapseOnSelect style={{ borderRadius: '0px', background:'#2E2E2E', borderColor:'#2E2E2E' }}>
         <Row className='top-line'>
           <div className='container'>
             <div className='left box'>

@@ -8,7 +8,7 @@ class Footer extends Component {
 
     render() {
         return (
-            <Navbar inverse fluid collapseOnSelect style={{ borderRadius: '0px', marginBottom:'0px' }} className='footer' >
+            <Navbar inverse fluid collapseOnSelect style={{ borderRadius: '0px', marginBottom:'0px',background:'#2E2E2E' }} className='footer' >
                 <Row>
                     <div className='footer-img'>
                         <img src='http://cityhotel.ua/wp-content/themes/cityhotel/img/footer/city-body-white.png' width='100%' />

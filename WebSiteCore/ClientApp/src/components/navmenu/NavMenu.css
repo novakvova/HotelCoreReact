@@ -83,17 +83,21 @@
     margin-left:10px;
     margin-right:10px;
 }
+
 .reserve-line p{
     font-size:18px;
 }
+
 .datepicker{
     width:125px;
 }
+
 input{
     border-radius:5px;
     border:0;
     height: 27px;
 }
+
 .reserve-line input.button{
     width:125px;
     margin-left:20px;
@@ -101,6 +105,7 @@ input{
     color:black;
     background: white;
 }
+
 input:focus{
   border: 1px solid transparent;
   border-radius: 5px;

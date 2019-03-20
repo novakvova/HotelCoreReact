@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebSiteCore.DAL.Entities;
 
 namespace WebSiteCore.Migrations
 {
     [DbContext(typeof(EFDbContext))]
-    partial class EFDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190320165648_Update")]
+    partial class Update
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -394,9 +396,9 @@ namespace WebSiteCore.Migrations
                     b.ToTable("tblOffers");
 
                     b.HasData(
-                        new { Id = 1, Description = "Great offer in CITYHOTEL! 15% OFF for accommodation on weekdays!", From = new DateTime(2019, 3, 20, 11, 17, 17, 720, DateTimeKind.Local), ImageName = "SpringWeekdays_1", Name = "Spring Weekdays", To = new DateTime(2019, 5, 19, 0, 0, 0, 0, DateTimeKind.Local) },
-                        new { Id = 2, Description = "Your discount on weekends (Fri - Sun): 1 day 15% OFF; 2-3 days 25% OFF", From = new DateTime(2019, 3, 20, 11, 17, 17, 721, DateTimeKind.Local), ImageName = "FriSatSun_1", Name = "FriSatSun", To = new DateTime(2019, 7, 18, 0, 0, 0, 0, DateTimeKind.Local) },
-                        new { Id = 3, Description = "Book at our website and get an additional 5% discount of the Best Available Rate - Extra 5% OFF", From = new DateTime(2019, 3, 20, 11, 17, 17, 721, DateTimeKind.Local), ImageName = "BookAtSite_1", Name = "Book at out website", To = new DateTime(2020, 3, 14, 0, 0, 0, 0, DateTimeKind.Local) }
+                        new { Id = 1, Description = "Great offer in CITYHOTEL! 15% OFF for accommodation on weekdays!", From = new DateTime(2019, 3, 20, 18, 56, 47, 960, DateTimeKind.Local), ImageName = "SpringWeekdays_1", Name = "Spring Weekdays", To = new DateTime(2019, 5, 19, 0, 0, 0, 0, DateTimeKind.Local) },
+                        new { Id = 2, Description = "Your discount on weekends (Fri - Sun): 1 day 15% OFF; 2-3 days 25% OFF", From = new DateTime(2019, 3, 20, 18, 56, 47, 961, DateTimeKind.Local), ImageName = "FriSatSun_1", Name = "FriSatSun", To = new DateTime(2019, 7, 18, 0, 0, 0, 0, DateTimeKind.Local) },
+                        new { Id = 3, Description = "Book at our website and get an additional 5% discount of the Best Available Rate - Extra 5% OFF", From = new DateTime(2019, 3, 20, 18, 56, 47, 961, DateTimeKind.Local), ImageName = "BookAtSite_1", Name = "Book at out website", To = new DateTime(2020, 3, 14, 0, 0, 0, 0, DateTimeKind.Local) }
                     );
                 });
 

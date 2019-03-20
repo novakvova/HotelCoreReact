@@ -1,0 +1,52 @@
+.footer-img{
+    width:100%;
+    text-align:center;
+    margin-top:-20px;
+}
+
+.footer-title-line p{
+    font-size:32px;
+}
+
+.footer-description-line .padding p{
+    font-size:16px;
+    line-height: 1.5;
+    padding-top:100px;
+}
+
+.footer-img-line{
+    text-align: center;
+}
+
+.footer-img-line img{
+    width:200px;
+    padding-top:40px;
+   
+}
+
+.footer-img-line .box{
+    width:30%;
+}
+
+.footer-img-line .left{
+    margin-left:20px;
+}
+
+.footer-img-line .center{
+    margin-top:-6px;
+    margin-left:40px;
+}
+
+.footer-img-line .right{
+    margin-left:45px;
+}
+
+.footer-description-line{
+    padding-top:50px;
+}
+.footer-description-line.last{
+    padding-bottom:50px;
+}
+.footer-description-line p  {
+    padding-top:5px;
+}

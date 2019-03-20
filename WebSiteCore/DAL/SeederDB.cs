@@ -35,16 +35,20 @@ namespace WebSiteCore.DAL.Entities
         }
         public static void SeedClients(UserManager<DbUser> userManager, EFDbContext context)
         {
-            var user = userManager.FindByEmailAsync("admin@gmail.com").Result;
-            if (user != null)
+            var count = context.Clients.Count();
+            if(count == 0)
             {
-                context.Clients.Add(new Client
+                var user = userManager.FindByEmailAsync("admin@gmail.com").Result;
+                if (user != null)
                 {
-                    Rating = 12,
-                    Id=user.Id
-                });
-                context.SaveChanges();
-            }
+                    context.Clients.Add(new Client
+                    {
+                        Rating = 12,
+                        Id = user.Id
+                    });
+                    context.SaveChanges();
+                }
+            }         
         }
         public static void SeedData(IServiceProvider services)
         {

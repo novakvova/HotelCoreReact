@@ -21,6 +21,10 @@ export default () => (
         <Route path='/chambermaidform' component={ChambermaidForm} />
         <Route path='/room' component={Room} />
         <Route path='/SignUp' component={SignUpPage} />
+        <Route path='/roomsInfo' component={RoomsInfo} />
+        <Route path='/signUp' component={SignUpPage} />
+        <Route path='/ReserveForm/:id' component={ReserveForm} />
+        <Route path='/profile' component={UserProfilePage} />
     </Layout>
 );
 

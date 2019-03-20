@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebSiteCore.DAL.Entities;
 
 namespace WebSiteCore.Controllers
@@ -19,7 +20,57 @@ namespace WebSiteCore.Controllers
         }
         public IActionResult Get()
         {
-            return Ok(_ctx.Apartments.ToList());
+            var apartments = _ctx.Apartments
+                .Include(a => a.ConvenienceType)
+                .Include(a => a.RoomType)
+                .Include(a => a.Floor)
+                .Include(a => a.Images)
+                .Select(a => new {
+                    Id = a.Id,
+                    Name = a.Name,
+                    Description = a.Description,
+                    Equipment = a.Equipment,
+                    Price = a.Price,
+                    Area = a.Area,
+                    RoomQuantity = a.RoomQuantity,
+                    ConvenienceType = a.ConvenienceType,
+                    RoomType = a.RoomType,
+                    Floor = a.Floor
+                })
+                .ToList();
+            if(apartments != null)
+            {
+                return Ok(apartments);
+            }
+            return BadRequest("No apartments were found");
+        }
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            var apartments = _ctx.Apartments
+                .Where(a => a.Id == id)
+                .Include(a => a.ConvenienceType)
+                .Include(a => a.RoomType)
+                .Include(a => a.Floor)
+                .Include(a => a.Images)
+                .Select(a => new {
+                    Id = a.Id,
+                    Name = a.Name,
+                    Description = a.Description,
+                    Equipment = a.Equipment,
+                    Price = a.Price,
+                    Area = a.Area,
+                    RoomQuantity = a.RoomQuantity,
+                    ConvenienceType = a.ConvenienceType,
+                    RoomType = a.RoomType,
+                    Floor = a.Floor
+                })
+                .SingleOrDefault();
+            if(apartments != null)
+            {
+                return Ok(apartments);
+            }
+            return BadRequest("The apartment with specified id wasn`t found");
         }
     }
 }

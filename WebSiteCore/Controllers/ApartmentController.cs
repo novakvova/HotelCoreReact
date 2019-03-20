@@ -35,7 +35,8 @@ namespace WebSiteCore.Controllers
                     RoomQuantity = a.RoomQuantity,
                     ConvenienceType = a.ConvenienceType,
                     RoomType = a.RoomType,
-                    Floor = a.Floor
+                    Floor = a.Floor,
+                    Images = a.Images
                 })
                 .ToList();
             if(apartments != null)
@@ -63,7 +64,8 @@ namespace WebSiteCore.Controllers
                     RoomQuantity = a.RoomQuantity,
                     ConvenienceType = a.ConvenienceType,
                     RoomType = a.RoomType,
-                    Floor = a.Floor
+                    Floor = a.Floor,
+                    Images = a.Images
                 })
                 .SingleOrDefault();
             if(apartments != null)

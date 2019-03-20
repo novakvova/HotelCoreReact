@@ -10,6 +10,7 @@ import ChambermaidPage from './components/chambermaid/ChambermaidPage'
 import ChambermaidForm from './components/chambermaid/ChambermaidForm'
 import SignUpPage from './components/auth/signUp/SignUpPage';
 import ReserveForm from './components/roomsInfo/ReserveForm';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import UserProfilePage from './components/UserProfilePage';
 
 export default () => (

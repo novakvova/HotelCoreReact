@@ -9,6 +9,7 @@
     "axios": "^0.18.0",
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
+    "google-maps-react": "^2.0.2",
     "jsonwebtoken": "^8.5.0",
     "oswald-webfont": "0.0.1",
     "react": "^16.0.0",

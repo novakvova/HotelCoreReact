@@ -18,7 +18,6 @@ namespace WebSiteCore
     {
         public Startup(IConfiguration configuration)
         {
-            //Nick comment
             Configuration = configuration;
         }
 
@@ -27,21 +26,10 @@ namespace WebSiteCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddCors(options => options
-            //.AddPolicy("Cors", builder =>
-            //{
-            //    builder
-            //    .AllowAnyOrigin()
-            //    .AllowAnyMethod()
-            //    .AllowAnyHeader();
-            //}));
-
             services.AddDbContext<EFDbContext>(opt =>
-                opt.UseSqlServer(Configuration
-                    .GetConnectionString("DefaultConnection")));
+                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<DbUser, IdentityRole>()
-                .AddEntityFrameworkStores<EFDbContext>();
+            services.AddIdentity<DbUser, IdentityRole>().AddEntityFrameworkStores<EFDbContext>();
 
             var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this is the secret phrase"));
 
@@ -90,8 +78,6 @@ namespace WebSiteCore
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
-            //app.UseCors("Cors");
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -109,7 +95,7 @@ namespace WebSiteCore
                 }
             });
 
-            SeederDB.SeedDataByAS(app.ApplicationServices);
+            SeederDB.SeedData(app.ApplicationServices);
         }
     }
 }

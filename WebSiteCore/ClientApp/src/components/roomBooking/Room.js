@@ -17,13 +17,13 @@ class Room extends Component {
             description: 'Family Room - a perfect solution for family travel. Room consists of a bedroom with a king-size bed and a living room with a comfortable sofa. This stylish and modern room is designed for those who spend time together but value privacy at the same time.',
             equipment: 'bathroom with shower, luggage stand, central air conditioning, WI-FI (free of charge), direct local/international connection, mini-safe, mini bar, LED TV, kettle, tea/coffee sets, mineral water, a set of mini cosmetics, bath accessories, bathrobe, hair dryer.',
             images: [
-                // 'https://t-ec.bstatic.com/images/hotel/max1024x768/546/54686729.jpg',
-                // 'https://cdn.ostrovok.ru/t/640x400/content/6d/42/6d42ff9aa6b026f3dc033b76675a0712a286ab12.jpeg',
-                // 'https://s-ec.bstatic.com/images/hotel/max1024x768/130/130850553.jpg',
-                // 'http://www.orangesmile.com/common/img_final_large/dubai_sightseeing.jpg',
-                // 'https://www.ahstatic.com/photos/6146_ho_00_p_2048x1536.jpg',
-                // 'https://lookinhotels.ru/data/public/1795/28043/dubai-burj-al-arab-hotel-1920x1080-wallpaper-8568.jpg',
-                // 'https://s-ec.bstatic.com/images/hotel/max1024x768/731/73118462.jpg'
+                 'https://t-ec.bstatic.com/images/hotel/max1024x768/546/54686729.jpg',
+                 'https://cdn.ostrovok.ru/t/640x400/content/6d/42/6d42ff9aa6b026f3dc033b76675a0712a286ab12.jpeg',
+                 'https://s-ec.bstatic.com/images/hotel/max1024x768/130/130850553.jpg',
+                 'http://www.orangesmile.com/common/img_final_large/dubai_sightseeing.jpg',
+                 'https://www.ahstatic.com/photos/6146_ho_00_p_2048x1536.jpg',
+                 'https://lookinhotels.ru/data/public/1795/28043/dubai-burj-al-arab-hotel-1920x1080-wallpaper-8568.jpg',
+                 'https://s-ec.bstatic.com/images/hotel/max1024x768/731/73118462.jpg'
             ]
         }
     }

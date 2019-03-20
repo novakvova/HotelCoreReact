@@ -11,6 +11,8 @@ import ChambermaidForm from './components/chambermaid/ChambermaidForm'
 import SignUpPage from './components/auth/signUp/SignUpPage';
 import ReserveForm from './components/roomsInfo/ReserveForm';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import UserProfilePage from './components/UserProfilePage';
+
 export default () => (
     <Layout>
         <Route exact path='/' component={Home} />
@@ -20,8 +22,9 @@ export default () => (
         <Route path='/chambermaid' component={ChambermaidPage} />
         <Route path='/chambermaidform' component={ChambermaidForm} />
         <Route path='/roomsInfo' component={RoomsInfo} />
-        <Route path='/SignUp' component={SignUpPage} />
+        <Route path='/signUp' component={SignUpPage} />
         <Route path='/ReserveForm/:id' component={ReserveForm} />
+        <Route path='/profile' component={UserProfilePage} />
     </Layout>
 );
 

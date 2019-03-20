@@ -18,7 +18,6 @@ namespace WebSiteCore
     {
         public Startup(IConfiguration configuration)
         {
-            //Nick comment
             Configuration = configuration;
         }
 
@@ -28,11 +27,9 @@ namespace WebSiteCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<EFDbContext>(opt =>
-                opt.UseSqlServer(Configuration
-                    .GetConnectionString("DefaultConnection")));
+                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<DbUser, IdentityRole>()
-                .AddEntityFrameworkStores<EFDbContext>();
+            services.AddIdentity<DbUser, IdentityRole>().AddEntityFrameworkStores<EFDbContext>();
 
             var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this is the secret phrase"));
 
@@ -66,6 +63,7 @@ namespace WebSiteCore
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseAuthentication();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -97,7 +95,7 @@ namespace WebSiteCore
                 }
             });
 
-            SeederDB.SeedDataByAS(app.ApplicationServices);
+            SeederDB.SeedData(app.ApplicationServices);
         }
     }
 }

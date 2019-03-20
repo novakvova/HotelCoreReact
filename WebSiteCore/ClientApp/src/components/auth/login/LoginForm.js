@@ -72,7 +72,8 @@ class LoginForm extends Component {
                         !!errors.invalid ?
                             <div className="alert alert-danger">
                                 <strong>Danger!</strong> {errors.invalid}.
-                    </div> : ''}
+                            </div> : ''
+                    }
 
                     <div className={classnames('form-group', { 'has-error': !!errors.email })}>
                         <label htmlFor="email">Email</label>
@@ -100,13 +101,12 @@ class LoginForm extends Component {
                         <div className="col-md-12">
                             <button type="submit" className="btn btn-warning" disabled={isLoading}>Вхід<span className="glyphicon glyphicon-send"></span></button>
                         </div>
-                    <br />
-                    <br />
+                        <br />
+                        <br />
                     </div>
                 </form>
                 <a href='./signUp'>Sign up</a>
             </div>
-
         );
         return (
             this.state.done ?

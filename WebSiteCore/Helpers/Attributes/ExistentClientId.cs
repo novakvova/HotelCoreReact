@@ -6,23 +6,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebSiteCore.DAL.Entities;
 
-namespace WebSiteCore.Helpers
+namespace WebSiteCore.Helpers.Attributes
 {
-    public class CustomEmailAttribute : ValidationAttribute
+    public class ExistentClientId : ValidationAttribute
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             var service = (UserManager<DbUser>)validationContext
                        .GetService(typeof(UserManager<DbUser>));
-
-            var user = service.FindByEmailAsync(value.ToString()).Result;
-
-            // var context = (EFDbContext)validationContext
-            //        .GetService(typeof(EFDbContext));
-
-            if (user != null)
+            var user = service.FindByIdAsync(value.ToString()).Result;
+            if (user == null)
             {
-                return new ValidationResult(null);
+                return new ValidationResult("Recieved client doesn`t exist");
             }
             return ValidationResult.Success;
         }

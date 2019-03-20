@@ -10,6 +10,7 @@ import ChambermaidPage from './components/chambermaid/ChambermaidPage'
 import ChambermaidForm from './components/chambermaid/ChambermaidForm'
 import SignUpPage from './components/auth/signUp/SignUpPage';
 import ReserveForm from './components/roomsInfo/ReserveForm';
+import Contacts from './components/contacts/Contacts';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UserProfilePage from './components/UserProfilePage';
 
@@ -25,6 +26,7 @@ export default () => (
         <Route path='/signUp' component={SignUpPage} />
         <Route path='/ReserveForm/:id' component={ReserveForm} />
         <Route path='/profile' component={UserProfilePage} />
+        <Route path='/contacts' component={Contacts} />
     </Layout>
 );
 

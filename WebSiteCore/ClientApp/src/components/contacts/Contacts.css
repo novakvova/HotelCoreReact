@@ -1,0 +1,35 @@
+.contacts-title{
+    width:100%;
+    text-align: center;
+}
+
+.contacts-title p{
+    font-size:50px;
+}
+
+.contacts-title hr{
+   border-top:1px solid #232323;
+}
+
+.contacts-description p{
+    font-size:17px;
+}
+a.number{
+    color:#b39146;
+}
+a.number:hover{
+    cursor: pointer;
+    color:#b39146;
+}
+
+.contacts-description .center{
+    padding-left:40px;
+}
+
+.contacts-description .right{
+    padding-left:55px;
+}
+.map{
+    padding-top:25px;
+    padding-bottom: 515px;
+}

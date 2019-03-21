@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebSiteCore.Migrations
 {
-    public partial class Entitiesandseedmethodwasadded : Migration
+    public partial class dbwasdesignedtogetherwithseeder : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -395,9 +395,9 @@ namespace WebSiteCore.Migrations
                 columns: new[] { "Id", "Description", "From", "ImageName", "Name", "To" },
                 values: new object[,]
                 {
-                    { 1, "Great offer in CITYHOTEL! 15% OFF for accommodation on weekdays!", new DateTime(2019, 3, 17, 23, 50, 11, 286, DateTimeKind.Local), "SpringWeekdays_1", "Spring Weekdays", new DateTime(2019, 5, 16, 0, 0, 0, 0, DateTimeKind.Local) },
-                    { 2, "Your discount on weekends (Fri - Sun): 1 day 15% OFF; 2-3 days 25% OFF", new DateTime(2019, 3, 17, 23, 50, 11, 290, DateTimeKind.Local), "FriSatSun_1", "FriSatSun", new DateTime(2019, 7, 15, 0, 0, 0, 0, DateTimeKind.Local) },
-                    { 3, "Book at our website and get an additional 5% discount of the Best Available Rate - Extra 5% OFF", new DateTime(2019, 3, 17, 23, 50, 11, 290, DateTimeKind.Local), "BookAtSite_1", "Book at out website", new DateTime(2020, 3, 11, 0, 0, 0, 0, DateTimeKind.Local) }
+                    { 1, "Great offer in CITYHOTEL! 15% OFF for accommodation on weekdays!", new DateTime(2019, 3, 20, 11, 17, 17, 720, DateTimeKind.Local), "SpringWeekdays_1", "Spring Weekdays", new DateTime(2019, 5, 19, 0, 0, 0, 0, DateTimeKind.Local) },
+                    { 2, "Your discount on weekends (Fri - Sun): 1 day 15% OFF; 2-3 days 25% OFF", new DateTime(2019, 3, 20, 11, 17, 17, 721, DateTimeKind.Local), "FriSatSun_1", "FriSatSun", new DateTime(2019, 7, 18, 0, 0, 0, 0, DateTimeKind.Local) },
+                    { 3, "Book at our website and get an additional 5% discount of the Best Available Rate - Extra 5% OFF", new DateTime(2019, 3, 20, 11, 17, 17, 721, DateTimeKind.Local), "BookAtSite_1", "Book at out website", new DateTime(2020, 3, 14, 0, 0, 0, 0, DateTimeKind.Local) }
                 });
 
             migrationBuilder.InsertData(

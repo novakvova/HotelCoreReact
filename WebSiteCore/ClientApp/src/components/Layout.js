@@ -12,7 +12,7 @@ export default props => (
       {props.children}
     </Row>
     <Row>
-       <Footer/>
+        <Footer/>
     </Row>
   </Grid>
 );

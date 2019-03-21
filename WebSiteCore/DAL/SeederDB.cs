@@ -31,6 +31,24 @@ namespace WebSiteCore.DAL.Entities
 
                 result = userManager.AddToRoleAsync(user, roleName).Result;
             }
+
+        }
+        public static void SeedClients(UserManager<DbUser> userManager, EFDbContext context)
+        {
+            var count = context.Clients.Count();
+            if(count == 0)
+            {
+                var user = userManager.FindByEmailAsync("admin@gmail.com").Result;
+                if (user != null)
+                {
+                    context.Clients.Add(new Client
+                    {
+                        Rating = 12,
+                        Id = user.Id
+                    });
+                    context.SaveChanges();
+                }
+            }         
         }
         public static void SeedData(IServiceProvider services)
         {
@@ -38,7 +56,9 @@ namespace WebSiteCore.DAL.Entities
             {
                 var manager = scope.ServiceProvider.GetRequiredService<UserManager<DbUser>>();
                 var managerRole = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                var context = scope.ServiceProvider.GetRequiredService<EFDbContext>();
                 SeederDB.SeedUsers(manager, managerRole);
+                SeederDB.SeedClients(manager, context);
             }
         }
     }

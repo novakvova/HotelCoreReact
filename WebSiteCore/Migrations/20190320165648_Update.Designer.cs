@@ -10,14 +10,14 @@ using WebSiteCore.DAL.Entities;
 namespace WebSiteCore.Migrations
 {
     [DbContext(typeof(EFDbContext))]
-    [Migration("20190317215011_Entities and seed method was added")]
-    partial class Entitiesandseedmethodwasadded
+    [Migration("20190320165648_Update")]
+    partial class Update
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.8-servicing-32085")
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -280,118 +280,7 @@ namespace WebSiteCore.Migrations
                     );
                 });
 
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Employee", b =>
-                {
-                    b.Property<string>("Id");
-
-                    b.Property<DateTime?>("HiringDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("tblEmployees");
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Floor", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description");
-
-                    b.Property<int>("Number");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("tblFloors");
-
-                    b.HasData(
-                        new { Id = 1, Description = "Administrative floor", Number = 1 },
-                        new { Id = 2, Description = "Standart floor", Number = 2 },
-                        new { Id = 3, Description = "Luxurious floor", Number = 3 }
-                    );
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Offer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description");
-
-                    b.Property<DateTime?>("From");
-
-                    b.Property<string>("ImageName");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255);
-
-                    b.Property<DateTime?>("To");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("tblOffers");
-
-                    b.HasData(
-                        new { Id = 1, Description = "Great offer in CITYHOTEL! 15% OFF for accommodation on weekdays!", From = new DateTime(2019, 3, 17, 23, 50, 11, 286, DateTimeKind.Local), ImageName = "SpringWeekdays_1", Name = "Spring Weekdays", To = new DateTime(2019, 5, 16, 0, 0, 0, 0, DateTimeKind.Local) },
-                        new { Id = 2, Description = "Your discount on weekends (Fri - Sun): 1 day 15% OFF; 2-3 days 25% OFF", From = new DateTime(2019, 3, 17, 23, 50, 11, 290, DateTimeKind.Local), ImageName = "FriSatSun_1", Name = "FriSatSun", To = new DateTime(2019, 7, 15, 0, 0, 0, 0, DateTimeKind.Local) },
-                        new { Id = 3, Description = "Book at our website and get an additional 5% discount of the Best Available Rate - Extra 5% OFF", From = new DateTime(2019, 3, 17, 23, 50, 11, 290, DateTimeKind.Local), ImageName = "BookAtSite_1", Name = "Book at out website", To = new DateTime(2020, 3, 11, 0, 0, 0, 0, DateTimeKind.Local) }
-                    );
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Order", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ApartmentId");
-
-                    b.Property<int>("BoardTypeId");
-
-                    b.Property<string>("ClientId");
-
-                    b.Property<DateTime?>("From");
-
-                    b.Property<double>("Price");
-
-                    b.Property<DateTime?>("To");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApartmentId");
-
-                    b.HasIndex("BoardTypeId");
-
-                    b.HasIndex("ClientId");
-
-                    b.ToTable("tblOrders");
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.RoomType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("tblRoomTypes");
-
-                    b.HasData(
-                        new { Id = 1, Name = "Single" },
-                        new { Id = 2, Name = "Twin" },
-                        new { Id = 3, Name = "Double room" }
-                    );
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.User", b =>
+            modelBuilder.Entity("WebSiteCore.DAL.Entities.DbUser", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -452,6 +341,117 @@ namespace WebSiteCore.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("WebSiteCore.DAL.Entities.Employee", b =>
+                {
+                    b.Property<string>("Id");
+
+                    b.Property<DateTime?>("HiringDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("tblEmployees");
+                });
+
+            modelBuilder.Entity("WebSiteCore.DAL.Entities.Floor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.Property<int>("Number");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("tblFloors");
+
+                    b.HasData(
+                        new { Id = 1, Description = "Administrative floor", Number = 1 },
+                        new { Id = 2, Description = "Standart floor", Number = 2 },
+                        new { Id = 3, Description = "Luxurious floor", Number = 3 }
+                    );
+                });
+
+            modelBuilder.Entity("WebSiteCore.DAL.Entities.Offer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.Property<DateTime?>("From");
+
+                    b.Property<string>("ImageName");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255);
+
+                    b.Property<DateTime?>("To");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("tblOffers");
+
+                    b.HasData(
+                        new { Id = 1, Description = "Great offer in CITYHOTEL! 15% OFF for accommodation on weekdays!", From = new DateTime(2019, 3, 20, 18, 56, 47, 960, DateTimeKind.Local), ImageName = "SpringWeekdays_1", Name = "Spring Weekdays", To = new DateTime(2019, 5, 19, 0, 0, 0, 0, DateTimeKind.Local) },
+                        new { Id = 2, Description = "Your discount on weekends (Fri - Sun): 1 day 15% OFF; 2-3 days 25% OFF", From = new DateTime(2019, 3, 20, 18, 56, 47, 961, DateTimeKind.Local), ImageName = "FriSatSun_1", Name = "FriSatSun", To = new DateTime(2019, 7, 18, 0, 0, 0, 0, DateTimeKind.Local) },
+                        new { Id = 3, Description = "Book at our website and get an additional 5% discount of the Best Available Rate - Extra 5% OFF", From = new DateTime(2019, 3, 20, 18, 56, 47, 961, DateTimeKind.Local), ImageName = "BookAtSite_1", Name = "Book at out website", To = new DateTime(2020, 3, 14, 0, 0, 0, 0, DateTimeKind.Local) }
+                    );
+                });
+
+            modelBuilder.Entity("WebSiteCore.DAL.Entities.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ApartmentId");
+
+                    b.Property<int>("BoardTypeId");
+
+                    b.Property<string>("ClientId");
+
+                    b.Property<DateTime?>("From");
+
+                    b.Property<double>("Price");
+
+                    b.Property<DateTime?>("To");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApartmentId");
+
+                    b.HasIndex("BoardTypeId");
+
+                    b.HasIndex("ClientId");
+
+                    b.ToTable("tblOrders");
+                });
+
+            modelBuilder.Entity("WebSiteCore.DAL.Entities.RoomType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("tblRoomTypes");
+
+                    b.HasData(
+                        new { Id = 1, Name = "Single" },
+                        new { Id = 2, Name = "Twin" },
+                        new { Id = 3, Name = "Double room" }
+                    );
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
@@ -462,7 +462,7 @@ namespace WebSiteCore.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("WebSiteCore.DAL.Entities.User")
+                    b.HasOne("WebSiteCore.DAL.Entities.DbUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -470,7 +470,7 @@ namespace WebSiteCore.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("WebSiteCore.DAL.Entities.User")
+                    b.HasOne("WebSiteCore.DAL.Entities.DbUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -483,7 +483,7 @@ namespace WebSiteCore.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("WebSiteCore.DAL.Entities.User")
+                    b.HasOne("WebSiteCore.DAL.Entities.DbUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -491,7 +491,7 @@ namespace WebSiteCore.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("WebSiteCore.DAL.Entities.User")
+                    b.HasOne("WebSiteCore.DAL.Entities.DbUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -525,7 +525,7 @@ namespace WebSiteCore.Migrations
 
             modelBuilder.Entity("WebSiteCore.DAL.Entities.Client", b =>
                 {
-                    b.HasOne("WebSiteCore.DAL.Entities.User", "User")
+                    b.HasOne("WebSiteCore.DAL.Entities.DbUser", "User")
                         .WithOne("Client")
                         .HasForeignKey("WebSiteCore.DAL.Entities.Client", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -533,7 +533,7 @@ namespace WebSiteCore.Migrations
 
             modelBuilder.Entity("WebSiteCore.DAL.Entities.Employee", b =>
                 {
-                    b.HasOne("WebSiteCore.DAL.Entities.User", "User")
+                    b.HasOne("WebSiteCore.DAL.Entities.DbUser", "User")
                         .WithOne("Employee")
                         .HasForeignKey("WebSiteCore.DAL.Entities.Employee", "Id")
                         .OnDelete(DeleteBehavior.Cascade);

@@ -72,13 +72,13 @@ class NavMenu extends Component {
           </Link>
         </Row>
         <Row className='menu-line'>
-          <Link to='/'>
+          <Link to='/room'>
             ROOMS
           </Link>
           <Link to='/'>
             OFFERS
           </Link>
-          <Link to='/'>
+          <Link to='/contacts'>
             CONTACTS
           </Link>
         </Row>

@@ -34,12 +34,8 @@ class Room extends Component {
 
     render() {
         return (
-            <div>
+            <div className = 'container'>
                 <Row className='mainContent'>
-                    <Row>
-                        <a className='link' to=''>Main page</a>
-                        <p>/ {this.state.roomStandart}</p>
-                    </Row>
                     <Row className='standartsRow'>
                         <Link className='standarts' style={{ marginLeft: '15mm' }} to=''>SINGLE STANDART</Link>
                         <Link className='standarts' to=''>DBL STANDART</Link>
@@ -51,7 +47,7 @@ class Room extends Component {
                     </Row>
                     <Row className='headerRow'>
                         <hr className='leftHr' width="20%" />
-                        <h1>{this.state.roomStandart}</h1>
+                        <h1 className='header'>{this.state.roomStandart}</h1>
                         <hr className='rightHr' width="20%" />
                     </Row>
                     <Row>

@@ -4,18 +4,8 @@
     height: 15mm;
     align-content: center;
 }
-.bookingLine > label{
-    font-size: 5mm;
-    color: white;
-    margin-right: 3mm;
-    margin-left: 3mm;
-}
 
-.mainContent{
-    margin-left: 10%;
-    margin-right: 10%;
 
-}
 
 .link{
     color: goldenrod;
@@ -27,7 +17,7 @@
 }
 
 .standarts{
-    margin-left: 4mm;
+    margin-left: 25px;
     font-size: 5mm;
     color: black;
 }
@@ -35,7 +25,7 @@
     color: black;
 }
 
-p{
+.paragraph{
     font-size: 6mm;
     margin-left: 0.5%;
     display: inline-block;
@@ -47,10 +37,10 @@ p{
 }
 .standartsRow{
     margin-top: 2%;
+    text-align: center;
 }
 
-
-h1{
+.header{
     display: inline-block;
     margin-left: 5%;
     margin-right: 5%;

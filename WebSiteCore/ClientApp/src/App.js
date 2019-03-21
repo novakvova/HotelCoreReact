@@ -9,7 +9,6 @@ import Room from './components/roomBooking/Room';
 import ChambermaidPage from './components/chambermaid/ChambermaidPage'
 import ChambermaidForm from './components/chambermaid/ChambermaidForm'
 import SignUpPage from './components/auth/signUp/SignUpPage';
-
 import Contacts from './components/contacts/Contacts';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UserProfilePage from './components/UserProfilePage';
@@ -24,7 +23,6 @@ export default () => (
         <Route path='/chambermaidform' component={ChambermaidForm} />
         <Route path='/room' component={Room} />
         <Route path='/SignUp' component={SignUpPage} />
-        <Route path='/signUp' component={SignUpPage} />
         <Route path='/profile' component={UserProfilePage} />
         <Route path='/contacts' component={Contacts} />
     </Layout>

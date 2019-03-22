@@ -91,7 +91,7 @@ class NavMenu extends Component {
               </Link>
             </div>
           </div>
-          <Link to='/'>
+          <Link to='/offers'>
             OFFERS
           </Link>
           <Link to='/contacts'>

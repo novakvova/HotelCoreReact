@@ -1,12 +1,13 @@
 ﻿import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { Glyphicon, Nav, Navbar, NavItem, Col, Row, Carousel, Button} from "react-bootstrap";
+import { Glyphicon, Nav, Navbar, NavItem, Col, Row, Carousel } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from '../../actions/authActions';
 import DatePicker from 'react-datepicker'
 import './NavMenu.css';
 import 'react-datepicker/dist/react-datepicker.css';
+
 
 class NavMenu extends Component {
   state = {}
@@ -37,10 +38,11 @@ class NavMenu extends Component {
       </LinkContainer>
     );
     return (
-      <Navbar inverse fluid collapseOnSelect style={{ borderRadius: '0px', background:'#2E2E2E', borderColor:'#2E2E2E' }}>
+      <Navbar inverse fluid collapseOnSelect style={{ borderRadius: '0px', background: '#2E2E2E', borderColor: '#2E2E2E' }}>
         <Row className='top-line'>
           <div className='container'>
             <div className='left box'>
+              <i className="fas fa-apple-alt" size={15}></i>
               <Link to='/'>
                 <img src='http://cityhotel.ua/wp-content/uploads/2018/06/footer-logo1.png' />
               </Link>
@@ -72,9 +74,23 @@ class NavMenu extends Component {
           </Link>
         </Row>
         <Row className='menu-line'>
-          <Link to='/room'>
-            ROOMS
-          </Link>
+          <div className='drop'>
+            <Link to='/room'  className='drop-btn'>
+              ROOMS
+                <Glyphicon glyph='glyphicon glyphicon-triangle-bottom' />
+            </Link>
+            <div className="drop-content">
+              <Link to='/room' >
+                ROOMS 1 asdasdas
+              </Link>
+              <Link to='/room'>
+                ROOMS 2 asdasdas
+              </Link>
+              <Link to='/room'>
+                ROOMS 3 asdasdas
+              </Link>
+            </div>
+          </div>
           <Link to='/'>
             OFFERS
           </Link>
@@ -95,7 +111,7 @@ class NavMenu extends Component {
         </Row>
         <Row className='reserve-line'>
           <div className='container'>
-            <div className='box' style={{marginLeft:'330px'}}>
+            <div className='box' style={{ marginLeft: '330px' }}>
               <p>From</p>
             </div>
             <div className='box'>
@@ -112,7 +128,7 @@ class NavMenu extends Component {
               </DatePicker>
             </div>
             <div className='box'>
-              <input className='button' type='button' value='BOOK NOW'/>
+              <input className='button' type='button' value='BOOK NOW' />
             </div>
           </div>
         </Row>

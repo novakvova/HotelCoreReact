@@ -2,6 +2,10 @@
     padding-bottom:100px;
 }
 
+.offer-card .img{
+    box-shadow: 0px 2px 4px rgba(0,0,0,.5); 
+}
+
 .offers>.title{
     width:100%;
     text-align: center;
@@ -9,44 +13,47 @@
     background-repeat: no-repeat;
     background-position: center;
     margin:0;
-    padding:0;
-    margin-top:-25px;
-}
-
-.offers>.title p{
     font-size:38px;
     border-bottom: 1px solid #aaa;
-    margin-top: 20px;
     padding-bottom:20px;
- }
+}
 
  .offer-card{
     padding-left:55px;
     padding-right:55px;
-    padding-top:25px;
+    padding-top:40px;
  }
 
 .offer-form{
-    box-shadow: 0 2px 4px rgba(0,0,0,.5); 
+    box-shadow: 1px 3px 9px rgba(0,0,0,.5); 
     border-radius: 5px;
     min-height:190px;
     margin-top:40px;
+    padding-left:300px;
+    padding-right:10px;
+    padding-bottom:10px;
 }
-.offer-form>.title{
-    font-size:23px;
+
+.offer-form .box>.title{
+    font-weight: 600;
+}
+
+.offer-form .description{
+    font-size:14px;
+    padding-top:80px;
+}
+
+.offer-form>.right{
+    float:right;
+}
+
+.offer-form .right>.date{
+    font-size:16px;
+    font-weight: 600;
     padding-top:5px;
-    padding-left:25px;
-    font-weight: 600;
 }
 
-.offer-form>.date{
-    font-size:16px;
-    font-weight: 600;
-    padding-top:13px;
-    padding-right: 8px;
-    float: right;
-}
-
-.offer-form>.description{
-    font-size:16px;
+.offer-form .bottom-title{
+    padding-top:20px;
+    font-weight: 700;
 }

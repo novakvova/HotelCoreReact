@@ -112,8 +112,6 @@
     font-size:18px;
 }
 
-
-
 .datepicker{
     width:125px;
     text-align:center;
@@ -180,8 +178,6 @@ button.react-datepicker__navigation.react-datepicker__navigation--previous{
 div.react-datepicker__header{
     padding:0;
 }
-
-
 
 .navbar input{
     border-radius:5px;

@@ -20,26 +20,47 @@ namespace WebSiteCore.Controllers
         }
         public IActionResult Get()
         {
-            var apartments = _ctx.Apartments
-                .Include(a => a.ConvenienceType)
-                .Include(a => a.RoomType)
-                .Include(a => a.Floor)
-                .Include(a => a.Images)
-                .Select(a => new {
-                    Id = a.Id,
-                    Name = a.Name,
-                    Description = a.Description,
-                    Equipment = a.Equipment,
-                    Price = a.Price,
-                    Area = a.Area,
-                    RoomQuantity = a.RoomQuantity,
-                    ConvenienceType = a.ConvenienceType,
-                    RoomType = a.RoomType,
-                    Floor = a.Floor,
-                    Images = a.Images
-                })
-                .ToList();
-            if(apartments != null)
+            //var apartments = _ctx.ApartmentsData.ToList();
+            var apartments = _ctx.ApartmentsData.ToList()
+                                                .GroupJoin(
+                                                    _ctx.ApartmentImages.ToList(),
+                                                    a => a.Id,
+                                                    i => i.AppartmentId,
+                                                    (apart, image) => new
+                                                    {
+                                                        Id = apart.Id,
+                                                        Name = apart.Name,
+                                                        Description = apart.Description,
+                                                        Equipment = apart.Equipment,
+                                                        Price = apart.Price,
+                                                        Area = apart.Area,
+                                                        RoomQuantity = apart.RoomQuantity,
+                                                        Convenience = apart.Convenience,
+                                                        Room = apart.Room,
+                                                        FloorNumber = apart.FloorNumber,
+                                                        FloorDescription = apart.FloorDescription,
+                                                        Images = image.Select(i => i.Name)
+                                                    });
+            //var apartments = _ctx.Apartments
+            //    .Include(a => a.ConvenienceType)
+            //    .Include(a => a.RoomType)
+            //    .Include(a => a.Floor)
+            //    .Include(a => a.Images)
+            //    .Select(a => new {
+            //        Id = a.Id,
+            //        Name = a.Name,
+            //        Description = a.Description,
+            //        Equipment = a.Equipment,
+            //        Price = a.Price,
+            //        Area = a.Area,
+            //        RoomQuantity = a.RoomQuantity,
+            //        ConvenienceType = a.ConvenienceType,
+            //        RoomType = a.RoomType,
+            //        Floor = a.Floor,
+            //        Images = a.Images
+            //    })
+            //    .ToList();
+            if (apartments != null)
             {
                 return Ok(apartments);
             }

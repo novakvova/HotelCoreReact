@@ -25,6 +25,8 @@ namespace WebSiteCore.DAL.Entities
         public virtual DbSet<Floor> Floors { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Offer> Offers { get; set; }
+        public virtual DbSet<ApartmentImage> ApartmentImages { get; set; }
+        public virtual DbQuery<ApartmentData> ApartmentsData { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -2,11 +2,13 @@
     font-weight: 300;
     margin:0px;
 }
+
 .navbar {
     margin:0;
     border-radius: 0;
     background-color:white;
 }
+
 .navbar p {
     color:white;
     text-align: center;
@@ -14,65 +16,85 @@
     font-size:17px;
     margin-bottom: 0px;
 }
+
 .navbar ul{
     list-style-type: none;
 }
+
 .navbar li{
    float: left;
    padding-right: 10px;
    font-size:15px;
 }
 
-.navbar a:focus,.navbar a:hover, .navbar a{
+.navbar a:focus, .navbar a:hover, .navbar a{
     color:white;
 }
+
 .box{
     float: left;
 }
+
 .top-line .box{
     width:30%;
 }
+
 .top-line img{
     width:200px;
 }
+
 .top-line{
     padding-top:29px;
     padding-bottom:10px;
 }
+
 .top-line .left{
     margin-left:45px;
 }
+
 .top-line .center{
    margin-top:-12px;
    margin-left:7px;
 }
+
 .top-line .right{
     text-align: right;
     margin-left: 17px;
 }
+
 .language-line{
     width:100%;
     text-align: center;
     padding-top:10px;
     padding-left:30px;
+    font-size:14px;
 }
+
 .language-line a{
     padding-right: 13px;
 }
+
 .menu-line{
     padding-top:20px;
     padding-bottom:20px;
     padding-left:30px;
     width:100%;
     text-align: center;
-}
-.menu-line a{
     font-size:18px;
-    padding: 5px 50px 5px 50px;
+}
+
+.menu-line a{
+    padding:5px 50px;
+}
+
+.menu-line a:first-child{
+   padding-right: 50px;
+   padding-left: 40px;
 }
 .menu-line a:not(:last-child){
     border-right:1.3px solid white;
 }
+
 .reserve-line{
     width:100%;
     font-size:16px;
@@ -80,6 +102,7 @@
     padding-bottom:8px;
     font-size:18px;
 }
+
 .reserve-line .box p{
     margin-left:10px;
     margin-right:10px;
@@ -93,11 +116,11 @@
     width:125px;
 }
 
-input{
+.navbar input{
     border-radius:5px;
     border:0;
     height: 27px;
-}
+}   
 
 .reserve-line input.button{
     width:125px;
@@ -107,7 +130,50 @@ input{
     background: white;
 }
 
-input:focus{
-  border: 1px solid transparent;
-  border-radius: 5px;
+.drop {
+    display: inline-block;
 }
+
+.drop-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 150px;
+    box-shadow: 0px 16px 16px 2px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-left:25px;
+    margin-top:4px;
+    border-radius: 3px;
+    opacity: 0.9;
+}
+
+.drop-content a:not(:last-child){
+    border-bottom:1px solid black;
+}
+
+.navbar .drop-content a {
+    color:black;
+    padding: 12px;
+    display: block;
+    font-size:16px;
+    margin-left:10px;
+    margin-right: 10px;
+}
+
+.drop-content a:hover {
+    color:black;
+}
+
+.drop:hover .drop-content {
+    display: block;
+}
+
+.drop .glyphicon{
+    font-size:8px;
+    padding-left:5px;
+    top:-3px;
+}
+
+
+
+

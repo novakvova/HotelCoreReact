@@ -1,0 +1,89 @@
+.bookingLine{
+    background-color: rgb(51, 51, 51);
+    width: 100%;
+    height: 15mm;
+    align-content: center;
+}
+
+
+
+.link{
+    color: goldenrod;
+    font-size: 6mm;
+    display: inline-block;
+}
+.link:hover {
+    color: goldenrod;
+}
+
+.standarts{
+    margin-left: 25px;
+    font-size: 5mm;
+    color: black;
+}
+.standarts:hover {
+    color: black;
+}
+
+.paragraph{
+    font-size: 6mm;
+    margin-left: 0.5%;
+    display: inline-block;
+}
+
+.headerRow{
+    width: '100%';
+    text-align: center;
+}
+.standartsRow{
+    margin-top: 2%;
+    text-align: center;
+}
+
+.header{
+    display: inline-block;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2.5%;
+}
+
+.leftHr{
+    display: inline-block;
+    border-width: 2px;  
+}
+
+.rightHr{
+    border-width: 2px;
+    display: inline-block;
+}
+
+.bookNowButton{
+    font-size: 25px;
+    background-color: #2e2e2e;
+    color: white;
+    border: none;
+    margin-top: 5%;
+}
+
+.galaryDiv{
+    margin-top: 7.5%;
+    margin-bottom: 3.5%;
+    align-content: center;
+}
+
+.leftButton{
+    border: none;
+    background-color: transparent;
+    display: inline-block;
+}
+
+.rightButton{
+    border: none;
+    background-color: transparent;
+    display: inline-block;
+}
+
+.galleryImg{
+    display: inline-block;
+    
+}

@@ -10,17 +10,35 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 
 class NavMenu extends Component {
-  state = {}
+  constructor(props) {
+    super(props);
+    this.state = {
+      date_To : new Date(),
+      date_From : new Date()
+    }
+  }
+
+  // від 22 строкі до 31 треба оптимізувати можливо можна одим евентом зробить
+  from_dateChange=(date)=> {
+    this.setState({
+      date_From: date
+    });
+  }
+  to_dateChange=(date)=> {
+    this.setState({
+      date_To: date
+    });
+  }
 
   logout(e) {
     e.preventDefault();
     this.props.logout();
   }
   render() {
+    
     const props = this.props;
     const { isAuthenticated, user } = this.props.auth;
     console.log(isAuthenticated);
-
     const userLinks = (
       <Navbar.Collapse className="justify-content-end">
         <Navbar.Text>
@@ -75,7 +93,7 @@ class NavMenu extends Component {
         </Row>
         <Row className='menu-line'>
           <div className='drop'>
-            <Link to='/room'  className='drop-btn'>
+            <Link to='/room' className='drop-btn'>
               ROOMS
                 <Glyphicon glyph='glyphicon glyphicon-triangle-bottom' />
             </Link>
@@ -91,7 +109,7 @@ class NavMenu extends Component {
               </Link>
             </div>
           </div>
-          <Link to='/'>
+          <Link to='/offers'>
             OFFERS
           </Link>
           <Link to='/contacts'>
@@ -115,17 +133,15 @@ class NavMenu extends Component {
               <p>From</p>
             </div>
             <div className='box'>
-              <DatePicker id='form_date' dateFormat='yyyy/MM/dd' className='datepicker' showTimeSelect>
-
-              </DatePicker>
+              <DatePicker id='from_date' className='datepicker' minDate={new Date()} 
+                          selected={this.state.date_From} onChange={this.from_dateChange} dateFormat="dd/MM/yyyy"  />
             </div>
             <div className='box'>
               <p>To</p>
             </div>
             <div className='box'>
-              <DatePicker id='to_date' dateFormat='yyyy/MM/dd' className='datepicker' showTimeSelect>
-
-              </DatePicker>
+              <DatePicker id='to_date' className='datepicker' minDate={new Date()} 
+                          selected={this.state.date_To} onChange={this.to_dateChange} dateFormat="dd/MM/yyyy"/>
             </div>
             <div className='box'>
               <input className='button' type='button' value='BOOK NOW' />

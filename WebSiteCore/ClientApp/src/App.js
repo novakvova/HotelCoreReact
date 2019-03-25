@@ -12,6 +12,7 @@ import SignUpPage from './components/auth/signUp/SignUpPage';
 import Contacts from './components/contacts/Contacts';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UserProfilePage from './components/UserProfilePage';
+import Offers from './components/offers/Offers';
 
 export default () => (
     <Layout>
@@ -25,6 +26,7 @@ export default () => (
         <Route path='/SignUp' component={SignUpPage} />
         <Route path='/profile' component={UserProfilePage} />
         <Route path='/contacts' component={Contacts} />
+        <Route path='/offers' component={Offers} />
     </Layout>
 );
 

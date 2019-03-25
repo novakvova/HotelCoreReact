@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebSiteCore.DAL.Entities.SqlViews;
 
 namespace WebSiteCore.DAL.Entities
 {
@@ -26,10 +27,13 @@ namespace WebSiteCore.DAL.Entities
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Offer> Offers { get; set; }
         public virtual DbSet<ApartmentImage> ApartmentImages { get; set; }
-        public virtual DbQuery<ApartmentData> ApartmentsData { get; set; }
+
+        public virtual DbQuery<VApartmentData> VApartmentsData { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Query<VApartmentData>().ToView("vApartmentsData");
+
             modelBuilder.Entity<ConvenienceType>().HasData(
                 new ConvenienceType[]
                 {
@@ -227,8 +231,8 @@ namespace WebSiteCore.DAL.Entities
                         Id = 1,
                         Name = "Spring Weekdays",
                         Description = "Great offer in CITYHOTEL! 15% OFF for accommodation on weekdays!",
-                        From = DateTime.Now,
-                        To = DateTime.Today.AddDays(60),
+                        From = new DateTime(2019, 3, 20, 11, 17, 17, 720, DateTimeKind.Local),
+                        To = new DateTime(2019, 3, 20, 11, 17, 17, 720, DateTimeKind.Local).AddDays(60),
                         ImageName = "SpringWeekdays_1"
                     },
                      new Offer
@@ -236,8 +240,8 @@ namespace WebSiteCore.DAL.Entities
                         Id = 2,
                         Name = "FriSatSun",
                         Description = "Your discount on weekends (Fri - Sun): 1 day 15% OFF; 2-3 days 25% OFF",
-                        From = DateTime.Now,
-                        To = DateTime.Today.AddDays(120),
+                        From = new DateTime(2019, 3, 20, 11, 17, 17, 720, DateTimeKind.Local),
+                        To = new DateTime(2019, 3, 20, 11, 17, 17, 720, DateTimeKind.Local).AddDays(120),
                         ImageName = "FriSatSun_1"
                     },
                     new Offer
@@ -245,8 +249,8 @@ namespace WebSiteCore.DAL.Entities
                         Id = 3,
                         Name = "Book at out website",
                         Description = "Book at our website and get an additional 5% discount of the Best Available Rate - Extra 5% OFF",
-                        From = DateTime.Now,
-                        To = DateTime.Today.AddDays(360),
+                        From = new DateTime(2019, 3, 20, 11, 17, 17, 720, DateTimeKind.Local),
+                        To = new DateTime(2019, 3, 20, 11, 17, 17, 720, DateTimeKind.Local).AddDays(360),
                         ImageName = "BookAtSite_1"
                     }
                 });

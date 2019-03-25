@@ -114,6 +114,69 @@
 
 .datepicker{
     width:125px;
+    text-align:center;
+    font-weight: 500;
+}
+
+div.react-datepicker{
+    font-size:14px;
+}
+
+div.react-datepicker__current-month{
+    font-size:17px;
+    color:White;
+    background: #232323;
+    opacity: 0.93;
+    height: 28px;
+    padding-top:2.5px;
+}
+
+div.react-datepicker__header{
+    border-bottom: none;
+}
+
+div.react-datepicker__month-container{
+    float:none;
+    border:1px solid black;
+    padding-bottom:5px;
+}
+
+div.react-datepicker__day-names{
+    width:250px;
+    background: white;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+div.react-datepicker__day-name{
+    padding-right:28px;
+    font-weight: 700;
+    opacity:0.89;
+}
+
+div.react-datepicker__day {
+    border : 1px solid rgb(199, 199, 199);
+    background: rgb(247, 247, 247);
+    padding-left:6px;
+    padding-top:3px;
+    padding-bottom:3px;
+    width:30px;
+}
+
+div.react-datepicker__day--selected{
+    color:black;
+}
+
+button.react-datepicker__navigation.react-datepicker__navigation--next{
+    border-left-color: #868686;
+}
+
+button.react-datepicker__navigation.react-datepicker__navigation--previous{
+    border-right-color: #868686;
+}
+
+div.react-datepicker__header{
+    padding:0;
 }
 
 .navbar input{

@@ -14,9 +14,8 @@ class Contacts extends Component {
                 <Row className='contacts-title'>
                     <div className='container'>
                         <p>
-                            Contacts
+                            CONTACTS
                         </p>
-                        <hr />
                     </div>
                 </Row>
                 <Row className='contacts-description'>

@@ -1,10 +1,20 @@
 .contacts-title{
     width:100%;
     text-align: center;
+    font-weight: 300;
+    background-image: url('/img/heading-line.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    margin:0;
+    padding:0;
+    margin-top:-25px;
 }
 
 .contacts-title p{
-    font-size:50px;
+    font-size:38px;
+    border-bottom: 1px solid #aaa;
+    margin-top: 20px;
+    padding-bottom:20px;
 }
 
 .contacts-title hr{

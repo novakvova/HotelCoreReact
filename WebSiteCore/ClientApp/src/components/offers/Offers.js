@@ -43,7 +43,7 @@ class Offers extends Component {
     render() {
         return (
             <div className='offers'>
-                <Row className='title'>
+                <Row className='contacts-title'>
                     <div className='container'>
                         <p>
                             OFFERS

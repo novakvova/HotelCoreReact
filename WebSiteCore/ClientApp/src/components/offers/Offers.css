@@ -14,8 +14,10 @@
     background-position: center;
     margin:0;
     font-size:38px;
-    border-bottom: 1px solid #aaa;
     padding-bottom:20px;
+}
+.offers>.title p{
+    border-bottom: 1px solid #aaa;
 }
 
  .offer-card{

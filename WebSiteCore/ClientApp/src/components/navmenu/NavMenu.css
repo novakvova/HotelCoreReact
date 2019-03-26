@@ -163,6 +163,11 @@ div.react-datepicker__day {
     width:30px;
 }
 
+div.react-datepicker__day:hover{
+    background: rgb(211, 211, 211);
+}
+
+
 div.react-datepicker__day--selected{
     color:black;
 }
@@ -179,8 +184,8 @@ div.react-datepicker__header{
     padding:0;
 }
 
-.navbar input{
-    border-radius:5px;
+input{
+    border-radius:2px;
     border:0;
     height: 27px;
 }   
@@ -237,6 +242,14 @@ div.react-datepicker__header{
     top:-3px;
 }
 
+.numeric {
+    width:65px;
+}
 
+.fa {
+    color:white;
+    margin-left:15px;
+    margin-right: 10px;
+}
 
 

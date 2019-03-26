@@ -120,8 +120,8 @@ namespace WebSiteCore.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var apartments = _ctx.VApartmentsData.Where(a => a.ApartmentId == id)
-                                                 .Take(1)
+            var apartmentsWithSameId = _ctx.VApartmentsData.Where(a => a.ApartmentId == id);
+            var apartments = apartmentsWithSameId.Take(1)
                                                  .Select(ap => new
                                                   {
                                                       ap.Id,
@@ -139,9 +139,8 @@ namespace WebSiteCore.Controllers
                                                       ap.FloorId,
                                                       ap.FloorNumber,
                                                       ap.FloorDescription,
-                                                      Images = a.Select(apart => new { apart.AprtImageId, apart.AprtImageName })
+                                                      Images = apartmentsWithSameId.Select(apart => new { apart.AprtImageId, apart.AprtImageName })
                                                   })
-                                                  .SingleOrDefault()
                                                   .ToList();
             //var apartments = _ctx.Apartments
             //    .Where(a => a.Id == id)

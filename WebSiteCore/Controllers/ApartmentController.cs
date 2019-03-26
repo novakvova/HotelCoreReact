@@ -20,29 +20,53 @@ namespace WebSiteCore.Controllers
         }
         public IActionResult Get()
         {
-            var apartments = _ctx.VApartmentsData.GroupBy(a => a.ApartmentId)
-                                                 .Select(a => a.Take(1)
-                                                               .Select(ap => new
-                                                                {
-                                                                    ap.Id,
-                                                                    ap.ApartmentId,
-                                                                    ap.Name,
-                                                                    ap.Description,
-                                                                    ap.Equipment,
-                                                                    ap.Area,
-                                                                    ap.Price,
-                                                                    ap.RoomTypeId,
-                                                                    ap.RoomTypeName,
-                                                                    ap.RoomQuantity,
-                                                                    ap.ConvenienceTypeId,
-                                                                    ap.ConvenienceTypeName,
-                                                                    ap.FloorId,
-                                                                    ap.FloorNumber,
-                                                                    ap.FloorDescription,
-                                                                    Images = a.Select(apart => new { apart.AprtImageId, apart.AprtImageName })
-                                                                })
-                                                               .SingleOrDefault())
-                                                 .ToList();
+            var apartments = _ctx.VApartments.ToList()
+                                             .GroupJoin(
+                                                 _ctx.ApartmentImages.ToList(),
+                                                 a => a.ApartmentId,
+                                                 i => i.AppartmentId,
+                                                 (a, i) => new
+                                                 {
+                                                     a.ApartmentId,
+                                                     a.Name,
+                                                     a.Description,
+                                                     a.Equipment,
+                                                     a.Area,
+                                                     a.Price,
+                                                     a.RoomTypeId,
+                                                     a.RoomTypeName,
+                                                     a.RoomQuantity,
+                                                     a.ConvenienceTypeId,
+                                                     a.ConvenienceTypeName,
+                                                     a.FloorId,
+                                                     a.FloorNumber,
+                                                     a.FloorDescription,
+                                                     Images = i.Select(image => new { image.Id, image.Name })
+                                                 });
+
+            //var apartments = _ctx.VApartmentsData.GroupBy(a => a.ApartmentId)
+            //                                     .Select(a => a.Take(1)
+            //                                                   .Select(ap => new
+            //                                                    {
+            //                                                        ap.Id,
+            //                                                        ap.ApartmentId,
+            //                                                        ap.Name,
+            //                                                        ap.Description,
+            //                                                        ap.Equipment,
+            //                                                        ap.Area,
+            //                                                        ap.Price,
+            //                                                        ap.RoomTypeId,
+            //                                                        ap.RoomTypeName,
+            //                                                        ap.RoomQuantity,
+            //                                                        ap.ConvenienceTypeId,
+            //                                                        ap.ConvenienceTypeName,
+            //                                                        ap.FloorId,
+            //                                                        ap.FloorNumber,
+            //                                                        ap.FloorDescription,
+            //                                                        Images = a.Select(apart => new { apart.AprtImageId, apart.AprtImageName })
+            //                                                    })
+            //                                                   .SingleOrDefault())
+            //                                     .ToList();
 
             ////////--------VOVA TEST-------------------
             //var groupData = from d in _ctx.VApartmentsData.AsQueryable()
@@ -72,26 +96,6 @@ namespace WebSiteCore.Controllers
             //var apartments = resultObject.ToList();
             ///////---------------------------------------
 
-            //_ctx.VApartmentsData.ToList()
-            //                                .GroupJoin(
-            //                                    _ctx.ApartmentImages.ToList(),
-            //                                    a => a.Id,
-            //                                    i => i.AppartmentId,
-            //                                    (apart, image) => new
-            //                                    {
-            //                                        Id = apart.Id,
-            //                                        Name = apart.Name,
-            //                                        Description = apart.Description,
-            //                                        Equipment = apart.Equipment,
-            //                                        Price = apart.Price,
-            //                                        Area = apart.Area,
-            //                                        RoomQuantity = apart.RoomQuantity,
-            //                                        //Convenience = apart.Convenience,
-            //                                       // Room = apart.Room,
-            //                                        FloorNumber = apart.FloorNumber,
-            //                                        FloorDescription = apart.FloorDescription,
-            //                                        Images = image.Select(i => i.Name)
-            //                                    });
             //var apartments = _ctx.Apartments
             //    .Include(a => a.ConvenienceType)
             //    .Include(a => a.RoomType)
@@ -120,29 +124,54 @@ namespace WebSiteCore.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var apartments = _ctx.VApartmentsData.Where(a => a.ApartmentId == id)
-                                                 .Take(1)
-                                                 .Select(ap => new
-                                                  {
-                                                      ap.Id,
-                                                      ap.ApartmentId,
-                                                      ap.Name,
-                                                      ap.Description,
-                                                      ap.Equipment,
-                                                      ap.Area,
-                                                      ap.Price,
-                                                      ap.RoomTypeId,
-                                                      ap.RoomTypeName,
-                                                      ap.RoomQuantity,
-                                                      ap.ConvenienceTypeId,
-                                                      ap.ConvenienceTypeName,
-                                                      ap.FloorId,
-                                                      ap.FloorNumber,
-                                                      ap.FloorDescription,
-                                                      Images = a.Select(apart => new { apart.AprtImageId, apart.AprtImageName })
-                                                  })
-                                                  .SingleOrDefault()
-                                                  .ToList();
+            var apartments = _ctx.VApartments.Where(a => a.ApartmentId == id)
+                                             .ToList()
+                                             .GroupJoin(
+                                                 _ctx.ApartmentImages.ToList(),
+                                                 a => a.ApartmentId,
+                                                 i => i.AppartmentId,
+                                                 (a, i) => new
+                                                 {
+                                                     a.ApartmentId,
+                                                     a.Name,
+                                                     a.Description,
+                                                     a.Equipment,
+                                                     a.Area,
+                                                     a.Price,
+                                                     a.RoomTypeId,
+                                                     a.RoomTypeName,
+                                                     a.RoomQuantity,
+                                                     a.ConvenienceTypeId,
+                                                     a.ConvenienceTypeName,
+                                                     a.FloorId,
+                                                     a.FloorNumber,
+                                                     a.FloorDescription,
+                                                     Images = i.Select(image => new { image.Id, image.Name })
+                                                 });
+
+            //var apartWithoutNavPropObjects = _ctx.VApartmentsData.Where(a => a.ApartmentId == id);
+            //var apartments = apartWithoutNavPropObjects.Take(1)
+            //                                           .Select(ap => new
+            //                                            {
+            //                                                ap.Id,
+            //                                                ap.ApartmentId,
+            //                                                ap.Name,
+            //                                                ap.Description,
+            //                                                ap.Equipment,
+            //                                                ap.Area,
+            //                                                ap.Price,
+            //                                                ap.RoomTypeId,
+            //                                                ap.RoomTypeName,
+            //                                                ap.RoomQuantity,
+            //                                                ap.ConvenienceTypeId,
+            //                                                ap.ConvenienceTypeName,
+            //                                                ap.FloorId,
+            //                                                ap.FloorNumber,
+            //                                                ap.FloorDescription,
+            //                                                Images = apartWithoutNavPropObjects.Select(apart => new { apart.AprtImageId, apart.AprtImageName })
+            //                                            })
+            //                                           .ToList();
+
             //var apartments = _ctx.Apartments
             //    .Where(a => a.Id == id)
             //    .Include(a => a.ConvenienceType)

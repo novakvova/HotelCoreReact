@@ -29,10 +29,12 @@ namespace WebSiteCore.DAL.Entities
         public virtual DbSet<ApartmentImage> ApartmentImages { get; set; }
 
         public virtual DbQuery<VApartmentData> VApartmentsData { get; set; }
+        public virtual DbQuery<VApartment> VApartments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Query<VApartmentData>().ToView("vApartmentsData");
+            modelBuilder.Query<VApartment>().ToView("vApartments");
 
             modelBuilder.Entity<ConvenienceType>().HasData(
                 new ConvenienceType[]
@@ -192,6 +194,25 @@ namespace WebSiteCore.DAL.Entities
                         FloorId = 2,
                         Images = new List<ApartmentImage>()
                     }
+                });
+            modelBuilder.Entity<Order>().HasData(
+                new Order[]
+                {
+                    new Order { Id = 1, From=new DateTime(2020, 1, 1), To=new DateTime(2020, 1, 10), ApartmentId=1, Price = 500, BoardTypeId=1, ClientId=null},
+                    new Order { Id = 2, From=new DateTime(2020, 1, 8), To=new DateTime(2020, 1, 10), ApartmentId=2, Price = 500, BoardTypeId=1, ClientId=null},
+                    new Order { Id = 3, From=new DateTime(2020, 1, 7), To=new DateTime(2020, 1, 12), ApartmentId=1, Price = 500, BoardTypeId=1, ClientId=null},
+                    new Order { Id = 4, From=new DateTime(2020, 1, 3), To=new DateTime(2020, 1, 5), ApartmentId=2, Price = 500, BoardTypeId=1, ClientId=null},
+                    new Order { Id = 5, From=new DateTime(2020, 1, 2), To=new DateTime(2020, 1, 11), ApartmentId=3, Price = 500, BoardTypeId=1, ClientId=null},
+                    new Order { Id = 6, From=new DateTime(2020, 1, 4), To=new DateTime(2020, 1, 5), ApartmentId=3, Price = 500, BoardTypeId=1, ClientId=null},
+                    new Order { Id = 7, From=new DateTime(2020, 1, 6), To=new DateTime(2020, 1, 10), ApartmentId=7, Price = 500, BoardTypeId=1, ClientId=null},
+                    new Order { Id = 8, From=new DateTime(2020, 1, 7), To=new DateTime(2020, 1, 12), ApartmentId=5, Price = 500, BoardTypeId=1, ClientId=null},
+                    new Order { Id = 9, From=new DateTime(2020, 1, 1), To=new DateTime(2020, 1, 5), ApartmentId=5, Price = 500, BoardTypeId=1, ClientId=null},
+                    new Order { Id = 10, From=new DateTime(2020, 1, 2), To=new DateTime(2020, 1, 11), ApartmentId=6, Price = 500, BoardTypeId=1, ClientId=null},
+                    new Order { Id = 11, From=new DateTime(2020, 1, 1), To=new DateTime(2020, 1, 10), ApartmentId=7, Price = 500, BoardTypeId=1, ClientId=null},
+                    new Order { Id = 12, From=new DateTime(2020, 1, 8), To=new DateTime(2020, 1, 10), ApartmentId=5, Price = 500, BoardTypeId=1, ClientId=null},
+                    new Order { Id = 13, From=new DateTime(2020, 1, 7), To=new DateTime(2020, 1, 12), ApartmentId=6, Price = 500, BoardTypeId=1, ClientId=null},
+                    new Order { Id = 14, From=new DateTime(2020, 1, 8), To=new DateTime(2020, 1, 9), ApartmentId=4, Price = 500, BoardTypeId=1, ClientId=null},
+                    new Order { Id = 15, From=new DateTime(2020, 1, 7), To=new DateTime(2020, 1, 11), ApartmentId=4, Price = 500, BoardTypeId=1, ClientId=null}
                 });
             modelBuilder.Entity<ApartmentImage>().HasData(
                 new ApartmentImage[]

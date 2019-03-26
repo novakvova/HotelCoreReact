@@ -15,7 +15,12 @@ namespace WebSiteCore.Migrations
 
             string path = Uri.UnescapeDataString(uri.Path);
             
-            string baseDir = Path.GetDirectoryName(path) + "\\Migrations\\SqlQuery\\vApartmentsData.sql";
+            string baseDir = Path.GetDirectoryName(path) + "\\Migrations\\SqlQuery\\VApartmentsData.sql";
+
+            migrationBuilder.Sql(File.ReadAllText(baseDir));
+
+
+            baseDir = Path.GetDirectoryName(path) + "\\Migrations\\SqlQuery\\VApartments.sql";
 
             migrationBuilder.Sql(File.ReadAllText(baseDir));
         }

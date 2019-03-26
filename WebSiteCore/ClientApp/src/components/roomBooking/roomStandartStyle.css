@@ -1,0 +1,64 @@
+.room-container {
+    padding-left: 15%;
+    padding-right: 15%;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+}
+
+.room-content {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+}
+
+.img-box {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+    float: left;
+}
+
+.room-content>h3 {
+    font-size: 20px;
+    padding-top: 5px;
+    padding-left: 20px;
+}
+
+.room-content>p {
+    padding-left: 9%;
+    padding-right: 7%;
+    padding-top: 2%;
+    font-size: 16px;
+}
+
+.room-content>p>a {
+    color: white;
+}
+
+.room-content>h4 {
+    font-size: 20px;
+    text-align: center;
+    padding-left: 42%;
+    display: inline-block;
+    padding-bottom: 1%;
+}
+
+.room-content>.btn {
+    margin-left: 20%;
+    font-size: 16px;
+    background-color: rgb(110, 110, 110);
+    color: white;
+    width: 150px;
+    border-radius: 1px;
+    height: 35px;
+    margin-top: -25px;
+}
+
+.room-content>a:hover {
+    background-color: rgb(110, 110, 110);
+    color: white;
+    text-decoration: none;
+}
+
+.room-content {
+    width: 75%;
+    float: left;
+    background-color: rgb(54, 51, 51);
+    color: white;
+}

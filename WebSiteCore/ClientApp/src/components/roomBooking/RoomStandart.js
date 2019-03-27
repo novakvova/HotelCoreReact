@@ -17,15 +17,14 @@ class RoomStandart extends Component {
     render() {
         return (
             <Row className='room-container'>
-                <div className='room-content '>
+                <div className='room-content'>
                     <h3>{this.state.roomStandart}</h3>
-                    <p>{this.state.description} <a href=''>Details</a></p>
+                    <p>{this.state.description} <Link to='/room'>Details</Link></p>
                     <h4>Price: {this.state.price} EURO*</h4>
                     <Link className='btn' to='/room' >BOOK NOW</Link>
                 </div>
                 <div className='img-box' >
-                    <img src={this.state.img}
-                        width='265' height='198 '></img>
+                    <img src={this.state.img}></img>
                 </div>
             </Row>
         )

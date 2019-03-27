@@ -28,5 +28,3 @@ export default () => (
         <Route path='/booking' component={Booking}/>
     </Layout>
 );
-
-//        <Route path='/profile' component={UserProfilePage} />

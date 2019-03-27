@@ -153,7 +153,6 @@ class NavMenu extends Component {
             <div className='box'>
               <input className='button' type='button' value='BOOK NOW' />
             </div>
-
           </div>
         </Row>
       </Navbar>

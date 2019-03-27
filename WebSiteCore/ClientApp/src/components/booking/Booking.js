@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { Navbar, Col, Row } from "react-bootstrap";
+import { Glyphicon, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import './Booking.css';
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css';
 
 class Footer extends Component {
     state = {}
@@ -21,27 +23,29 @@ class Footer extends Component {
                         <p>
                             TRAVEL DATA
                         </p>
-                        <div>
-                            <span> From </span>
-                            <span> To </span>
+                        <div className='datepicker-line'>
+                            <input type='text' className='form-control box' placeholder="From" />
+                            <input type='text' className='form-control box' placeholder="To" />
                         </div>
-                        <div>
-                            <input type='text' value='03/27/2019' className='form-control box' />
-                            <input type='text' value='03/27/2019' className='form-control box' />
-                        </div>
-                        <div className='travel-line'>
-                            <i class="fa fa-male"></i>
-                            <span>Number of Adults</span>
-                        </div>
-                        <div className='travel-line'>
-                            <i class="fa fa-bed"></i>
-                            <span>Number of Rooms</span>
+                        <div className='info-travel'>
+                            <div className='info-line'>
+                                <i class="fa fa-male"></i>
+                                <span style={{ paddingLeft: '6%' }}>Number of Adults</span>
+                            </div>
+                            <div className='info-line'>
+                                <i class="glyphicon glyphicon-bed"></i>
+                                <span style={{ paddingLeft: '5%' }}>Number of Rooms</span>
+                            </div>
                         </div>
                     </div>
-                    <div className='box'>
+                    <div className='box availabilities'>
                         <p>
-                            BOOKING DATA
+                            AVAILABILITIES
                         </p>
+                        <div className='booking-date'>
+                            <DatePicker inline minDate={new Date()} selected={this.state.startDate} onChange={this.handleChange}
+                             fixedHeight monthsShown={3}/>
+                        </div>
                     </div>
                 </div>
             </div>

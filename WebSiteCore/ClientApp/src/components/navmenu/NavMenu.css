@@ -184,6 +184,11 @@ div.react-datepicker__header{
     padding:0;
 }
 
+div.react-datepicker__day--today, div.react-datepicker__day--selected{
+    background:#1d5d90;
+    color:white;
+}
+
 input{
     border-radius:2px;
     border:0;

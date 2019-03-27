@@ -1,6 +1,5 @@
 .booking{
-    padding-bottom:125px;
-
+    padding-bottom:100px;
 }
 
 .booking-title{
@@ -25,7 +24,7 @@
 .booking input{
     width:44%;
     height: 45px;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 700;
     text-align: center;
 }
@@ -43,11 +42,24 @@
     width:30%;
 }
 
-.travel-data p{
+.availabilities>p{
+    margin-left:5%;
+}
+
+.travel-data>p, .availabilities>p{
     font-size:20px;
     font-weight: 700;
     border-bottom:3px solid #cecece;
     padding-bottom:10px;
+}
+
+.datepicker-line{
+    margin-bottom:75px;
+    margin-top:30px;
+}
+
+.info-travel{
+    padding-left:2%;
 }
 
 .travel-data span{
@@ -57,13 +69,41 @@
     padding-right: 46%;
 }
 
-.fa-male, .fa-bed{
+.fa-male {
     font-size:23px;
     padding-left:2%;
 }
 
-.travel-line span{
+.glyphicon-bed{
+    font-size:18px;
+    padding-left:1.4%;
+}
+
+.info-line span{
     padding-left:5%;
     color:black;
     font-weight: 200;
 }
+
+.info-line{
+    padding-top:25px;
+}
+
+.availabilities{
+    width:70%;
+}
+
+.booking-date{
+    margin-left:5.15%;
+    margin-top:15px;
+}
+
+div.react-datepicker{
+    margin-right: -0.3%;
+}
+
+.booking-date div.react-datepicker__month-container{
+    float:left;
+    border:none;
+}
+

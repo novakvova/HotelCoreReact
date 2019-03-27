@@ -94,7 +94,7 @@ namespace WebSiteCore
                 }
             });
 
-            SeederDB.SeedData(app.ApplicationServices);
+            SeederDB.Seed(app.ApplicationServices);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace WebSiteCore.DAL.Entities
         public string PassportSerialNumber { get; set; } // серійний номер паспорта
         public bool Gender { get; set; }
         public int Age { get; set; }
-        public virtual Client Client { get; set; }
-        public virtual Employee Employee { get; set; }
+        //public virtual Client Client { get; set; }
+        //public virtual Employee Employee { get; set; }
     }
 }

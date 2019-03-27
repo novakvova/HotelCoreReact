@@ -124,30 +124,30 @@ namespace WebSiteCore.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var apartments = _ctx.VApartments.Where(a => a.ApartmentId == id)
-                                             .ToList()
-                                             .GroupJoin(
-                                                 _ctx.ApartmentImages.ToList(),
-                                                 a => a.ApartmentId,
-                                                 i => i.AppartmentId,
-                                                 (a, i) => new
-                                                 {
-                                                     a.ApartmentId,
-                                                     a.Name,
-                                                     a.Description,
-                                                     a.Equipment,
-                                                     a.Area,
-                                                     a.Price,
-                                                     a.RoomTypeId,
-                                                     a.RoomTypeName,
-                                                     a.RoomQuantity,
-                                                     a.ConvenienceTypeId,
-                                                     a.ConvenienceTypeName,
-                                                     a.FloorId,
-                                                     a.FloorNumber,
-                                                     a.FloorDescription,
-                                                     Images = i.Select(image => new { image.Id, image.Name })
-                                                 });
+            object apartments = _ctx.VApartments.Where(a => a.ApartmentId == id)
+                                                .ToList()
+                                                .GroupJoin(
+                                                    _ctx.ApartmentImages.ToList(),
+                                                    a => a.ApartmentId,
+                                                    i => i.AppartmentId,
+                                                    (a, i) => new
+                                                    {
+                                                        a.ApartmentId,
+                                                        a.Name,
+                                                        a.Description,
+                                                        a.Equipment,
+                                                        a.Area,
+                                                        a.Price,
+                                                        a.RoomTypeId,
+                                                        a.RoomTypeName,
+                                                        a.RoomQuantity,
+                                                        a.ConvenienceTypeId,
+                                                        a.ConvenienceTypeName,
+                                                        a.FloorId,
+                                                        a.FloorNumber,
+                                                        a.FloorDescription,
+                                                        Images = i.Select(image => new { image.Id, image.Name })
+                                                    });
 
             //var apartWithoutNavPropObjects = _ctx.VApartmentsData.Where(a => a.ApartmentId == id);
             //var apartments = apartWithoutNavPropObjects.Take(1)

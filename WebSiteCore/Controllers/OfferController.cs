@@ -20,7 +20,7 @@ namespace WebSiteCore.Controllers
         public IActionResult Get()
         {
             var offers = _ctx.Offers.ToList();
-            if(offers != null)
+            if (offers != null)
             {
                 return Ok(offers);
             }
@@ -30,7 +30,7 @@ namespace WebSiteCore.Controllers
         public IActionResult Get(int id)
         {
             var offer = _ctx.Offers.SingleOrDefault(o => o.Id == id);
-            if(offer != null)
+            if (offer != null)
             {
                 return Ok(offer);
             }

@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace WebSiteCore.Migrations
 {
-    public partial class AddsqlViewvApartmentData : Migration
+    public partial class addapartmentviews : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,7 @@ namespace WebSiteCore.Migrations
             UriBuilder uri = new UriBuilder(codeBase);
 
             string path = Uri.UnescapeDataString(uri.Path);
-            
+
             string baseDir = Path.GetDirectoryName(path) + "\\Migrations\\SqlQuery\\VApartmentsData.sql";
 
             migrationBuilder.Sql(File.ReadAllText(baseDir));

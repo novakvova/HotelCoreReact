@@ -7,24 +7,26 @@ import { logout } from '../../actions/authActions';
 import DatePicker from 'react-datepicker'
 import './NavMenu.css';
 import 'react-datepicker/dist/react-datepicker.css';
-
+import NumericInput from 'react-numeric-input';
+import 'font-awesome/css/font-awesome.min.css';
 
 class NavMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date_To : new Date(),
-      date_From : new Date()
+      date_To: new Date(),
+      date_From: new Date()
     }
   }
 
   // від 22 строкі до 31 треба оптимізувати можливо можна одим евентом зробить
-  from_dateChange=(date)=> {
+  from_dateChange = (date) => {
     this.setState({
-      date_From: date
+      date_From: date,
+      date_To: date
     });
   }
-  to_dateChange=(date)=> {
+  to_dateChange = (date) => {
     this.setState({
       date_To: date
     });
@@ -34,8 +36,9 @@ class NavMenu extends Component {
     e.preventDefault();
     this.props.logout();
   }
+
   render() {
-    
+
     const props = this.props;
     const { isAuthenticated, user } = this.props.auth;
     console.log(isAuthenticated);
@@ -93,7 +96,7 @@ class NavMenu extends Component {
         </Row>
         <Row className='menu-line'>
           <div className='drop'>
-            <Link to='/room' className='drop-btn'>
+            <Link to='/' className='drop-btn'>
               ROOMS
                 <Glyphicon glyph='glyphicon glyphicon-triangle-bottom' />
             </Link>
@@ -129,23 +132,28 @@ class NavMenu extends Component {
         </Row>
         <Row className='reserve-line'>
           <div className='container'>
-            <div className='box' style={{ marginLeft: '330px' }}>
+            <div className='box' style={{ marginLeft: '25%'}}>
               <p>From</p>
             </div>
             <div className='box'>
-              <DatePicker id='from_date' className='datepicker' minDate={new Date()} 
-                          selected={this.state.date_From} onChange={this.from_dateChange} dateFormat="dd/MM/yyyy"  />
+              <DatePicker id='from_date' className='datepicker' minDate={new Date()}
+                selected={this.state.date_From} onChange={this.from_dateChange} dateFormat="dd/MM/yyyy" />
             </div>
             <div className='box'>
               <p>To</p>
             </div>
             <div className='box'>
-              <DatePicker id='to_date' className='datepicker' minDate={new Date()} 
-                          selected={this.state.date_To} onChange={this.to_dateChange} dateFormat="dd/MM/yyyy"/>
+              <DatePicker id='to_date' className='datepicker' minDate={this.state.date_From}
+                selected={this.state.date_To} onChange={this.to_dateChange} dateFormat="dd/MM/yyyy" />
+            </div>
+            <div className='box'>
+              <i className="fa fa-users"></i>
+                <NumericInput className='numeric'/>              
             </div>
             <div className='box'>
               <input className='button' type='button' value='BOOK NOW' />
             </div>
+
           </div>
         </Row>
       </Navbar>

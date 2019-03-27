@@ -13,6 +13,7 @@ import Contacts from './components/contacts/Contacts';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UserProfilePage from './components/UserProfilePage';
 import Offers from './components/offers/Offers';
+import Booking from './components/booking/Booking';
 
 export default () => (
     <Layout>
@@ -27,6 +28,7 @@ export default () => (
         <Route path='/profile' component={UserProfilePage} />
         <Route path='/contacts' component={Contacts} />
         <Route path='/offers' component={Offers} />
+        <Route path='/booking' component={Booking}/>
     </Layout>
 );
 

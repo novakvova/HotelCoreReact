@@ -33,6 +33,7 @@ namespace WebSiteCore.DAL.Entities
             }
 
         }
+
         public static void SeedClients(UserManager<DbUser> userManager, EFDbContext context)
         {
             var count = context.Clients.Count();
@@ -53,10 +54,9 @@ namespace WebSiteCore.DAL.Entities
 
         public static void SeedData(UserManager<DbUser> userManager, EFDbContext context)
         {
-            if(context.ConvenienceTypes.Count() == 0)
+            if (context.ConvenienceTypes.Count() == 0)
             {
                 var user = userManager.FindByEmailAsync("admin@gmail.com").Result;
-
                 context.ConvenienceTypes.AddRange(
                  new ConvenienceType[]
                  {
@@ -297,7 +297,7 @@ namespace WebSiteCore.DAL.Entities
                     }
                     });
                 context.SaveChanges();
-            }           
+            }
         }
 
         public static void Seed(IServiceProvider services)

@@ -35,7 +35,6 @@ namespace WebSiteCore.DAL.Entities
         {
             modelBuilder.Query<VApartmentData>().ToView("vApartmentsData");
             modelBuilder.Query<VApartment>().ToView("vApartments");
-
             base.OnModelCreating(modelBuilder);
         }
     }

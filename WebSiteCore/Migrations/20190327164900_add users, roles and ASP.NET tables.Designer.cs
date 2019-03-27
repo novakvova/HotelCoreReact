@@ -10,8 +10,8 @@ using WebSiteCore.DAL.Entities;
 namespace WebSiteCore.Migrations
 {
     [DbContext(typeof(EFDbContext))]
-    [Migration("20190327095634_add user, role and asp.net tables")]
-    partial class adduserroleandaspnettables
+    [Migration("20190327164900_add users, roles and ASP.NET tables")]
+    partial class addusersrolesandASPNETtables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

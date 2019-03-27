@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebSiteCore.Migrations
@@ -12,8 +11,7 @@ namespace WebSiteCore.Migrations
                 name: "tblBoardTypes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false),
                     Name = table.Column<string>(maxLength: 255, nullable: false)
                 },
                 constraints: table =>
@@ -25,8 +23,7 @@ namespace WebSiteCore.Migrations
                 name: "tblConvenienceTypes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false),
                     Name = table.Column<string>(maxLength: 255, nullable: false)
                 },
                 constraints: table =>
@@ -38,8 +35,7 @@ namespace WebSiteCore.Migrations
                 name: "tblFloors",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false),
                     Number = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true)
                 },
@@ -52,8 +48,7 @@ namespace WebSiteCore.Migrations
                 name: "tblOffers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false),
                     Name = table.Column<string>(maxLength: 255, nullable: false),
                     From = table.Column<DateTime>(nullable: true),
                     To = table.Column<DateTime>(nullable: true),
@@ -69,8 +64,7 @@ namespace WebSiteCore.Migrations
                 name: "tblRoomTypes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false),
                     Name = table.Column<string>(maxLength: 255, nullable: false)
                 },
                 constraints: table =>
@@ -82,8 +76,7 @@ namespace WebSiteCore.Migrations
                 name: "tblApartments",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false),
                     Name = table.Column<string>(maxLength: 255, nullable: false),
                     Description = table.Column<string>(nullable: true),
                     Equipment = table.Column<string>(nullable: true),
@@ -121,8 +114,7 @@ namespace WebSiteCore.Migrations
                 name: "tblApartmentImages",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false),
                     Name = table.Column<string>(maxLength: 255, nullable: false),
                     AppartmentId = table.Column<int>(nullable: false)
                 },
@@ -141,8 +133,7 @@ namespace WebSiteCore.Migrations
                 name: "tblOrders",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false),
                     From = table.Column<DateTime>(nullable: true),
                     To = table.Column<DateTime>(nullable: true),
                     Price = table.Column<double>(nullable: false),

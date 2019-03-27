@@ -32,6 +32,12 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\SampleDataController.cs" />
+    <Compile Remove="Migrations\20190327160521_disable auto generated id column in some tables.cs" />
+    <Compile Remove="Migrations\20190327160521_disable auto generated id column in some tables.Designer.cs" />
+    <Compile Remove="Migrations\20190327162834_add users, roles and ASP.NET tables.cs" />
+    <Compile Remove="Migrations\20190327162834_add users, roles and ASP.NET tables.Designer.cs" />
+    <Compile Remove="Migrations\20190327163315_add clients and employees tables.cs" />
+    <Compile Remove="Migrations\20190327163315_add clients and employees tables.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

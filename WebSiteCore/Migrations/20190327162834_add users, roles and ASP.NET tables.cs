@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebSiteCore.Migrations
 {
-    public partial class adduserroleandaspnettables : Migration
+    public partial class addusersrolesandASPNETtables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -9,6 +9,7 @@ namespace WebSiteCore.DAL.Entities
     [Table("tblOrders")]
     public class Order // замовлення
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
         public DateTime? From { get; set; } // дата початку бронювання
         public DateTime? To { get; set; } // дата кінця бронювання

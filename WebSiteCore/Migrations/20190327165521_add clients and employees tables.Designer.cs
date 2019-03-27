@@ -10,8 +10,8 @@ using WebSiteCore.DAL.Entities;
 namespace WebSiteCore.Migrations
 {
     [DbContext(typeof(EFDbContext))]
-    [Migration("20190327095830_add client and employee tables")]
-    partial class addclientandemployeetables
+    [Migration("20190327165521_add clients and employees tables")]
+    partial class addclientsandemployeestables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

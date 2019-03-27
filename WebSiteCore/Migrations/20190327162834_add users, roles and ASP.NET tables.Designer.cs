@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebSiteCore.DAL.Entities;
 
 namespace WebSiteCore.Migrations
 {
     [DbContext(typeof(EFDbContext))]
-    partial class EFDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190327162834_add users, roles and ASP.NET tables")]
+    partial class addusersrolesandASPNETtables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -129,95 +131,6 @@ namespace WebSiteCore.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Apartment", b =>
-                {
-                    b.Property<int>("Id");
-
-                    b.Property<double>("Area");
-
-                    b.Property<int>("ConvenienceTypeId");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("Equipment");
-
-                    b.Property<int>("FloorId");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255);
-
-                    b.Property<double>("Price");
-
-                    b.Property<int>("RoomQuantity");
-
-                    b.Property<int>("RoomTypeId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ConvenienceTypeId");
-
-                    b.HasIndex("FloorId");
-
-                    b.HasIndex("RoomTypeId");
-
-                    b.ToTable("tblApartments");
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.ApartmentImage", b =>
-                {
-                    b.Property<int>("Id");
-
-                    b.Property<int>("AppartmentId");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AppartmentId");
-
-                    b.ToTable("tblApartmentImages");
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.BoardType", b =>
-                {
-                    b.Property<int>("Id");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("tblBoardTypes");
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Client", b =>
-                {
-                    b.Property<string>("Id");
-
-                    b.Property<double>("Rating");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("tblClients");
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.ConvenienceType", b =>
-                {
-                    b.Property<int>("Id");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("tblConvenienceTypes");
-                });
-
             modelBuilder.Entity("WebSiteCore.DAL.Entities.DbUser", b =>
                 {
                     b.Property<string>("Id")
@@ -279,91 +192,6 @@ namespace WebSiteCore.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Employee", b =>
-                {
-                    b.Property<string>("Id");
-
-                    b.Property<DateTime?>("HiringDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("tblEmployees");
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Floor", b =>
-                {
-                    b.Property<int>("Id");
-
-                    b.Property<string>("Description");
-
-                    b.Property<int>("Number");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("tblFloors");
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Offer", b =>
-                {
-                    b.Property<int>("Id");
-
-                    b.Property<string>("Description");
-
-                    b.Property<DateTime?>("From");
-
-                    b.Property<string>("ImageName");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255);
-
-                    b.Property<DateTime?>("To");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("tblOffers");
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Order", b =>
-                {
-                    b.Property<int>("Id");
-
-                    b.Property<int>("ApartmentId");
-
-                    b.Property<int>("BoardTypeId");
-
-                    b.Property<string>("ClientId");
-
-                    b.Property<DateTime?>("From");
-
-                    b.Property<double>("Price");
-
-                    b.Property<DateTime?>("To");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApartmentId");
-
-                    b.HasIndex("BoardTypeId");
-
-                    b.HasIndex("ClientId");
-
-                    b.ToTable("tblOrders");
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.RoomType", b =>
-                {
-                    b.Property<int>("Id");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("tblRoomTypes");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
@@ -407,65 +235,6 @@ namespace WebSiteCore.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Apartment", b =>
-                {
-                    b.HasOne("WebSiteCore.DAL.Entities.ConvenienceType", "ConvenienceType")
-                        .WithMany("Apartments")
-                        .HasForeignKey("ConvenienceTypeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("WebSiteCore.DAL.Entities.Floor", "Floor")
-                        .WithMany("Apartments")
-                        .HasForeignKey("FloorId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("WebSiteCore.DAL.Entities.RoomType", "RoomType")
-                        .WithMany("Apartments")
-                        .HasForeignKey("RoomTypeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.ApartmentImage", b =>
-                {
-                    b.HasOne("WebSiteCore.DAL.Entities.Apartment", "Apartment")
-                        .WithMany("Images")
-                        .HasForeignKey("AppartmentId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Client", b =>
-                {
-                    b.HasOne("WebSiteCore.DAL.Entities.DbUser", "User")
-                        .WithMany()
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Employee", b =>
-                {
-                    b.HasOne("WebSiteCore.DAL.Entities.DbUser", "User")
-                        .WithMany()
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("WebSiteCore.DAL.Entities.Order", b =>
-                {
-                    b.HasOne("WebSiteCore.DAL.Entities.Apartment", "Apartment")
-                        .WithMany()
-                        .HasForeignKey("ApartmentId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("WebSiteCore.DAL.Entities.BoardType", "BoardType")
-                        .WithMany("Orders")
-                        .HasForeignKey("BoardTypeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("WebSiteCore.DAL.Entities.Client", "Client")
-                        .WithMany()
-                        .HasForeignKey("ClientId");
                 });
 #pragma warning restore 612, 618
         }

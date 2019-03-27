@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebSiteCore.Migrations
 {
-    public partial class addclientandemployeetables : Migration
+    public partial class addclientsandemployeestables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

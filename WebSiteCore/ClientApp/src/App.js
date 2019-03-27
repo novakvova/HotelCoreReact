@@ -6,8 +6,7 @@ import Counter from './components/Counter';
 import FetchData from './components/FetchData';
 import LoginPage from './components/auth/login/LoginPage';
 import Room from './components/roomBooking/Room';
-import ChambermaidPage from './components/chambermaid/ChambermaidPage'
-import ChambermaidForm from './components/chambermaid/ChambermaidForm'
+import StandartsPage from './components/roomBooking/StandartsPage';
 import SignUpPage from './components/auth/signUp/SignUpPage';
 import Contacts from './components/contacts/Contacts';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,12 +16,10 @@ import Booking from './components/booking/Booking';
 
 export default () => (
     <Layout>
-        <Route exact path='/' component={Home} />
+        <Route exact path='/' component={StandartsPage} />
         <Route path='/counter' component={Counter} />
         <Route path='/fetchdata/:startDateIndex?' component={FetchData} />
         <Route path='/login' component={LoginPage} />
-        <Route path='/chambermaid' component={ChambermaidPage} />
-        <Route path='/chambermaidform' component={ChambermaidForm} />
         <Route path='/room' component={Room} />
         <Route path='/SignUp' component={SignUpPage} />
         <Route path='/profile' component={UserProfilePage} />

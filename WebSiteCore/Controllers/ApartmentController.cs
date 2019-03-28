@@ -146,7 +146,7 @@ namespace WebSiteCore.Controllers
                                                         a.FloorId,
                                                         a.FloorNumber,
                                                         a.FloorDescription,
-                                                        Images = i.Select(image => new { image.Id, image.Name })
+                                                        Images = i.Select(image => new { $"" })
                                                     });
 
             //var apartWithoutNavPropObjects = _ctx.VApartmentsData.Where(a => a.ApartmentId == id);

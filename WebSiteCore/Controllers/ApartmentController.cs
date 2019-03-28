@@ -41,7 +41,7 @@ namespace WebSiteCore.Controllers
                                                      a.FloorId,
                                                      a.FloorNumber,
                                                      a.FloorDescription,
-                                                     Images = i.Select(image => new { image.Id, image.Name })
+                                                     Images = i.Select(image => new { Path = $"Content/Images/Apartments/{image.Name}.jpg" })
                                                  });
 
             //var apartments = _ctx.VApartmentsData.GroupBy(a => a.ApartmentId)
@@ -146,7 +146,7 @@ namespace WebSiteCore.Controllers
                                                         a.FloorId,
                                                         a.FloorNumber,
                                                         a.FloorDescription,
-                                                        Images = i.Select(image => new { $"" })
+                                                        Images = i.Select(image => new { Path = $"Content/Images/Apartments/{image.Name}" })
                                                     });
 
             //var apartWithoutNavPropObjects = _ctx.VApartmentsData.Where(a => a.ApartmentId == id);

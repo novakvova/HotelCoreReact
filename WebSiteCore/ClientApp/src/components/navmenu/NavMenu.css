@@ -184,18 +184,29 @@ div.react-datepicker__header{
     padding:0;
 }
 
+div.react-datepicker__day--today, div.react-datepicker__day--selected{
+    background:#1d5d90;
+    color:white;
+}
+
 input{
     border-radius:2px;
     border:0;
     height: 27px;
 }   
 
-.reserve-line input.button{
-    width:125px;
+a.booking-btn{
+    padding-left:15px;
+    padding-right:15px;
     margin-left:20px;
     margin-right:20px;
     color:black;
     background: white;
+    border-radius: 2px;
+}
+
+a.booking-btn:hover, a.booking-btn:active, a.booking-btn:focus{
+    color:black;
 }
 
 .drop {
@@ -246,7 +257,7 @@ input{
     width:65px;
 }
 
-.fa {
+.fa-users {
     color:white;
     margin-left:15px;
     margin-right: 10px;

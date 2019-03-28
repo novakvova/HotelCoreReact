@@ -151,9 +151,8 @@ class NavMenu extends Component {
                 <NumericInput className='numeric'/>              
             </div>
             <div className='box'>
-              <input className='button' type='button' value='BOOK NOW' />
+              <Link to='/booking' className='booking-btn'>BOOKING NOW</Link>
             </div>
-
           </div>
         </Row>
       </Navbar>

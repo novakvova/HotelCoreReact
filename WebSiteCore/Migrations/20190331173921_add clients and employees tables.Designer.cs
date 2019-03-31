@@ -10,8 +10,8 @@ using WebSiteCore.DAL.Entities;
 namespace WebSiteCore.Migrations
 {
     [DbContext(typeof(EFDbContext))]
-    [Migration("20190327164900_add users, roles and ASP.NET tables")]
-    partial class addusersrolesandASPNETtables
+    [Migration("20190331173921_add clients and employees tables")]
+    partial class addclientsandemployeestables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -131,6 +131,17 @@ namespace WebSiteCore.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("WebSiteCore.DAL.Entities.Client", b =>
+                {
+                    b.Property<string>("Id");
+
+                    b.Property<double>("Rating");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("tblClients");
+                });
+
             modelBuilder.Entity("WebSiteCore.DAL.Entities.DbUser", b =>
                 {
                     b.Property<string>("Id")
@@ -192,6 +203,17 @@ namespace WebSiteCore.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("WebSiteCore.DAL.Entities.Employee", b =>
+                {
+                    b.Property<string>("Id");
+
+                    b.Property<DateTime?>("HiringDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("tblEmployees");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
@@ -234,6 +256,22 @@ namespace WebSiteCore.Migrations
                     b.HasOne("WebSiteCore.DAL.Entities.DbUser")
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("WebSiteCore.DAL.Entities.Client", b =>
+                {
+                    b.HasOne("WebSiteCore.DAL.Entities.DbUser", "User")
+                        .WithMany()
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("WebSiteCore.DAL.Entities.Employee", b =>
+                {
+                    b.HasOne("WebSiteCore.DAL.Entities.DbUser", "User")
+                        .WithMany()
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

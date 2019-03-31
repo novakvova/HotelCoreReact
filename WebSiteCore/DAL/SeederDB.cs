@@ -31,7 +31,6 @@ namespace WebSiteCore.DAL.Entities
 
                 result = userManager.AddToRoleAsync(user, roleName).Result;
             }
-
         }
 
         public static void SeedClients(UserManager<DbUser> userManager, EFDbContext context)
@@ -57,41 +56,39 @@ namespace WebSiteCore.DAL.Entities
             if (context.ConvenienceTypes.Count() == 0)
             {
                 var user = userManager.FindByEmailAsync("admin@gmail.com").Result;
-                context.ConvenienceTypes.AddRange(
-                 new ConvenienceType[]
-                 {
-                    new ConvenienceType { Id=1, Name="Standart"},
-                    new ConvenienceType { Id=2, Name="Superior"},
-                    new ConvenienceType { Id=3, Name="Junior suite"}
-                 });
-                context.RoomTypes.AddRange(
-                    new RoomType[]
-                    {
-                    new RoomType { Id=1, Name="Single"},
-                    new RoomType { Id=2, Name="Twin"},
-                    new RoomType { Id=3, Name="Double room"}
-                    });
-                context.BoardTypes.AddRange(
-                    new BoardType[]
-                    {
-                    new BoardType { Id=1, Name="Bed and breakfast"},
-                    new BoardType { Id=2, Name="Half board"},
-                    new BoardType { Id=3, Name="Full board"},
-                    new BoardType { Id=4, Name="All inclusive"},
-                    });
-                context.Floors.AddRange(
-                    new Floor[]
-                    {
-                    new Floor { Id = 1, Number = 1, Description = "Administrative floor"},
-                    new Floor { Id = 2, Number = 2, Description = "Standart floor"},
-                    new Floor { Id = 3, Number = 3, Description = "Luxurious floor"}
-                    });
-                context.Apartments.AddRange(
-                    new Apartment[]
-                    {
+                var convenienceTypes = new ConvenienceType[]
+                {
+                    new ConvenienceType { Name="Standart"},
+                    new ConvenienceType { Name="Superior"},
+                    new ConvenienceType { Name="Junior suite"}
+                };
+                context.ConvenienceTypes.AddRange(convenienceTypes);
+                var roomTypes = new RoomType[]
+                {
+                    new RoomType { Name="Single"},
+                    new RoomType { Name="Twin"},
+                    new RoomType { Name="Double room"}
+                };
+                context.RoomTypes.AddRange(roomTypes);
+                var boardTypes = new BoardType[]
+                {
+                    new BoardType { Name="Bed and breakfast"},
+                    new BoardType { Name="Half board"},
+                    new BoardType { Name="Full board"},
+                    new BoardType { Name="All inclusive"},
+                };
+                context.BoardTypes.AddRange(boardTypes);
+                var floors = new Floor[]
+                {
+                    new Floor { Number = 1, Description = "Administrative floor"},
+                    new Floor { Number = 2, Description = "Standart floor"},
+                    new Floor { Number = 3, Description = "Luxurious floor"}
+                };
+                context.Floors.AddRange(floors);
+                var apartments = new Apartment[]
+                {
                     new Apartment
                     {
-                        Id = 1,
                         Name = "Family Standart",
                         Description = "Family Room - a perfect solution for family travel. " +
                         "Room consists of a bedroom with a king-size bed and a living room with a comfortable sofa. " +
@@ -102,14 +99,13 @@ namespace WebSiteCore.DAL.Entities
                         Area = 43,
                         Price = 230,
                         RoomQuantity = 2,
-                        ConvenienceTypeId = 1,
-                        RoomTypeId = 3,
-                        FloorId = 3,
+                        ConvenienceTypeId = convenienceTypes[0].Id,
+                        RoomTypeId = roomTypes[2].Id,
+                        FloorId = floors[2].Id,
                         Images = new List<ApartmentImage>()
                     },
                     new Apartment
                     {
-                        Id = 2,
                         Name = "Single Standart",
                         Description = "Laconic room with one Single bed. Due to the high ergonomics of interior, " +
                         "this room easily contains all the necessary accessories of comfortable life and leaves enough free space at the same time. " +
@@ -119,14 +115,13 @@ namespace WebSiteCore.DAL.Entities
                         Area = 19,
                         Price = 145,
                         RoomQuantity = 1,
-                        ConvenienceTypeId = 1,
-                        RoomTypeId = 1,
-                        FloorId = 3,
+                        ConvenienceTypeId = convenienceTypes[0].Id,
+                        RoomTypeId = roomTypes[0].Id,
+                        FloorId = floors[2].Id,
                         Images = new List<ApartmentImage>()
                     },
                     new Apartment
                     {
-                        Id = 3,
                         Name = "Studio Double",
                         Description = "Studio Double Room is intended to become a real peace of heaven for all connoisseurs of space and ergonomics in design. " +
                         "Such components as warm colors in the interior, cozy lighting, and comfortable furniture made of environmentally friendly materials " +
@@ -137,14 +132,13 @@ namespace WebSiteCore.DAL.Entities
                         Area = 44,
                         Price = 220,
                         RoomQuantity = 2,
-                        ConvenienceTypeId = 2,
-                        RoomTypeId = 3,
-                        FloorId = 2,
+                        ConvenienceTypeId = convenienceTypes[1].Id,
+                        RoomTypeId = roomTypes[2].Id,
+                        FloorId = floors[1].Id,
                         Images = new List<ApartmentImage>()
                     },
                     new Apartment
                     {
-                        Id = 4,
                         Name = "DBL Standart",
                         Description = "If you travel as a couple, the luxurious “king size” bed will become a nice and pleasant surprise for you. " +
                         "You will receive maximum pleasure from your sleep without hindering yourself. " +
@@ -156,14 +150,13 @@ namespace WebSiteCore.DAL.Entities
                         Area = 28,
                         Price = 180,
                         RoomQuantity = 1,
-                        ConvenienceTypeId = 1,
-                        RoomTypeId = 3,
-                        FloorId = 3,
+                        ConvenienceTypeId = convenienceTypes[0].Id,
+                        RoomTypeId = roomTypes[2].Id,
+                        FloorId = floors[2].Id,
                         Images = new List<ApartmentImage>()
                     },
                     new Apartment
                     {
-                        Id = 5,
                         Name = "Twin Standart",
                         Description = "Comfortable, cozy and compact room with two single beds. There is also a spacious bathroom unit with the shower with the natural marble decoration here. " +
                         "Soft orthopedic mattresses will help you to relax after hard working day and to gather strength before your new trips and meetings. " +
@@ -174,14 +167,13 @@ namespace WebSiteCore.DAL.Entities
                         Area = 28,
                         Price = 160,
                         RoomQuantity = 1,
-                        ConvenienceTypeId = 1,
-                        RoomTypeId = 2,
-                        FloorId = 3,
+                        ConvenienceTypeId = convenienceTypes[0].Id,
+                        RoomTypeId = roomTypes[1].Id,
+                        FloorId = floors[2].Id,
                         Images = new List<ApartmentImage>()
                     },
                     new Apartment
                     {
-                        Id = 6,
                         Name = "Superior Double",
                         Description = "It’s a choice for the sophisticated travelers for whom the comfortable business always goes inseparably with the comfortable rest. " +
                         "The room is divided into a relaxation zone and another for business activity. There is an ergonomic desk made from the natural wood. " +
@@ -192,14 +184,13 @@ namespace WebSiteCore.DAL.Entities
                         Area = 31,
                         Price = 200,
                         RoomQuantity = 1,
-                        ConvenienceTypeId = 2,
-                        RoomTypeId = 3,
-                        FloorId = 2,
+                        ConvenienceTypeId = convenienceTypes[1].Id,
+                        RoomTypeId = roomTypes[2].Id,
+                        FloorId = floors[1].Id,
                         Images = new List<ApartmentImage>()
                     },
                     new Apartment
                     {
-                        Id = 7,
                         Name = "Junior Suite(with min-kitchen)",
                         Description = "It’s a choice for the sophisticated travelers for whom the comfortable business always goes inseparably with the comfortable rest. " +
                         "The room is divided into a relaxation zone and another for business activity. There is an ergonomic desk made from the natural wood. " +
@@ -210,67 +201,66 @@ namespace WebSiteCore.DAL.Entities
                         Area = 54,
                         Price = 250,
                         RoomQuantity = 2,
-                        ConvenienceTypeId = 3,
-                        RoomTypeId = 3,
-                        FloorId = 2,
+                        ConvenienceTypeId = convenienceTypes[2].Id,
+                        RoomTypeId = roomTypes[2].Id,
+                        FloorId = floors[1].Id,
                         Images = new List<ApartmentImage>()
                     }
-                    });
-                context.Orders.AddRange(
-                    new Order[]
-                    {
-                    new Order { Id = 1, From=new DateTime(2020, 1, 1), To=new DateTime(2020, 1, 10), ApartmentId=1, Price = 500, BoardTypeId=1, ClientId=user.Id},
-                    new Order { Id = 2, From=new DateTime(2020, 1, 8), To=new DateTime(2020, 1, 10), ApartmentId=2, Price = 500, BoardTypeId=1, ClientId=user.Id},
-                    new Order { Id = 3, From=new DateTime(2020, 1, 7), To=new DateTime(2020, 1, 12), ApartmentId=1, Price = 500, BoardTypeId=1, ClientId=user.Id},
-                    new Order { Id = 4, From=new DateTime(2020, 1, 3), To=new DateTime(2020, 1, 5), ApartmentId=2, Price = 500, BoardTypeId=1, ClientId=user.Id},
-                    new Order { Id = 5, From=new DateTime(2020, 1, 2), To=new DateTime(2020, 1, 11), ApartmentId=3, Price = 500, BoardTypeId=1, ClientId=user.Id},
-                    new Order { Id = 6, From=new DateTime(2020, 1, 4), To=new DateTime(2020, 1, 5), ApartmentId=3, Price = 500, BoardTypeId=1, ClientId=user.Id},
-                    new Order { Id = 7, From=new DateTime(2020, 1, 6), To=new DateTime(2020, 1, 10), ApartmentId=7, Price = 500, BoardTypeId=1, ClientId=user.Id},
-                    new Order { Id = 8, From=new DateTime(2020, 1, 7), To=new DateTime(2020, 1, 12), ApartmentId=5, Price = 500, BoardTypeId=1, ClientId=user.Id},
-                    new Order { Id = 9, From=new DateTime(2020, 1, 1), To=new DateTime(2020, 1, 5), ApartmentId=5, Price = 500, BoardTypeId=1, ClientId=user.Id},
-                    new Order { Id = 10, From=new DateTime(2020, 1, 2), To=new DateTime(2020, 1, 11), ApartmentId=6, Price = 500, BoardTypeId=1, ClientId=user.Id},
-                    new Order { Id = 11, From=new DateTime(2020, 1, 1), To=new DateTime(2020, 1, 10), ApartmentId=7, Price = 500, BoardTypeId=1, ClientId=user.Id},
-                    new Order { Id = 12, From=new DateTime(2020, 1, 8), To=new DateTime(2020, 1, 10), ApartmentId=5, Price = 500, BoardTypeId=1, ClientId=user.Id},
-                    new Order { Id = 13, From=new DateTime(2020, 1, 7), To=new DateTime(2020, 1, 12), ApartmentId=6, Price = 500, BoardTypeId=1, ClientId=user.Id},
-                    new Order { Id = 14, From=new DateTime(2020, 1, 8), To=new DateTime(2020, 1, 9), ApartmentId=4, Price = 500, BoardTypeId=1, ClientId=user.Id},
-                    new Order { Id = 15, From=new DateTime(2020, 1, 7), To=new DateTime(2020, 1, 11), ApartmentId=4, Price = 500, BoardTypeId=1, ClientId=user.Id}
-                    });
-                context.ApartmentImages.AddRange(
-                    new ApartmentImage[]
-                    {
-                    new ApartmentImage { Id = 1, Name = $"FamilyStandart_1", AppartmentId = 1},
-                    new ApartmentImage { Id = 2, Name = $"FamilyStandart_2", AppartmentId = 1},
-                    new ApartmentImage { Id = 3, Name = $"FamilyStandart_3", AppartmentId = 1},
-                    new ApartmentImage { Id = 4, Name = $"FamilyStandart_4", AppartmentId = 1},
-                    new ApartmentImage { Id = 5, Name = "SingleStandart_1", AppartmentId = 2},
-                    new ApartmentImage { Id = 6, Name = "SingleStandart_2", AppartmentId = 2},
-                    new ApartmentImage { Id = 7, Name = "SingleStandart_3", AppartmentId = 2},
-                    new ApartmentImage { Id = 8, Name = "SingleStandart_4", AppartmentId = 2},
-                    new ApartmentImage { Id = 9, Name = "StudioDouble_1", AppartmentId = 3},
-                    new ApartmentImage { Id = 10, Name = "StudioDouble_2", AppartmentId = 3},
-                    new ApartmentImage { Id = 11, Name = "StudioDouble_3", AppartmentId = 3},
-                    new ApartmentImage { Id = 12, Name = "StudioDouble_4", AppartmentId = 3},
-                    new ApartmentImage { Id = 13, Name = "DBLStandart_1", AppartmentId = 4},
-                    new ApartmentImage { Id = 14, Name = "DBLStandart_2", AppartmentId = 4},
-                    new ApartmentImage { Id = 15, Name = "DBLStandart_3", AppartmentId = 4},
-                    new ApartmentImage { Id = 16, Name = "TwinStandart_1", AppartmentId = 5},
-                    new ApartmentImage { Id = 17, Name = "TwinStandart_2", AppartmentId = 5},
-                    new ApartmentImage { Id = 18, Name = "TwinStandart_3", AppartmentId = 5},
-                    new ApartmentImage { Id = 19, Name = "SuperiorDouble_1", AppartmentId = 6},
-                    new ApartmentImage { Id = 20, Name = "SuperiorDouble_2", AppartmentId = 6},
-                    new ApartmentImage { Id = 21, Name = "SuperiorDouble_3", AppartmentId = 6},
-                    new ApartmentImage { Id = 22, Name = "JuniorSuite_1", AppartmentId = 7},
-                    new ApartmentImage { Id = 23, Name = "JuniorSuite_2", AppartmentId = 7},
-                    new ApartmentImage { Id = 24, Name = "JuniorSuite_3", AppartmentId = 7},
-                    new ApartmentImage { Id = 25, Name = "JuniorSuite_4", AppartmentId = 7},
-                    new ApartmentImage { Id = 26, Name = "JuniorSuite_5", AppartmentId = 7}
-                    });
-                context.Offers.AddRange(
-                    new Offer[]
-                    {
+                };
+                context.Apartments.AddRange(apartments);
+                var orders = new Order[]
+                {
+                    new Order { From=new DateTime(2020, 1, 1), To=new DateTime(2020, 1, 10), ApartmentId=apartments[0].Id, Price = 500, BoardTypeId=boardTypes[0].Id, ClientId=user.Id},
+                    new Order { From=new DateTime(2020, 1, 8), To=new DateTime(2020, 1, 10), ApartmentId=apartments[1].Id, Price = 500, BoardTypeId=boardTypes[0].Id, ClientId=user.Id},
+                    new Order { From=new DateTime(2020, 1, 7), To=new DateTime(2020, 1, 12), ApartmentId=apartments[0].Id, Price = 500, BoardTypeId=boardTypes[0].Id, ClientId=user.Id},
+                    new Order { From=new DateTime(2020, 1, 3), To=new DateTime(2020, 1, 5), ApartmentId=apartments[1].Id, Price = 500, BoardTypeId=boardTypes[0].Id, ClientId=user.Id},
+                    new Order { From=new DateTime(2020, 1, 2), To=new DateTime(2020, 1, 11), ApartmentId=apartments[2].Id, Price = 500, BoardTypeId=boardTypes[0].Id, ClientId=user.Id},
+                    new Order { From=new DateTime(2020, 1, 4), To=new DateTime(2020, 1, 5), ApartmentId=apartments[2].Id, Price = 500, BoardTypeId=boardTypes[0].Id, ClientId=user.Id},
+                    new Order { From=new DateTime(2020, 1, 6), To=new DateTime(2020, 1, 10), ApartmentId=apartments[6].Id, Price = 500, BoardTypeId=boardTypes[0].Id, ClientId=user.Id},
+                    new Order { From=new DateTime(2020, 1, 7), To=new DateTime(2020, 1, 12), ApartmentId=apartments[4].Id, Price = 500, BoardTypeId=boardTypes[0].Id, ClientId=user.Id},
+                    new Order { From=new DateTime(2020, 1, 1), To=new DateTime(2020, 1, 5), ApartmentId=apartments[4].Id, Price = 500, BoardTypeId=boardTypes[0].Id, ClientId=user.Id},
+                    new Order { From=new DateTime(2020, 1, 2), To=new DateTime(2020, 1, 11), ApartmentId=apartments[5].Id, Price = 500, BoardTypeId=boardTypes[0].Id, ClientId=user.Id},
+                    new Order { From=new DateTime(2020, 1, 1), To=new DateTime(2020, 1, 10), ApartmentId=apartments[6].Id, Price = 500, BoardTypeId=boardTypes[0].Id, ClientId=user.Id},
+                    new Order { From=new DateTime(2020, 1, 8), To=new DateTime(2020, 1, 10), ApartmentId=apartments[4].Id, Price = 500, BoardTypeId=boardTypes[0].Id, ClientId=user.Id},
+                    new Order { From=new DateTime(2020, 1, 7), To=new DateTime(2020, 1, 12), ApartmentId=apartments[5].Id, Price = 500, BoardTypeId=boardTypes[0].Id, ClientId=user.Id},
+                    new Order { From=new DateTime(2020, 1, 8), To=new DateTime(2020, 1, 9), ApartmentId=apartments[3].Id, Price = 500, BoardTypeId=boardTypes[0].Id, ClientId=user.Id},
+                    new Order { From=new DateTime(2020, 1, 7), To=new DateTime(2020, 1, 11), ApartmentId=apartments[3].Id, Price = 500, BoardTypeId=boardTypes[0].Id, ClientId=user.Id}
+                };
+                context.Orders.AddRange(orders);
+                var apartmentImages = new ApartmentImage[]
+                {
+                    new ApartmentImage { Name = $"FamilyStandart_1", AppartmentId = apartments[0].Id},
+                    new ApartmentImage { Name = $"FamilyStandart_2", AppartmentId = apartments[0].Id},
+                    new ApartmentImage { Name = $"FamilyStandart_3", AppartmentId = apartments[0].Id},
+                    new ApartmentImage { Name = $"FamilyStandart_4", AppartmentId = apartments[0].Id},
+                    new ApartmentImage { Name = "SingleStandart_1", AppartmentId = apartments[1].Id},
+                    new ApartmentImage { Name = "SingleStandart_2", AppartmentId = apartments[1].Id},
+                    new ApartmentImage { Name = "SingleStandart_3", AppartmentId = apartments[1].Id},
+                    new ApartmentImage { Name = "SingleStandart_4", AppartmentId = apartments[1].Id},
+                    new ApartmentImage { Name = "StudioDouble_1", AppartmentId = apartments[2].Id},
+                    new ApartmentImage { Name = "StudioDouble_2", AppartmentId = apartments[2].Id},
+                    new ApartmentImage { Name = "StudioDouble_3", AppartmentId = apartments[2].Id},
+                    new ApartmentImage { Name = "StudioDouble_4", AppartmentId = apartments[2].Id},
+                    new ApartmentImage { Name = "DBLStandart_1", AppartmentId = apartments[3].Id},
+                    new ApartmentImage { Name = "DBLStandart_2", AppartmentId = apartments[3].Id},
+                    new ApartmentImage { Name = "DBLStandart_3", AppartmentId = apartments[3].Id},
+                    new ApartmentImage { Name = "TwinStandart_1", AppartmentId = apartments[4].Id},
+                    new ApartmentImage { Name = "TwinStandart_2", AppartmentId = apartments[4].Id},
+                    new ApartmentImage { Name = "TwinStandart_3", AppartmentId = apartments[4].Id},
+                    new ApartmentImage { Name = "SuperiorDouble_1", AppartmentId = apartments[5].Id},
+                    new ApartmentImage { Name = "SuperiorDouble_2", AppartmentId = apartments[5].Id},
+                    new ApartmentImage { Name = "SuperiorDouble_3", AppartmentId = apartments[5].Id},
+                    new ApartmentImage { Name = "JuniorSuite_1", AppartmentId = apartments[6].Id},
+                    new ApartmentImage { Name = "JuniorSuite_2", AppartmentId = apartments[6].Id},
+                    new ApartmentImage { Name = "JuniorSuite_3", AppartmentId = apartments[6].Id},
+                    new ApartmentImage { Name = "JuniorSuite_4", AppartmentId = apartments[6].Id},
+                    new ApartmentImage { Name = "JuniorSuite_5", AppartmentId = apartments[6].Id}
+                };
+                context.ApartmentImages.AddRange(apartmentImages);
+                var offers = new Offer[]
+                {
                     new Offer
                     {
-                        Id = 1,
                         Name = "Spring Weekdays",
                         Description = "Great offer in CITYHOTEL! 15% OFF for accommodation on weekdays!",
                         From = new DateTime(2019, 3, 20, 11, 17, 17, 720, DateTimeKind.Local),
@@ -279,7 +269,6 @@ namespace WebSiteCore.DAL.Entities
                     },
                      new Offer
                     {
-                        Id = 2,
                         Name = "FriSatSun",
                         Description = "Your discount on weekends (Fri - Sun): 1 day 15% OFF; 2-3 days 25% OFF",
                         From = new DateTime(2019, 3, 20, 11, 17, 17, 720, DateTimeKind.Local),
@@ -288,14 +277,14 @@ namespace WebSiteCore.DAL.Entities
                     },
                     new Offer
                     {
-                        Id = 3,
                         Name = "Book at out website",
                         Description = "Book at our website and get an additional 5% discount of the Best Available Rate - Extra 5% OFF",
                         From = new DateTime(2019, 3, 20, 11, 17, 17, 720, DateTimeKind.Local),
                         To = new DateTime(2019, 3, 20, 11, 17, 17, 720, DateTimeKind.Local).AddDays(360),
                         ImageName = "BookAtSite_1"
                     }
-                    });
+                };
+                context.Offers.AddRange(offers);
                 context.SaveChanges();
             }
         }

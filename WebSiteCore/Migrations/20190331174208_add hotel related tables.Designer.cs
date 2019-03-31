@@ -10,7 +10,7 @@ using WebSiteCore.DAL.Entities;
 namespace WebSiteCore.Migrations
 {
     [DbContext(typeof(EFDbContext))]
-    [Migration("20190327165628_add hotel related tables")]
+    [Migration("20190331174208_add hotel related tables")]
     partial class addhotelrelatedtables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -133,7 +133,9 @@ namespace WebSiteCore.Migrations
 
             modelBuilder.Entity("WebSiteCore.DAL.Entities.Apartment", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<double>("Area");
 
@@ -168,7 +170,9 @@ namespace WebSiteCore.Migrations
 
             modelBuilder.Entity("WebSiteCore.DAL.Entities.ApartmentImage", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("AppartmentId");
 
@@ -185,7 +189,9 @@ namespace WebSiteCore.Migrations
 
             modelBuilder.Entity("WebSiteCore.DAL.Entities.BoardType", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -209,7 +215,9 @@ namespace WebSiteCore.Migrations
 
             modelBuilder.Entity("WebSiteCore.DAL.Entities.ConvenienceType", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -294,7 +302,9 @@ namespace WebSiteCore.Migrations
 
             modelBuilder.Entity("WebSiteCore.DAL.Entities.Floor", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Description");
 
@@ -307,7 +317,9 @@ namespace WebSiteCore.Migrations
 
             modelBuilder.Entity("WebSiteCore.DAL.Entities.Offer", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Description");
 
@@ -328,7 +340,9 @@ namespace WebSiteCore.Migrations
 
             modelBuilder.Entity("WebSiteCore.DAL.Entities.Order", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("ApartmentId");
 
@@ -355,7 +369,9 @@ namespace WebSiteCore.Migrations
 
             modelBuilder.Entity("WebSiteCore.DAL.Entities.RoomType", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -440,16 +456,16 @@ namespace WebSiteCore.Migrations
             modelBuilder.Entity("WebSiteCore.DAL.Entities.Client", b =>
                 {
                     b.HasOne("WebSiteCore.DAL.Entities.DbUser", "User")
-                        .WithMany()
-                        .HasForeignKey("Id")
+                        .WithOne("Client")
+                        .HasForeignKey("WebSiteCore.DAL.Entities.Client", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("WebSiteCore.DAL.Entities.Employee", b =>
                 {
                     b.HasOne("WebSiteCore.DAL.Entities.DbUser", "User")
-                        .WithMany()
-                        .HasForeignKey("Id")
+                        .WithOne("Employee")
+                        .HasForeignKey("WebSiteCore.DAL.Entities.Employee", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

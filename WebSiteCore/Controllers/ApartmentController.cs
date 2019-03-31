@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using WebSiteCore.DAL.Entities;
 
 namespace WebSiteCore.Controllers
@@ -14,12 +15,15 @@ namespace WebSiteCore.Controllers
     public class ApartmentController : ControllerBase
     {
         private readonly EFDbContext _ctx;
-        public ApartmentController(EFDbContext _ctx)
+        private IConfiguration _configuration;
+        public ApartmentController(EFDbContext context, IConfiguration Configuration)
         {
-            this._ctx = _ctx;
+            _ctx = context;
+            _configuration = Configuration;
         }
         public IActionResult Get()
         {
+            string imagePath = _configuration["Settings:ImagePath"];
             var apartments = _ctx.VApartments.ToList()
                                              .GroupJoin(
                                                  _ctx.ApartmentImages.ToList(),
@@ -41,7 +45,7 @@ namespace WebSiteCore.Controllers
                                                      a.FloorId,
                                                      a.FloorNumber,
                                                      a.FloorDescription,
-                                                     Images = i.Select(image => new { Path = $"Content/Images/Apartments/{image.Name}.jpg" })
+                                                     Images = i.Select(image => new { Path = imagePath + image.Name })
                                                  });
 
             //var apartments = _ctx.VApartmentsData.GroupBy(a => a.ApartmentId)
@@ -124,6 +128,7 @@ namespace WebSiteCore.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
+            string imagePath = _configuration["Settings:ImagePath"];
             object apartments = _ctx.VApartments.Where(a => a.ApartmentId == id)
                                                 .ToList()
                                                 .GroupJoin(
@@ -146,7 +151,7 @@ namespace WebSiteCore.Controllers
                                                         a.FloorId,
                                                         a.FloorNumber,
                                                         a.FloorDescription,
-                                                        Images = i.Select(image => new { Path = $"Content/Images/Apartments/{image.Name}" })
+                                                        Images = i.Select(image => new { Path = imagePath + image.Name })
                                                     });
 
             //var apartWithoutNavPropObjects = _ctx.VApartmentsData.Where(a => a.ApartmentId == id);

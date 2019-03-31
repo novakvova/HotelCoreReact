@@ -229,32 +229,32 @@ namespace WebSiteCore.DAL.Entities
                 context.Orders.AddRange(orders);
                 var apartmentImages = new ApartmentImage[]
                 {
-                    new ApartmentImage { Name = $"FamilyStandart_1", AppartmentId = apartments[0].Id},
-                    new ApartmentImage { Name = $"FamilyStandart_2", AppartmentId = apartments[0].Id},
-                    new ApartmentImage { Name = $"FamilyStandart_3", AppartmentId = apartments[0].Id},
-                    new ApartmentImage { Name = $"FamilyStandart_4", AppartmentId = apartments[0].Id},
-                    new ApartmentImage { Name = "SingleStandart_1", AppartmentId = apartments[1].Id},
-                    new ApartmentImage { Name = "SingleStandart_2", AppartmentId = apartments[1].Id},
-                    new ApartmentImage { Name = "SingleStandart_3", AppartmentId = apartments[1].Id},
-                    new ApartmentImage { Name = "SingleStandart_4", AppartmentId = apartments[1].Id},
-                    new ApartmentImage { Name = "StudioDouble_1", AppartmentId = apartments[2].Id},
-                    new ApartmentImage { Name = "StudioDouble_2", AppartmentId = apartments[2].Id},
-                    new ApartmentImage { Name = "StudioDouble_3", AppartmentId = apartments[2].Id},
-                    new ApartmentImage { Name = "StudioDouble_4", AppartmentId = apartments[2].Id},
-                    new ApartmentImage { Name = "DBLStandart_1", AppartmentId = apartments[3].Id},
-                    new ApartmentImage { Name = "DBLStandart_2", AppartmentId = apartments[3].Id},
-                    new ApartmentImage { Name = "DBLStandart_3", AppartmentId = apartments[3].Id},
-                    new ApartmentImage { Name = "TwinStandart_1", AppartmentId = apartments[4].Id},
-                    new ApartmentImage { Name = "TwinStandart_2", AppartmentId = apartments[4].Id},
-                    new ApartmentImage { Name = "TwinStandart_3", AppartmentId = apartments[4].Id},
-                    new ApartmentImage { Name = "SuperiorDouble_1", AppartmentId = apartments[5].Id},
-                    new ApartmentImage { Name = "SuperiorDouble_2", AppartmentId = apartments[5].Id},
-                    new ApartmentImage { Name = "SuperiorDouble_3", AppartmentId = apartments[5].Id},
-                    new ApartmentImage { Name = "JuniorSuite_1", AppartmentId = apartments[6].Id},
-                    new ApartmentImage { Name = "JuniorSuite_2", AppartmentId = apartments[6].Id},
-                    new ApartmentImage { Name = "JuniorSuite_3", AppartmentId = apartments[6].Id},
-                    new ApartmentImage { Name = "JuniorSuite_4", AppartmentId = apartments[6].Id},
-                    new ApartmentImage { Name = "JuniorSuite_5", AppartmentId = apartments[6].Id}
+                    new ApartmentImage { Name = "FamilyStandart_1.jpg", AppartmentId = apartments[0].Id},
+                    new ApartmentImage { Name = "FamilyStandart_2.jpg", AppartmentId = apartments[0].Id},
+                    new ApartmentImage { Name = "FamilyStandart_3.jpg", AppartmentId = apartments[0].Id},
+                    new ApartmentImage { Name = "FamilyStandart_4.jpg", AppartmentId = apartments[0].Id},
+                    new ApartmentImage { Name = "SingleStandart_1.jpg", AppartmentId = apartments[1].Id},
+                    new ApartmentImage { Name = "SingleStandart_2.jpg", AppartmentId = apartments[1].Id},
+                    new ApartmentImage { Name = "SingleStandart_3.jpg", AppartmentId = apartments[1].Id},
+                    new ApartmentImage { Name = "SingleStandart_4.jpg", AppartmentId = apartments[1].Id},
+                    new ApartmentImage { Name = "StudioDouble_1.jpg", AppartmentId = apartments[2].Id},
+                    new ApartmentImage { Name = "StudioDouble_2.jpg", AppartmentId = apartments[2].Id},
+                    new ApartmentImage { Name = "StudioDouble_3.jpg", AppartmentId = apartments[2].Id},
+                    new ApartmentImage { Name = "StudioDouble_4.jpg", AppartmentId = apartments[2].Id},
+                    new ApartmentImage { Name = "DBLStandart_1.jpg", AppartmentId = apartments[3].Id},
+                    new ApartmentImage { Name = "DBLStandart_2.jpg", AppartmentId = apartments[3].Id},
+                    new ApartmentImage { Name = "DBLStandart_3.jpg", AppartmentId = apartments[3].Id},
+                    new ApartmentImage { Name = "TwinStandart_1.jpg", AppartmentId = apartments[4].Id},
+                    new ApartmentImage { Name = "TwinStandart_2.jpg", AppartmentId = apartments[4].Id},
+                    new ApartmentImage { Name = "TwinStandart_3.jpg", AppartmentId = apartments[4].Id},
+                    new ApartmentImage { Name = "SuperiorDouble_1.jpg", AppartmentId = apartments[5].Id},
+                    new ApartmentImage { Name = "SuperiorDouble_2.jpg", AppartmentId = apartments[5].Id},
+                    new ApartmentImage { Name = "SuperiorDouble_3.jpg", AppartmentId = apartments[5].Id},
+                    new ApartmentImage { Name = "JuniorSuite_1.jpg", AppartmentId = apartments[6].Id},
+                    new ApartmentImage { Name = "JuniorSuite_2.jpg", AppartmentId = apartments[6].Id},
+                    new ApartmentImage { Name = "JuniorSuite_3.jpg", AppartmentId = apartments[6].Id},
+                    new ApartmentImage { Name = "JuniorSuite_4.jpg", AppartmentId = apartments[6].Id},
+                    new ApartmentImage { Name = "JuniorSuite_5.jpg", AppartmentId = apartments[6].Id}
                 };
                 context.ApartmentImages.AddRange(apartmentImages);
                 var offers = new Offer[]
@@ -265,7 +265,7 @@ namespace WebSiteCore.DAL.Entities
                         Description = "Great offer in CITYHOTEL! 15% OFF for accommodation on weekdays!",
                         From = new DateTime(2019, 3, 20, 11, 17, 17, 720, DateTimeKind.Local),
                         To = new DateTime(2019, 3, 20, 11, 17, 17, 720, DateTimeKind.Local).AddDays(60),
-                        ImageName = "SpringWeekdays_1"
+                        ImageName = "SpringWeekdays_1.jpeg"
                     },
                      new Offer
                     {
@@ -273,7 +273,7 @@ namespace WebSiteCore.DAL.Entities
                         Description = "Your discount on weekends (Fri - Sun): 1 day 15% OFF; 2-3 days 25% OFF",
                         From = new DateTime(2019, 3, 20, 11, 17, 17, 720, DateTimeKind.Local),
                         To = new DateTime(2019, 3, 20, 11, 17, 17, 720, DateTimeKind.Local).AddDays(120),
-                        ImageName = "FriSatSun_1"
+                        ImageName = "FriSatSun_1.jpeg"
                     },
                     new Offer
                     {
@@ -281,7 +281,7 @@ namespace WebSiteCore.DAL.Entities
                         Description = "Book at our website and get an additional 5% discount of the Best Available Rate - Extra 5% OFF",
                         From = new DateTime(2019, 3, 20, 11, 17, 17, 720, DateTimeKind.Local),
                         To = new DateTime(2019, 3, 20, 11, 17, 17, 720, DateTimeKind.Local).AddDays(360),
-                        ImageName = "BookAtSite_1"
+                        ImageName = "BookAtSite_1.jpg"
                     }
                 };
                 context.Offers.AddRange(offers);

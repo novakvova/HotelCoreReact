@@ -66,7 +66,6 @@
     font-size:16px;
     color:#999;
     font-weight: 600;
-    padding-right: 46%;
 }
 
 .fa-male {
@@ -107,3 +106,14 @@ div.react-datepicker{
     border:none;
 }
 
+.info-line .react-numeric-input input{
+    width:50px;
+    padding-right: 0;
+
+}
+.info-line .react-numeric-input{
+    margin-left:10%;
+    width:125px;
+    padding-right: 0;
+    
+}

@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace WebSiteCore.DAL.Entities
+namespace TestDbQueryConsole.Entities
 {
-    public abstract class BaseModel<T>
+    [Table("tblAuthors")]
+    public class Author
     {
         [Key]
-        public virtual T Id { get; set; }
-        [Required, StringLength(255)]
+        public int Id { get; set; }
         public string Name { get; set; }
+        public ICollection<Article> Articles { get; set; }
     }
 }

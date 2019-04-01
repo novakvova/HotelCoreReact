@@ -11,12 +11,12 @@ namespace WebSiteCore.Helpers.Attributes
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            var _ctx = (EFDbContext)validationContext
-                .GetService(typeof(EFDbContext));
-            if(_ctx.BoardTypes.Any(b => b.Id == (int)value))
-            {
-                return ValidationResult.Success;
-            }
+            //var _ctx = (EFDbContext)validationContext
+            //    .GetService(typeof(EFDbContext));
+            //if(_ctx.BoardTypes.Any(b => b.Id == (int)value))
+            //{
+            //    return ValidationResult.Success;
+            //}
             return new ValidationResult("Recieved board type doesn`t exist");
         }
     }

@@ -1,0 +1,1 @@
+﻿INSERT INTO tblArticles (AuthorId, Title)

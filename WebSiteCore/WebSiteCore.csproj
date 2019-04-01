@@ -32,11 +32,26 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\SampleDataController.cs" />
+    <Compile Remove="Migrations\20190327160521_disable auto generated id column in some tables.cs" />
+    <Compile Remove="Migrations\20190327160521_disable auto generated id column in some tables.Designer.cs" />
+    <Compile Remove="Migrations\20190327162834_add users, roles and ASP.NET tables.cs" />
+    <Compile Remove="Migrations\20190327162834_add users, roles and ASP.NET tables.Designer.cs" />
+    <Compile Remove="Migrations\20190327163315_add clients and employees tables.cs" />
+    <Compile Remove="Migrations\20190327163315_add clients and employees tables.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="DAL\Images\Apartments\" />
     <Folder Include="DAL\Images\Offers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Migrations\SqlQuery\VApartments.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Migrations\SqlQuery\VApartmentsData.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

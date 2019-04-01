@@ -148,7 +148,7 @@ class NavMenu extends Component {
             </div>
             <div className='box'>
               <i className="fa fa-users"></i>
-                <NumericInput className='numeric'/>              
+                <NumericInput className='numeric' min={0}/>              
             </div>
             <div className='box'>
               <Link to='/booking' className='booking-btn'>BOOKING NOW</Link>

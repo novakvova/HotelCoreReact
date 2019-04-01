@@ -33,16 +33,16 @@ class Footer extends Component {
                             <div className='info-line'>
                                 <i class="fa fa-male"></i>
                                 <span style={{ paddingLeft: '6%' }}>Number of Adults</span>
-                                <NumericInput />
+                                <NumericInput value={1} mobile min={0}/>
                             </div>
                             <div className='info-line'>
                                 <i class="glyphicon glyphicon-bed"></i>
                                 <span style={{ paddingLeft: '5%' }}>Number of Rooms</span>
-                                <NumericInput />
+                                <NumericInput value={1} mobile min={0}/>
                             </div>
                         </div>
-                        <div>
-                            <input type='button' value='Show numbers'/>
+                        <div style={{marginTop:'25px', textAlign:'center'}}>
+                            <Link to='/' className='btn'>Show Numbers </Link>
                         </div>
                     </div>
                     <div className='box availabilities'>

@@ -184,11 +184,15 @@ div.react-datepicker__header{
     padding:0;
 }
 
-div.react-datepicker__day--today, div.react-datepicker__day--selected{
-    background:#1d5d90;
+div.react-datepicker__day--selected{
+    background:black;
     color:white;
 }
-
+div.react-datepicker__day--today
+{
+    background:#9c9c9c;
+    color:white;
+}
 input{
     border-radius:2px;
     border:0;
@@ -255,6 +259,7 @@ a.booking-btn:hover, a.booking-btn:active, a.booking-btn:focus{
 
 .numeric {
     width:65px;
+    text-align: center;
 }
 
 .fa-users {

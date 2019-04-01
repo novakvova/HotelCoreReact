@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Glyphicon, Nav, Navbar, NavItem, Col, Row, Carousel } from "react-bootstrap";
 import './Offers.css';
+import { fetchOffers } from '../../actions/offerActions';
+import { connect } from 'react-redux';
 
 function Offer(props) {
     return (
@@ -40,7 +42,12 @@ function Offer(props) {
 }
 
 class Offers extends Component {
+    componentDidMount() {
+        this.props.fetchOffers();
+    }
     render() {
+        const {offers} = this.props;
+        console.log(this.props);
         return (
             <div className='offers'>
                 <Row className='contacts-title'>
@@ -65,4 +72,9 @@ class Offers extends Component {
         )
     };
 }
-export default Offers;
+function mapStateToProps(state) {
+    return {
+        offers: state.offers
+    }; 
+  }
+export default connect(mapStateToProps, {fetchOffers})(Offers);

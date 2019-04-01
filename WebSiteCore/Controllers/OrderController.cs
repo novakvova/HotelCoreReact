@@ -20,7 +20,32 @@ namespace WebSiteCore.Controllers
         {
             this._ctx = _ctx;
         }
+        //[HttpGet]
+        //public IActionResult Get()
+        //{
+        //    var orders = _ctx.Orders.ToList();
+        //    return Ok(orders);
+        //}
 
+        [HttpGet]
+        public IActionResult Get([FromBody]DateRangeViewModel dataRange)
+        {
+            var orders = _ctx.Orders.Where(o => o.From >= dataRange.From && o.From <= dataRange.To)
+
+                                    .OrderBy(o => o.From)
+                                    .ThenBy(o => o.To)
+                                    .Select(o => new
+                                    {
+                                        Id = o.Id,
+                                        From = o.From,
+                                        To = o.To,
+                                        ApartmentId = o.ApartmentId
+                                    })
+                                    .ToList();
+            return Ok(orders);
+        }
+
+        //[HttpPost]
         public IActionResult Post(OrderViewModel order)
         {
             if (!ModelState.IsValid)

@@ -10,7 +10,7 @@ namespace WebSiteCore.DAL.Entities
     [Table("tblClients")]
     public class Client
     {
-        [ForeignKey("User"), Key]
+        [ForeignKey("User")]
         public string Id { get; set; }
         public double Rating { get; set; } // оцінка
         public virtual DbUser User { get; set; }

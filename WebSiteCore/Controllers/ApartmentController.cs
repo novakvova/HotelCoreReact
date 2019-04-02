@@ -27,8 +27,52 @@ namespace WebSiteCore.Controllers
         public IActionResult Get()
         {
             string imagePath = _configuration["Settings:ImagePath"];
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
 
+            //1
+            var apartments = _ctx.VApartmentsData.GroupBy(a => new
+                                                 {
+                                                     a.ApartmentId,
+                                                     a.Name,
+                                                     a.Description,
+                                                     a.Equipment,
+                                                     a.Area,
+                                                     a.Price,
+                                                     a.RoomTypeId,
+                                                     a.RoomTypeName,
+                                                     a.RoomQuantity,
+                                                     a.ConvenienceTypeId,
+                                                     a.ConvenienceTypeName,
+                                                     a.FloorId,
+                                                     a.FloorNumber,
+                                                     a.FloorDescription
+                                                 })
+                                                 .Select(a => new
+                                                 {
+                                                     id = a.Key.ApartmentId,
+                                                     name = a.Key.Name,
+                                                     description = a.Key.Description,
+                                                     equipment = a.Key.Equipment,
+                                                     area = a.Key.Area,
+                                                     price = a.Key.Price,
+                                                     roomTypeId = a.Key.RoomTypeId,
+                                                     roomTypeName = a.Key.RoomTypeName,
+                                                     roomQuantity = a.Key.RoomQuantity,
+                                                     convenienceTypeId = a.Key.ConvenienceTypeId,
+                                                     convenienceTypeName = a.Key.ConvenienceTypeName,
+                                                     floorId = a.Key.FloorId,
+                                                     floorNumber = a.Key.FloorNumber,
+                                                     floorDescription = a.Key.FloorDescription,
+                                                     images = a.Select(ap => new { path = imagePath + ap.AprtImageName })
+                                                 });
+                                                 //.Select(a => new
+                                                 // {
+                                                 //     apart = a.Key,
+                                                 //     images = a.Select(ap => new { path = imagePath + ap.AprtImageName })
+                                                 // });
 
+            //2
             //var apartments = _ctx.VApartmentsData.GroupBy(a => a.ApartmentId)
             //                                     .Select(a => a.Take(1)
             //                                                   .Select(ap => new
@@ -53,99 +97,84 @@ namespace WebSiteCore.Controllers
             //                                                   .SingleOrDefault())
             //                                     .ToList();
 
+            //3
+            //var apartments = _ctx.VApartments.GroupJoin(
+            //                                   _ctx.ApartmentImages.ToList(),
+            //                                   a => a.ApartmentId,
+            //                                   i => i.AppartmentId,
+            //                                   (a, i) => new
+            //                                   {
+            //                                       a.ApartmentId,
+            //                                       a.Name,
+            //                                       a.Description,
+            //                                       a.Equipment,
+            //                                       a.Area,
+            //                                       a.Price,
+            //                                       a.RoomTypeId,
+            //                                       a.RoomTypeName,
+            //                                       a.RoomQuantity,
+            //                                       a.ConvenienceTypeId,
+            //                                       a.ConvenienceTypeName,
+            //                                       a.FloorId,
+            //                                       a.FloorNumber,
+            //                                       a.FloorDescription,
+            //                                       Images = i.Select(image => new { Path = imagePath + image.Name })
+            //                                   });
+
             ////////--------VOVA TEST-------------------
             //_ctx.Database. = s => System.Diagnostics.Debug.WriteLine(s);
             //_ctx.ConfigureLogging(s => Console.WriteLine(s)); (s => Console.WriteLine(s));
             //_ctx.GetService<ILoggerFactory>().AddProvider(new MyLoggerProvider());
-            Stopwatch stopWatch = new Stopwatch();
-            stopWatch.Start();
-
-            //var apartments = _ctx.VApartments.ToList()
-            //                                 .GroupJoin(
-            //                                     _ctx.ApartmentImages.ToList(),
-            //                                     a => a.ApartmentId,
-            //                                     i => i.AppartmentId,
-            //                                     (a, i) => new
-            //                                     {
-            //                                         a.ApartmentId,
-            //                                         a.Name,
-            //                                         a.Description,
-            //                                         a.Equipment,
-            //                                         a.Area,
-            //                                         a.Price,
-            //                                         a.RoomTypeId,
-            //                                         a.RoomTypeName,
-            //                                         a.RoomQuantity,
-            //                                         a.ConvenienceTypeId,
-            //                                         a.ConvenienceTypeName,
-            //                                         a.FloorId,
-            //                                         a.FloorNumber,
-            //                                         a.FloorDescription,
-            //                                         Images = i.Select(image => new { Path = imagePath + image.Name })
-            //                                     });
 
 
 
-            var groupData = from a in _ctx.VApartmentsData.AsQueryable()
-                            group a by new
-                            {
-                                Id = a.ApartmentId,
-                                a.Name,
-                                a.Description,
-                                a.Equipment,
-                                a.Area,
-                                a.Price,
-                                a.RoomTypeId,
-                                a.RoomTypeName,
-                                a.RoomQuantity,
-                                a.ConvenienceTypeId,
-                                a.ConvenienceTypeName,
-                                a.FloorId,
-                                a.FloorNumber,
-                                a.FloorDescription
-                            } into g
-                            //orderby g.Key.Id
-                            select new
-                            {
-                                g.Key.Id,
-                                Image=from i in g select (new { i.AprtImageId})
-                            };
 
-            //orderby g.Key.Name
-            //select new
-            //{
-            //    Apartmant = g.Key,
-            //    Images =
-            //       (from i in g
-            //        group i by new
-            //        {
-            //            Id = i.AprtImageId,
-            //            Name = i.AprtImageName
-            //        } into k
-            //        select k.Key)
-            //};
-            // var sql = groupData.ToString();//((System.Data.Entity.Core.Objects.ObjectQuery)groupData).ToTraceString();
 
-            var apartments = groupData
-                .OrderBy(a=>a.Id)
-               //.Skip(0).Take(5)
-               .ToList();
+            //4
+            //var groupData = from a in _ctx.VApartmentsData.AsQueryable()
+            //                group a by new
+            //                {
+            //                    Id = a.ApartmentId,
+            //                    a.Name,
+            //                    a.Description,
+            //                    a.Equipment,
+            //                    a.Area,
+            //                    a.Price,
+            //                    a.RoomTypeId,
+            //                    a.RoomTypeName,
+            //                    a.RoomQuantity,
+            //                    a.ConvenienceTypeId,
+            //                    a.ConvenienceTypeName,
+            //                    a.FloorId,
+            //                    a.FloorNumber,
+            //                    a.FloorDescription
+            //                } into g
+            //                //orderby g.Key.Id
+            //                select new
+            //                {
+            //                    g.Key.Id,
+            //                    Image=from i in g select (new { i.AprtImageId})
+            //                };
+
+            //var apartments = groupData
+            //    .OrderBy(a=>a.Id)
+            //   //.Skip(0).Take(5)
+            //   .ToList();
 
             stopWatch.Stop();
-            // Get the elapsed time as a TimeSpan value.
             TimeSpan ts = stopWatch.Elapsed;
-
-            // Format and display the TimeSpan value.
             string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
                 ts.Hours, ts.Minutes, ts.Seconds,
                 ts.Milliseconds / 10);
             Debug.WriteLine("RunTime " + elapsedTime);
+
             //var resultObject = from g in groupData
             //                   select 
 
             //var apartments = resultObject.ToList();
             ///////---------------------------------------
 
+            //5 Bad request
             //var apartments = _ctx.Apartments
             //    .Include(a => a.ConvenienceType)
             //    .Include(a => a.RoomType)
@@ -176,7 +205,6 @@ namespace WebSiteCore.Controllers
         {
             string imagePath = _configuration["Settings:ImagePath"];
             object apartments = _ctx.VApartments.Where(a => a.ApartmentId == id)
-                                                .ToList()
                                                 .GroupJoin(
                                                     _ctx.ApartmentImages.ToList(),
                                                     a => a.ApartmentId,

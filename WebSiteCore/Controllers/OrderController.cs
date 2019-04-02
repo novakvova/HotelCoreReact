@@ -28,16 +28,20 @@ namespace WebSiteCore.Controllers
         //}
 
         [HttpGet]
+        [Route("AvailableApart")]
         public IActionResult Get([FromBody]DateRangeViewModel dataRange)
         {
-            //var orders3 = _ctx.Orders.Where(o => o.From >= dataRange.From && o.From <= dataRange.To).ToList();
-            //var orders2 = _ctx.Orders.Where(o => o.From >= dataRange.From && o.From <= dataRange.To)
-            //                         .GroupBy(o => o.ApartmentId).ToList();
-            var orders = _ctx.Orders.Where(o => o.From >= dataRange.From && o.From <= dataRange.To)
+            var orders = _ctx.Orders.Where(o => o.From >= dataRange.From && o.From <= dataRange.To ||
+                                            o.From <= dataRange.From && o.To >= dataRange.From)
                                     .GroupBy(o => o.ApartmentId, 
                                             (key, items) => new { ApartId = key, Orders = items.ToList()})
                                     .ToList();
-            var freeApartm = new Dictionary<int, int>();
+            var apartQuant = new Dictionary<int, int>();
+            var apartmentsId = _ctx.Apartments.Select(a => a.Id);
+            foreach(var item in apartmentsId)
+            {
+                apartQuant.Add(item, 3);
+            }
             foreach(var group in orders)
             {
                 int count = 1;
@@ -61,10 +65,10 @@ namespace WebSiteCore.Controllers
                 }
                 if(count < 3)
                 {
-                    freeApartm.Add(group.ApartId, 3 - count);
-                }
+                    apartQuant[group.ApartId] = 3 - count;
+                }               
             }
-            return Ok(freeApartm);
+            return Ok(apartQuant);
         }
 
         //[HttpPost]

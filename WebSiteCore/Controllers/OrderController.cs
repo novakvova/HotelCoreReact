@@ -30,9 +30,10 @@ namespace WebSiteCore.Controllers
         [HttpGet]
         public IActionResult Get([FromBody]DateRangeViewModel dataRange)
         {
-            var orders2 = _ctx.Orders.Where(o => o.From >= dataRange.From && o.From <= dataRange.To)
-                                   .GroupBy(o => o.ApartmentId).ToList();
-           var orders = _ctx.Orders.Where(o => o.From >= dataRange.From && o.From <= dataRange.To)
+            //var orders3 = _ctx.Orders.Where(o => o.From >= dataRange.From && o.From <= dataRange.To).ToList();
+            //var orders2 = _ctx.Orders.Where(o => o.From >= dataRange.From && o.From <= dataRange.To)
+            //                         .GroupBy(o => o.ApartmentId).ToList();
+            var orders = _ctx.Orders.Where(o => o.From >= dataRange.From && o.From <= dataRange.To)
                                     .GroupBy(o => o.ApartmentId, 
                                             (key, items) => new { ApartId = key, Orders = items.ToList()})
                                     .ToList();

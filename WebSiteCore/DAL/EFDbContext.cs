@@ -30,6 +30,7 @@ namespace WebSiteCore.DAL.Entities
 
         public virtual DbQuery<VApartmentData> VApartmentsData { get; set; }
         public virtual DbQuery<VApartment> VApartments { get; set; }
+        public virtual DbQuery<VApartApartImg> VApartApartImg { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

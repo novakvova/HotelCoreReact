@@ -15,7 +15,7 @@ namespace WebSiteCore.Migrations
 
             string path = Uri.UnescapeDataString(uri.Path);
 
-            string baseDir = Path.GetDirectoryName(path) + "\\Migrations\\SqlQuery\\SpFetchApartments.sql";
+            string baseDir = Path.GetDirectoryName(path) + "\\Migrations\\StorageProcedure\\SpGetRAngeApartents.sql";
 
             migrationBuilder.Sql(File.ReadAllText(baseDir));
 

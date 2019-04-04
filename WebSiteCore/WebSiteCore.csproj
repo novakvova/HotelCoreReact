@@ -54,10 +54,10 @@
     <None Update="Migrations\SqlQuery\VApartments.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Migrations\SqlQuery\SpFetchApartments.sql">
+    <None Update="Migrations\SqlQuery\VApartmentsData.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Migrations\SqlQuery\VApartmentsData.sql">
+    <None Update="Migrations\StorageProcedure\SpGetRAngeApartents.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

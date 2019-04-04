@@ -16,7 +16,7 @@ namespace WebSiteCore.ViewModels
         public int RoomQuantity { get; set; }
         public List<ApartmentImageSPViewModel> Images { get; set; }
         //Serialized as JSON string using HasConversion(...)
-        public string ResponseData { get; set; }
+        //public string ResponseData { get; set; }
     }
 
     public class ApartmentImageSPViewModel

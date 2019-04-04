@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,7 +11,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using WebSiteCore.DAL.Entities;
+using WebSiteCore.ViewModels;
 
 namespace WebSiteCore.Controllers
 {
@@ -26,12 +30,42 @@ namespace WebSiteCore.Controllers
         }
         public IActionResult Get()
         {
-            string imagePath = _configuration["Settings:ImagePath"];
+
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
+
+            var bookIdParameter = new SqlParameter();
+            bookIdParameter.ParameterName = "@JSONOutput";
+            bookIdParameter.Direction = ParameterDirection.Output;
+            bookIdParameter.SqlDbType = SqlDbType.NVarChar;
+            bookIdParameter.Size = -1;
+            string sql = @"EXEC [dbo].[spGetRangeApartments]
+                                @From,
+                        		@Take,
+                                @JSONOutput out
+                        ";
+
+            _ctx.Database.ExecuteSqlCommand(sql,
+                new SqlParameter("@From", Convert.ToInt32(0)),
+                new SqlParameter("@Take", 100),
+                bookIdParameter);
+
+
+            var data = JsonConvert
+                .DeserializeObject<IEnumerable<ApartmentSPViewModel>>(bookIdParameter.SqlValue.ToString());
+            stopWatch.Stop();
+            TimeSpan ts = stopWatch.Elapsed;
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                ts.Hours, ts.Minutes, ts.Seconds,
+                ts.Milliseconds / 10);
+            Debug.WriteLine("RunTime " + elapsedTime);
+
+
+            string imagePath = _configuration["Settings:ImagePath"];
+            
             object apartments = null;
-            var data = _ctx.GetApartmentsByRange(10, 20).Result;
-            var bim = 12;
+            //var data = _ctx.GetApartmentsByRange(10, 20).Result;
+           // var bim = 12;
             //1
             //var apartments = _ctx.VApartmentsData.GroupBy(a => new
             //                                     {
@@ -164,12 +198,7 @@ namespace WebSiteCore.Controllers
             //   //.Skip(0).Take(5)
             //   .ToList();
 
-            stopWatch.Stop();
-            TimeSpan ts = stopWatch.Elapsed;
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                ts.Hours, ts.Minutes, ts.Seconds,
-                ts.Milliseconds / 10);
-            Debug.WriteLine("RunTime " + elapsedTime);
+            
 
             //var resultObject = from g in groupData
             //                   select 

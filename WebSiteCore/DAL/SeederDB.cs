@@ -290,59 +290,63 @@ namespace WebSiteCore.DAL.Entities
                 context.SaveChanges();
             }
 
-            //var conviences = new List<ConvenienceType>();
-            //var faker = new Faker("en");
-            //context.ConvenienceTypes.AddRange(
-            //    new ConvenienceType { Name = "Standart" },
-            //    new ConvenienceType { Name = "Superior" },
-            //    new ConvenienceType { Name = "Junior suite" }
-            //);
-            //context.RoomTypes.AddRange(
-            //    new RoomType { Name = "Single" },
-            //    new RoomType { Name = "Twin" },
-            //    new RoomType { Name = "Double room" }
-            //);
-            //context.Floors.AddRange(
-            //    new Floor { Number = 1, Description = "Administrative floor" },
-            //    new Floor { Number = 2, Description = "Standart floor" },
-            //    new Floor { Number = 3, Description = "Luxurious floor" }
-            //);
-            //context.SaveChanges();
 
-            ////var apartIds = 1;
-            //var apartmentsName = new[] { "Family Standart", "Single Standart", "Studio Double", "DBL Standart", "Twin Standart", "Superior Double", "Junior Suite(with min-kitchen)" };
-            //var apartGenerator = new Faker<Apartment>()
-            //                        .StrictMode(false)
-            //                        //.RuleFor(a => a.Id, f => apartIds++)
-            //                        .RuleFor(a => a.Name, f => f.PickRandom(apartmentsName))
-            //                        .RuleFor(a => a.Description, f => f.Lorem.Sentence())
-            //                        .RuleFor(a => a.Equipment, f => f.Lorem.Sentence())
-            //                        .RuleFor(a => a.Area, f => f.Random.Number(20, 80))
-            //                        .RuleFor(a => a.Price, f => f.Random.Number(120, 250))
-            //                        .RuleFor(a => a.RoomQuantity, f => f.Random.Number(1, 2))
-            //                        .RuleFor(a => a.ConvenienceTypeId, f => f.Random.Number(1, 3))
-            //                        .RuleFor(a => a.RoomTypeId, f => f.Random.Number(1, 3))
-            //                        .RuleFor(a => a.FloorId, f => f.Random.Number(2, 3));
-            //var data = apartGenerator.Generate(20);
+        }
+        public static void SeedBigDataBogus(UserManager<DbUser> userManager, EFDbContext context)
+        {
+            var conviences = new List<ConvenienceType>();
+            var faker = new Faker("en");
+            context.ConvenienceTypes.AddRange(
+                new ConvenienceType { Name = "Standart" },
+                new ConvenienceType { Name = "Superior" },
+                new ConvenienceType { Name = "Junior suite" }
+            );
+            context.RoomTypes.AddRange(
+                new RoomType { Name = "Single" },
+                new RoomType { Name = "Twin" },
+                new RoomType { Name = "Double room" }
+            );
+            context.Floors.AddRange(
+                new Floor { Number = 1, Description = "Administrative floor" },
+                new Floor { Number = 2, Description = "Standart floor" },
+                new Floor { Number = 3, Description = "Luxurious floor" }
+            );
+            context.SaveChanges();
 
-            //context.AddRange(data);
-            //context.SaveChanges();
-            //context.AddRange(apartGenerator.Generate(200000).ToArray());
-            //context.SaveChanges();
-            //Debug.WriteLine("Bingo1!");
-            ////apartIds = 1;
-            ////var imageId = 1;
-            //var imageGenerator = new Faker<ApartmentImage>()
-            //                        .StrictMode(false)
-            //                        .RuleFor(i => i.Name, f => f.Lorem.Sentence())
-            //                        //.RuleFor(i => i.Id, f => imageId++)
-            //                        .RuleFor(i => i.AppartmentId, f => f.Random.Number(1, 200000));
-            //context.ApartmentImages.AddRange(imageGenerator.Generate(600000).ToArray());
-            //Debug.WriteLine("Bingo2!");
-            //context.SaveChanges();
+            //var apartIds = 1;
+            var apartmentsName = new[] { "Family Standart", "Single Standart", "Studio Double", "DBL Standart", "Twin Standart", "Superior Double", "Junior Suite(with min-kitchen)" };
+            var apartGenerator = new Faker<Apartment>()
+                                    .StrictMode(false)
+                                    //.RuleFor(a => a.Id, f => apartIds++)
+                                    .RuleFor(a => a.Name, f => f.PickRandom(apartmentsName))
+                                    .RuleFor(a => a.Description, f => f.Lorem.Sentence())
+                                    .RuleFor(a => a.Equipment, f => f.Lorem.Sentence())
+                                    .RuleFor(a => a.Area, f => f.Random.Number(20, 80))
+                                    .RuleFor(a => a.Price, f => f.Random.Number(120, 250))
+                                    .RuleFor(a => a.RoomQuantity, f => f.Random.Number(1, 2))
+                                    .RuleFor(a => a.ConvenienceTypeId, f => f.Random.Number(1, 3))
+                                    .RuleFor(a => a.RoomTypeId, f => f.Random.Number(1, 3))
+                                    .RuleFor(a => a.FloorId, f => f.Random.Number(2, 3));
+            var data = apartGenerator.Generate(20);
+
+            context.AddRange(data);
+            context.SaveChanges();
+            context.AddRange(apartGenerator.Generate(200000).ToArray());
+            context.SaveChanges();
+            Debug.WriteLine("Bingo1!");
+            //apartIds = 1;
+            //var imageId = 1;
+            var imageGenerator = new Faker<ApartmentImage>()
+                                    .StrictMode(false)
+                                    .RuleFor(i => i.Name, f => f.Lorem.Sentence())
+                                    //.RuleFor(i => i.Id, f => imageId++)
+                                    .RuleFor(i => i.AppartmentId, f => f.Random.Number(1, 200000));
+            context.ApartmentImages.AddRange(imageGenerator.Generate(600000).ToArray());
+            Debug.WriteLine("Bingo2!");
+            context.SaveChanges();
         }
 
-        public static void Seed(IServiceProvider services)
+            public static void Seed(IServiceProvider services)
         {
             using (var scope = services.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
@@ -351,7 +355,9 @@ namespace WebSiteCore.DAL.Entities
                 var context = scope.ServiceProvider.GetRequiredService<EFDbContext>();
                 SeederDB.SeedUsers(manager, managerRole);
                 SeederDB.SeedClients(manager, context);
-                SeederDB.SeedData(manager, context);
+                //SeederDB.SeedData(manager, context);
+                //SeederDB.SeedBigDataBogus(manager, context);
+                
             }
         }
     }

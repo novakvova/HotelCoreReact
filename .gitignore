@@ -234,3 +234,4 @@ _Pvt_Extensions
 .fake/
 /WebSiteCore/DAL/Entities/Helpers
 /WebSiteCore/log.txt
+/WebSiteCore/DAL/Helpers

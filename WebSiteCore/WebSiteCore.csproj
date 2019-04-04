@@ -20,14 +20,18 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="DAL\Helpers\**" />
     <Compile Remove="Pages\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="DAL\Helpers\**" />
     <Content Remove="Pages\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Remove="DAL\Helpers\**" />
     <EmbeddedResource Remove="Pages\**" />
+    <None Remove="DAL\Helpers\**" />
     <None Remove="Pages\**" />
   </ItemGroup>
 
@@ -48,6 +52,9 @@
 
   <ItemGroup>
     <None Update="Migrations\SqlQuery\VApartments.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Migrations\SqlQuery\SpFetchApartments.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Migrations\SqlQuery\VApartmentsData.sql">

@@ -29,48 +29,50 @@ namespace WebSiteCore.Controllers
             string imagePath = _configuration["Settings:ImagePath"];
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
-
+            object apartments = null;
+            var data = _ctx.GetApartmentsByRange(10, 20).Result;
+            var bim = 12;
             //1
-            var apartments = _ctx.VApartmentsData.GroupBy(a => new
-                                                 {
-                                                     a.ApartmentId,
-                                                     a.Name,
-                                                     a.Description,
-                                                     a.Equipment,
-                                                     a.Area,
-                                                     a.Price,
-                                                     a.RoomTypeId,
-                                                     a.RoomTypeName,
-                                                     a.RoomQuantity,
-                                                     a.ConvenienceTypeId,
-                                                     a.ConvenienceTypeName,
-                                                     a.FloorId,
-                                                     a.FloorNumber,
-                                                     a.FloorDescription
-                                                 })
-                                                .Select(a => new
-                                                 {
-                                                     apart = a.Key,
-                                                     images = a.Select(ap => new { path = imagePath + ap.AprtImageName })
-                                                 });
-                                               //.Select(a => new
-                                               //{
-                                               //    id = a.Key.ApartmentId,
-                                               //    name = a.Key.Name,
-                                               //    description = a.Key.Description,
-                                               //    equipment = a.Key.Equipment,
-                                               //    area = a.Key.Area,
-                                               //    price = a.Key.Price,
-                                               //    roomTypeId = a.Key.RoomTypeId,
-                                               //    roomTypeName = a.Key.RoomTypeName,
-                                               //    roomQuantity = a.Key.RoomQuantity,
-                                               //    convenienceTypeId = a.Key.ConvenienceTypeId,
-                                               //    convenienceTypeName = a.Key.ConvenienceTypeName,
-                                               //    floorId = a.Key.FloorId,
-                                               //    floorNumber = a.Key.FloorNumber,
-                                               //    floorDescription = a.Key.FloorDescription,
-                                               //    images = a.Select(ap => new { path = imagePath + ap.AprtImageName })
-                                               //});
+            //var apartments = _ctx.VApartmentsData.GroupBy(a => new
+            //                                     {
+            //                                         a.ApartmentId,
+            //                                         a.Name,
+            //                                         a.Description,
+            //                                         a.Equipment,
+            //                                         a.Area,
+            //                                         a.Price,
+            //                                         a.RoomTypeId,
+            //                                         a.RoomTypeName,
+            //                                         a.RoomQuantity,
+            //                                         a.ConvenienceTypeId,
+            //                                         a.ConvenienceTypeName,
+            //                                         a.FloorId,
+            //                                         a.FloorNumber,
+            //                                         a.FloorDescription
+            //                                     })
+            //                                    .Select(a => new
+            //                                     {
+            //                                         apart = a.Key,
+            //                                         images = a.Select(ap => new { path = imagePath + ap.AprtImageName })
+            //                                     });
+            //.Select(a => new
+            //{
+            //    id = a.Key.ApartmentId,
+            //    name = a.Key.Name,
+            //    description = a.Key.Description,
+            //    equipment = a.Key.Equipment,
+            //    area = a.Key.Area,
+            //    price = a.Key.Price,
+            //    roomTypeId = a.Key.RoomTypeId,
+            //    roomTypeName = a.Key.RoomTypeName,
+            //    roomQuantity = a.Key.RoomQuantity,
+            //    convenienceTypeId = a.Key.ConvenienceTypeId,
+            //    convenienceTypeName = a.Key.ConvenienceTypeName,
+            //    floorId = a.Key.FloorId,
+            //    floorNumber = a.Key.FloorNumber,
+            //    floorDescription = a.Key.FloorDescription,
+            //    images = a.Select(ap => new { path = imagePath + ap.AprtImageName })
+            //});
 
 
             //2

@@ -1,11 +1,17 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using WebSiteCore.DAL.Entities.SqlViews;
+using WebSiteCore.ViewModels;
 
 namespace WebSiteCore.DAL.Entities
 {
@@ -30,12 +36,15 @@ namespace WebSiteCore.DAL.Entities
 
         public virtual DbQuery<VApartmentData> VApartmentsData { get; set; }
         public virtual DbQuery<VApartment> VApartments { get; set; }
+        public virtual DbQuery<VApartApartImg> VApartApartImg { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Query<VApartmentData>().ToView("vApartmentsData");
             modelBuilder.Query<VApartment>().ToView("vApartments");
+
             base.OnModelCreating(modelBuilder);
         }
+        
     }
 }

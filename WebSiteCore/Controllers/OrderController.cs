@@ -28,21 +28,47 @@ namespace WebSiteCore.Controllers
         //}
 
         [HttpGet]
+        [Route("AvailableApart")]
         public IActionResult Get([FromBody]DateRangeViewModel dataRange)
         {
-            var orders = _ctx.Orders.Where(o => o.From >= dataRange.From && o.From <= dataRange.To)
-
-                                    .OrderBy(o => o.From)
-                                    .ThenBy(o => o.To)
-                                    .Select(o => new
-                                    {
-                                        Id = o.Id,
-                                        From = o.From,
-                                        To = o.To,
-                                        ApartmentId = o.ApartmentId
-                                    })
+            var orders = _ctx.Orders.Where(o => o.From >= dataRange.From && o.From <= dataRange.To ||
+                                            o.From <= dataRange.From && o.To >= dataRange.From)
+                                    .GroupBy(o => o.ApartmentId, 
+                                            (key, items) => new { ApartId = key, Orders = items.ToList()})
                                     .ToList();
-            return Ok(orders);
+            var apartQuant = new Dictionary<int, int>();
+            var apartmentsId = _ctx.Apartments.Select(a => a.Id);
+            foreach(var item in apartmentsId)
+            {
+                apartQuant.Add(item, 3);
+            }
+            foreach(var group in orders)
+            {
+                int count = 1;
+                var orderIds = new List<int>();
+                for(int i = 0; i < group.Orders.Count(); i++)
+                {
+                    for(int j = i + 1; j < group.Orders.Count(); j++)
+                    {
+                        var fromI = group.Orders[i].From;
+                        var fromJ = group.Orders[j].From;
+                        var toI = group.Orders[i].To;
+                        var toJ = group.Orders[j].To;
+
+                        if ((fromI <= fromJ && toI >= fromJ ||
+                            fromJ <= fromI && toJ >= fromI) && !orderIds.Contains(group.Orders[j].Id))
+                        {
+                            count++;
+                            orderIds.Add(group.Orders[j].Id);
+                        }
+                    }
+                }
+                if(count < 3)
+                {
+                    apartQuant[group.ApartId] = 3 - count;
+                }               
+            }
+            return Ok(apartQuant);
         }
 
         //[HttpPost]

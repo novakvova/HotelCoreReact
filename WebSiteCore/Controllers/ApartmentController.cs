@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using WebSiteCore.DAL.Entities;
 using WebSiteCore.ViewModels;
 
@@ -30,42 +31,86 @@ namespace WebSiteCore.Controllers
         }
         public IActionResult Get()
         {
-
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
 
-            var bookIdParameter = new SqlParameter();
-            bookIdParameter.ParameterName = "@JSONOutput";
-            bookIdParameter.Direction = ParameterDirection.Output;
-            bookIdParameter.SqlDbType = SqlDbType.NVarChar;
-            bookIdParameter.Size = -1;
-            string sql = @"EXEC [dbo].[spGetRangeApartments]
+            var apartments = new SqlParameter
+            {
+                ParameterName = "@JSONOutput",
+                Direction = ParameterDirection.Output,
+                SqlDbType = SqlDbType.NVarChar,
+                Size = -1
+            };
+
+            var from = new SqlParameter
+            {
+                ParameterName = "@From",
+                SqlDbType = SqlDbType.Int,
+                Value = 0
+            };
+
+            var take = new SqlParameter
+            {
+                ParameterName = "@Take",
+                SqlDbType = SqlDbType.Int,
+                Value = 5
+            };
+
+            string query = @"EXEC [dbo].[spGetRangeApartments]
                                 @From,
                         		@Take,
-                                @JSONOutput out
-                        ";
+                                @JSONOutput out";
 
-            _ctx.Database.ExecuteSqlCommand(sql,
-                new SqlParameter("@From", Convert.ToInt32(0)),
-                new SqlParameter("@Take", 100),
-                bookIdParameter);
+            _ctx.Database.ExecuteSqlCommand(query, from, take, apartments);
 
+            //var data = JsonConvert
+            //    .DeserializeObject<IEnumerable<ApartmentSPViewModel>>(apartments.SqlValue.ToString());
 
-            var data = JsonConvert
-                .DeserializeObject<IEnumerable<ApartmentSPViewModel>>(bookIdParameter.SqlValue.ToString());
             stopWatch.Stop();
             TimeSpan ts = stopWatch.Elapsed;
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+            string elapsedTime = String.Format("----------------------->>> {0:00}:{1:00}:{2:00}.{3:00}",
                 ts.Hours, ts.Minutes, ts.Seconds,
                 ts.Milliseconds / 10);
             Debug.WriteLine("RunTime " + elapsedTime);
 
 
             string imagePath = _configuration["Settings:ImagePath"];
-            
-            object apartments = null;
+            var apartmentsJSON = JArray.Parse(apartments.Value.ToString());
+
+            //var preparedApartments = apartmentsJSON.Select(ap =>
+            //    ap["Images"].Select(imgs =>
+            //        imgs.Select(img =>
+            //        {
+            //            img["Name"] = imagePath + img["Name"];
+            //            //Debug.WriteLine($"------------------------------------>{img.ToString()}");
+            //            return img;
+            //        })
+            //    ));
+            //var res = apartmentsJSON[0]["Images"][0];
+            //res["Name"] = "Zalupa";
+
+
+            var preparedApartments = apartmentsJSON.Select(ap =>
+            ap["Images"].Select(imgs =>
+
+                imgs.Select(img =>
+                {
+                    img["Name"] = imagePath + img["Name"];
+                    //Debug.WriteLine($"------------------------------------>{img.ToString()}");
+                    return new { Id = "Zalupa" };
+                 })));
+
+            //var preparedApartments = apartmentsJSON.Select(ap => ap["Images"].Select(imgs => imgs.Select(img => {
+            //                                                                                                        //img["Name"] = imagePath + img["Name"];
+            //                                                                                                        Debug.WriteLine(img.ToString());
+            //                                                                                                        return img;
+            //                                                                                                    })));
+
+            #region linq query
+
+            //object apartments = null;
             //var data = _ctx.GetApartmentsByRange(10, 20).Result;
-           // var bim = 12;
+            // var bim = 12;
             //1
             //var apartments = _ctx.VApartmentsData.GroupBy(a => new
             //                                     {
@@ -198,7 +243,7 @@ namespace WebSiteCore.Controllers
             //   //.Skip(0).Take(5)
             //   .ToList();
 
-            
+
 
             //var resultObject = from g in groupData
             //                   select 
@@ -226,9 +271,11 @@ namespace WebSiteCore.Controllers
             //        Images = a.Images
             //    })
             //    .ToList();
-           if (apartments != null)
+            #endregion
+
+            if (preparedApartments != null)
             {
-                return Ok(apartments);
+                return Ok(preparedApartments);
             }
             return BadRequest("No apartments were found");
         }

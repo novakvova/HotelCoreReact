@@ -1,109 +1,123 @@
-.booking{
-    padding-bottom:100px;
+.booking {
+    padding-bottom: 100px;
 }
 
-.booking-title{
-    width:100%;
+.booking-title {
+    width: 100%;
     text-align: center;
     font-weight: 300;
     background-image: url('/img/heading-line.png');
     background-repeat: no-repeat;
     background-position: center;
-    margin:0;
-    padding:0;
-    margin-top:-25px;
-    font-size:38px;
+    margin: 0;
+    padding: 0;
+    margin-top: -25px;
+    font-size: 38px;
 }
 
 .booking-title p {
     border-bottom: 1px solid #aaa;
     margin-top: 20px;
-    padding-bottom:20px;
+    padding-bottom: 20px;
 }
 
-.booking input{
-    width:44%;
+.datepicker-line input {
+    width: 44%;
     height: 45px;
     font-size: 16px;
     font-weight: 700;
     text-align: center;
 }
 
-.booking input:active, .booking input:focus{
-    border-color:black;
-    box-shadow: none; 
+.booking input:active, .booking input:focus {
+    border-color: black;
+    box-shadow: none;
 }
 
-.form-control:last-child{
-    margin-left:12%;
+.form-control:last-child {
+    margin-left: 12%;
 }
 
-.travel-data{
-    width:30%;
+.travel-data {
+    width: 30%;
 }
 
-.availabilities>p{
-    margin-left:5%;
+.availabilities>p {
+    margin-left: 5%;
 }
 
-.travel-data>p, .availabilities>p{
-    font-size:20px;
+.travel-data>p, .availabilities>p {
+    font-size: 20px;
     font-weight: 700;
-    border-bottom:3px solid #cecece;
-    padding-bottom:10px;
+    border-bottom: 3px solid #cecece;
+    padding-bottom: 10px;
 }
 
-.datepicker-line{
-    margin-bottom:75px;
-    margin-top:30px;
+.datepicker-line {
+    margin-bottom: 75px;
+    margin-top: 30px;
 }
 
-.info-travel{
-    padding-left:2%;
+.info-travel {
+    padding-left: 2%;
 }
 
-.travel-data span{
-    font-size:16px;
-    color:#999;
-    font-weight: 600;
-    padding-right: 46%;
-}
-
-.fa-male {
-    font-size:23px;
-    padding-left:2%;
-}
-
-.glyphicon-bed{
-    font-size:18px;
-    padding-left:1.4%;
-}
-
-.info-line span{
-    padding-left:5%;
-    color:black;
+.info-line>span {
+    font-size: 16px;
     font-weight: 200;
 }
 
-.info-line{
-    padding-top:25px;
+.fa-male {
+    font-size: 23px;
+    padding-left: 2%;
 }
 
-.availabilities{
-    width:70%;
+.glyphicon-bed {
+    font-size: 18px;
+    padding-left: 1.4%;
 }
 
-.booking-date{
-    margin-left:5.15%;
-    margin-top:15px;
+.info-line {
+    padding-top: 25px;
 }
 
-div.react-datepicker{
+.availabilities {
+    width: 70%;
+}
+
+.booking-date {
+    margin-left: 5.15%;
+    margin-top: 15px;
+}
+
+div.react-datepicker {
     margin-right: -0.3%;
 }
 
-.booking-date div.react-datepicker__month-container{
-    float:left;
-    border:none;
+.booking-date div.react-datepicker__month-container {
+    float: left;
+    border: none;
 }
 
+.info-line>.react-numeric-input, .info-line>.react-numeric-input:focus-within{
+    margin-left:22.5%;
+}
+
+.info-line>.react-numeric-input input {
+    width:100px;
+    height: 45px;
+    text-align: center;
+    box-shadow: none;
+}
+
+.info-line>.react-numeric-input input:focus{
+    outline : 1px solid black;
+}
+
+.travel-data .btn{
+    font-size:22px;
+    color:white;
+    text-decoration: none;
+    background: #232323;
+    width:100%;
+}

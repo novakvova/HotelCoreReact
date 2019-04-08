@@ -89,16 +89,17 @@ namespace WebSiteCore.Controllers
             //var res = apartmentsJSON[0]["Images"][0];
             //res["Name"] = "Zalupa";
 
-
             var preparedApartments = apartmentsJSON.Select(ap =>
-            ap["Images"].Select(imgs =>
-
-                imgs.Select(img =>
-                {
-                    img["Name"] = imagePath + img["Name"];
-                    //Debug.WriteLine($"------------------------------------>{img.ToString()}");
-                    return new { Id = "Zalupa" };
-                 })));
+            {
+                var res = new JProperty("Images",
+                    ap["Images"].Select(img =>
+                    {
+                        img["Name"] = imagePath + img["Name"];
+                        return img;
+                    })
+                );
+                return ap;
+            });
 
             //var preparedApartments = apartmentsJSON.Select(ap => ap["Images"].Select(imgs => imgs.Select(img => {
             //                                                                                                        //img["Name"] = imagePath + img["Name"];

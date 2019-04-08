@@ -292,6 +292,7 @@ namespace WebSiteCore.DAL.Entities
 
 
         }
+
         public static void SeedBigDataBogus(UserManager<DbUser> userManager, EFDbContext context)
         {
             var conviences = new List<ConvenienceType>();
@@ -346,7 +347,7 @@ namespace WebSiteCore.DAL.Entities
             context.SaveChanges();
         }
 
-            public static void Seed(IServiceProvider services)
+        public static void Seed(IServiceProvider services)
         {
             using (var scope = services.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
@@ -356,8 +357,7 @@ namespace WebSiteCore.DAL.Entities
                 SeederDB.SeedUsers(manager, managerRole);
                 SeederDB.SeedClients(manager, context);
                 //SeederDB.SeedData(manager, context);
-                //SeederDB.SeedBigDataBogus(manager, context);
-                
+                //SeederDB.SeedBigDataBogus(manager, context);                
             }
         }
     }
